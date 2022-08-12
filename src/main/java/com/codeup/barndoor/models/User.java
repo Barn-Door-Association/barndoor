@@ -31,7 +31,7 @@ public class User {
 
     // Add relationship to herd @
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Herd> herds = new ArrayList<>();
+    private List<Herd> herds;
 
     public User() {
     }

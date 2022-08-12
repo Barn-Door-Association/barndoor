@@ -1,7 +1,10 @@
 package com.codeup.barndoor.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "goats")
@@ -36,6 +39,16 @@ public class Goat {
     @JoinColumn (name = "herd_id") //assigns foreign key
     private Herd herd;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "goat")
+    private List<VaccineRecords> records;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable (name = "pedigree", joinColumns = {
+            @JoinColumn (name = "goat_id")
+     }, inverseJoinColumns = {@JoinColumn (name = "parent_id")
+            }
+    )
+    private Set<Goat> parents;
 
     public Goat() {
     }
