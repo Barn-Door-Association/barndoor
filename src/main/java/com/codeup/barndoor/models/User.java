@@ -1,6 +1,8 @@
 package com.codeup.barndoor.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +30,8 @@ public class User {
     private String lastName;
 
     // Add relationship to herd @
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Herd> herds = new ArrayList<>();
 
     public User() {
     }
