@@ -24,9 +24,8 @@ public class HerdController {
 
     @GetMapping("/herd/{id}")
     public String showHerdPage(@PathVariable long id, Model model){
-//         This will not work unless tables have data in them
-         List<Goat> herd = herdDao.findById(id).getGoats();
-         model.addAttribute("herd", herd);
+//         List<Goat> herd = herdDao.findById(id).getGoats();
+//         model.addAttribute("herd",  herdDao.findById(id).getGoats());
         return "herds/herd";
     }
 }
