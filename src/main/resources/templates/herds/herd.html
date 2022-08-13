@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Herd</title>
@@ -8,7 +8,6 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-
 <!--  This is where we would include a navbar partial  -->
 <section class="container-fluid d-flex justify-content-center bg-warning">
     <h1>Nav Bar Here</h1>
@@ -22,48 +21,34 @@
                 <h2>Details for (herd name)</h2>
             </div>
             <div class="d-flex justify-content-center">
-                <button>Edit</button>
-                <button>Delete</button>
-                <button>Add Goat</button>
+                <button id="edit-goat-button">Edit</button>
+                <button id="delete-goat-button">Delete</button>
+                <button id="add-goat-button">Add Goat</button>
             </div>
 
             <!-- This table will be dynamically generated with a loop once our
              code is more robust, for now, it is here for the purpose of layout,
              CSS styling etc -->
             <div class="d-flex justify-content-center" id="herd-table">
-                <div class="d-flex">
+                <div class="d-flex" th:each="goat : ${herd}">
                     <div class="container">
-                        <div>Name</div>
-                        <div>sdgegdfgerg</div>
-                        <div>sdgegdfgerg</div>
-                        <div>sdgegdfgerg</div>
-                        <div>Dior</div>
+                        <div class="px-5">
+                            <div th:text="${goat.name}"></div>
+                        </div>
                     </div>
                     <div class="container">
                         <div class="px-5">
-                            <div>ID</div>
-                            <div>1</div>
-                            <div>2</div>
-                            <div>3</div>
-                            <div>4</div>
+                            <div th:text="${goat.id}"></div>
                         </div>
                     </div>
                     <div>
                         <div class="px-5 container">
-                            <div>Sex</div>
-                            <div>m</div>
-                            <div>f</div>
-                            <div>m</div>
-                            <div>f</div>
+                            <div th:text="${goat.sex}"></div>
                         </div>
                     </div>
                     <div class="justify-content-center">
                         <div class="px-5 container">
-                            <div>Breed</div>
-                            <div>asdfasdf</div>
-                            <div>fifgfgf</div>
-                            <div>sdfsdfsdf</div>
-                            <div>bnhnhf</div>
+                            <div th:text="${goat.breed}"></div>
                         </div>
                     </div>
                 </div>
@@ -86,5 +71,16 @@
 <section class="container-fluid d-flex justify-content-center bg-warning">
     <h3>Footer Here</h3>
 </section>
+<script>
+    document.getElementById("add-goat-button").addEventListener("click", () => {
+        alert("add-goat-button clicked.");
+    });
+    document.getElementById("edit-goat-button").addEventListener("click", () => {
+        alert("edit-goat-button clicked.");
+    });
+    document.getElementById("delete-goat-button").addEventListener("click", () => {
+        alert("delete-goat-button clicked.");
+    });
+</script>
 </body>
 </html>
