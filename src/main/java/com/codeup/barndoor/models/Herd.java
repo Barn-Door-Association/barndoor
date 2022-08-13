@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 @Table(name = "herds")
 public class Herd {
@@ -20,7 +19,7 @@ public class Herd {
    private User user;
 
 
-//     Adds relationship to Goat table
+    // Adds relationship to Goat table
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "herd")
     private List<Goat> goats = new ArrayList<>();
 
