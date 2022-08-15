@@ -13,7 +13,18 @@
     color: white;
     background-color: black;
     border-radius: 10px;
-    border: 2px solid red;
+    border: 2px solid royalblue;
     display: flex;
     flex-direction: column;
+    height: 420px;
+}
+
+.add-goat-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: royalblue;
+    color: white;
+    border-radius: 4px;
+    border: 0;
 }
