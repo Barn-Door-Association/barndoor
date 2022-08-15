@@ -21,41 +21,25 @@
                 <h2>View All Herds</h2>
             </div>
             <div class="d-flex justify-content-center">
-                <button id="edit-goat-button">Edit</button>
-                <button id="delete-goat-button">Delete</button>
-                <button id="add-goat-button">Add Goat</button>
+                <button id="edit-herd-button">Edit</button>
+                <button id="delete-herd-button">Delete</button>
+                <button id="add-herd-button">Add Herd</button>
             </div>
             <div class="d-flex justify-content-center" id="herd-table">
-                <div class="d-flex" th:each="goat : ${herd}">
+                <div class="d-flex" th:each="herd : ${herds}">
                     <div class="container">
                         <div class="px-5">
-                            <div th:text="${goat.name}"></div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="px-5">
-                            <div th:text="${goat.id}"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="px-5 container">
-                            <div th:text="${goat.sex}"></div>
-                        </div>
-                    </div>
-                    <div class="justify-content-center">
-                        <div class="px-5 container">
-                            <div th:text="${goat.breed}"></div>
+                            <div th:text="${herd.herdName}"></div>
                         </div>
                     </div>
                 </div>
-                <br>
             </div>
-        </div>
+<!--
     </article>
 
     <!--    Bonus features if we can get to them, could possibly go here, or where ever we want  -->
     <article class="d-flex justify-content-center py-5">
-        <h1>BONUS FEATURES MAYBE!!!!</h1>
+        <h1>Goat pic carousel</h1>
     </article>
 
     <!--    Link to the top of the page (if we need it / for a large herd)  -->
@@ -69,14 +53,14 @@
     <h3>Footer Here</h3>
 </section>
 <script>
-    document.getElementById("add-goat-button").addEventListener("click", () => {
-        alert("add-goat-button clicked.");
+    document.getElementById("add-herd-button").addEventListener("click", () => {
+        alert("add-herd-button clicked.");
     });
-    document.getElementById("edit-goat-button").addEventListener("click", () => {
-        alert("edit-goat-button clicked.");
+    document.getElementById("edit-herd-button").addEventListener("click", () => {
+        alert("edit-herd-button clicked.");
     });
     document.getElementById("delete-goat-button").addEventListener("click", () => {
-        alert("delete-goat-button clicked.");
+        alert("delete-herd-button clicked.");
     });
 </script>
 </body>
