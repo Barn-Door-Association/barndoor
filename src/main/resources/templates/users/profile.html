@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+</head>
+<body>
+
+<div profile-class="container justify-content-center align-content">
+    <h1>Welcome, ${sessionScope.users.username}!</h1>
+    <h2>You are currently managing ranch: ${sessionScope.users.ranch_name}!</h2>
+    <br>
+    <h2>Your profile details</h2>
+    <h3>First name: ${sessionScope.users.first_name}!</h3>
+    <h3>Last name: ${sessionScope.users.last_name}!</h3>
+    <h3>Email Address: ${sessionScope.users.email}!</h3>
+</div>
+
+
+</body>
+</html>
