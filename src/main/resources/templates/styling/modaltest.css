@@ -1,0 +1,19 @@
+#modal-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 100px;
+    width: 100%;
+}
+
+.modal-wrapper {
+    width: 500px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+}
