@@ -2,6 +2,7 @@ package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.Goat;
 import com.codeup.barndoor.models.Herd;
+import com.codeup.barndoor.repositories.GoatRepository;
 import com.codeup.barndoor.repositories.HerdRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,13 @@ import java.util.List;
 @Controller
 public class HerdController {
 
-    HerdRepository herdDao;
+    private final HerdRepository herdDao;
+    private final GoatRepository goatDao;
+
+    public HerdController(HerdRepository herdDao, GoatRepository goatDao){
+        this.herdDao = herdDao;
+        this.goatDao = goatDao;
+    }
 
     @GetMapping("/herds")
     public String showHerds(Model model){
@@ -22,10 +29,10 @@ public class HerdController {
         return "herds/herds";
     }
 
-    @GetMapping("/herd/{id}")
+    @GetMapping("/herds/{id}")
     public String showHerdPage(@PathVariable long id, Model model){
-//         List<Goat> herd = herdDao.findById(id).getGoats();
-//         model.addAttribute("herd",  herdDao.findById(id).getGoats());
+         List<Goat> herd = goatDao.findAllByHerdId(id);
+         model.addAttribute("herd",  herd);
         return "herds/herd";
     }
 }
