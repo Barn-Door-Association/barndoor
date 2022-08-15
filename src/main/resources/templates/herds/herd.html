@@ -89,26 +89,26 @@
     const addGoatForm = () => {
         return `
             <div class="modal-wrapper container">
-                <form action="/herds/${herd.id}" method="POST">
-                    <label for="name">Name</label>
-                    <input type="text" id="name">
-                    <label for="dob">Date of birth</label>
-                    <input type="text" id="dob">
-                    <label for="breed">Breed</label>
-                    <input type="text" id="breed">
-                    <label for="sex">Sex</label>
-                    <input type="text" id="sex">
-                    <label for="tag_id">Tag ID</label>
-                    <input type="text" id="tag_id">
-                    <label for="weight_in_pounds">Weight in pounds</label>
-                    <input type="text" id="weight_in_pounds">
-                    <label for="herd_id">Herd ID</label>
-                    <input type="text" id="herd_id">
-                    <div id="add-goat-button-container" class="d-flex justify-content-between py-1">
-                        <button class="add-goat-button" id="add-goat-cancel-button">Cancel</button>
-                        <button class="add-goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
-                    </div>
-                </form>
+<!--            <form action="">-->
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+                <label for="dob">Date of birth</label>
+                <input type="text" id="dob" name="dob">
+                <label for="breed">Breed</label>
+                <input type="text" id="breed" name="breed">
+                <label for="sex">Sex</label>
+                <input type="text" id="sex" name="sex">
+                <label for="tag_id">Tag ID</label>
+                <input type="text" id="tag_id" name="tab_id">
+                <label for="weight_in_pounds">Weight in pounds</label>
+                <input type="text" id="weight_in_pounds" name="weight_in_pounds">
+                <label for="herd_id">Herd ID</label>
+                <input type="text" id="herd_id" name="herd_id">
+                <div id="add-goat-button-container" class="d-flex justify-content-between py-1">
+                    <button class="add-goat-button" id="add-goat-cancel-button">Cancel</button>
+                    <button class="add-goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
+                </div>
+<!--                </form>-->
             </div>
             `
     };
