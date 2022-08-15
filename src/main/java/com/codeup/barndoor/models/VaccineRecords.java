@@ -12,10 +12,10 @@ public class VaccineRecords {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private int dosageInCcs;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "date")
     private Date dateAdministered;
 
     @Column(nullable = false)

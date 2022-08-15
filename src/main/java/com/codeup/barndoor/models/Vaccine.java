@@ -17,9 +17,6 @@ public class Vaccine {
     @Column(nullable = false)
     private String description;
 
-    @OneToOne
-    private VaccineRecords records;
-
 
 
 }
