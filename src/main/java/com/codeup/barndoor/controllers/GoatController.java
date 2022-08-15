@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class GoatController {
 
-    GoatRepository goatDao;
+    private final GoatRepository goatDao;
+
+    public GoatController(GoatRepository goatDao){
+        this.goatDao = goatDao;
+    }
 
     @GetMapping("/goat/{id}")
     public String showGoatInfo(@PathVariable long id, Model model){

@@ -25,10 +25,6 @@
                 <button id="delete-goat-button">Delete</button>
                 <button id="add-goat-button">Add Goat</button>
             </div>
-
-            <!-- This table will be dynamically generated with a loop once our
-             code is more robust, for now, it is here for the purpose of layout,
-             CSS styling etc -->
             <div class="d-flex justify-content-center" id="herd-table">
                 <div class="d-flex" th:each="goat : ${herd}">
                     <div class="container">
@@ -52,6 +48,7 @@
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
         </div>
     </article>

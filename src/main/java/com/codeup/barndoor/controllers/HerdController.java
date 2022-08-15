@@ -14,8 +14,13 @@ import java.util.List;
 @Controller
 public class HerdController {
 
-    HerdRepository herdDao;
-    GoatRepository goatDao;
+    private final HerdRepository herdDao;
+    private final GoatRepository goatDao;
+
+    public HerdController(HerdRepository herdDao, GoatRepository goatDao){
+        this.herdDao = herdDao;
+        this.goatDao = goatDao;
+    }
 
     @GetMapping("/herds")
     public String showHerds(Model model){
