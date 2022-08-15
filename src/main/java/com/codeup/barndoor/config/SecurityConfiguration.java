@@ -47,8 +47,12 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/about") // anyone can see the home and the ads pages
+
+                //Allowing access to all pages until we get the site complete so we do not have to keep logging in
+                .antMatchers("/", "/about", "/profile", "/vaccine") // anyone can see the home and the ads pages
                 .permitAll()
+
+        
                 /* Pages that require authentication */
 //                .and()
 //                .authorizeRequests()
