@@ -50,15 +50,15 @@ public class SecurityConfiguration {
                 .antMatchers("/", "/about") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
-                .and()
-                .authorizeRequests()
-                .antMatchers(
-                        //Need to add herds, goats, vaccines
-                        "/herds", // only authenticated users can create ads
-                        "/goats", // only authenticated users can edit posts
-                        "/vaccines" // only authenticated users can delete posts
-                )
-                .authenticated()
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers(
+//                        //Need to add herds, goats, vaccines
+//                        "/herds", // only authenticated users can create ads
+//                        "/goats", // only authenticated users can edit posts
+//                        "/vaccines" // only authenticated users can delete posts
+//                )
+//                .authenticated()
         ;
         return http.build();
     }
