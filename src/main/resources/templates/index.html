@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials.html :: head('index')">
-    <meta charset="UTF-8">
-    <title>BarnDoor Landing Page!</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/partials.html :: head('Welcome to BarnDoor')"></head>
 <body>
+<nav th:replace="partials/partials.html :: nav"></nav>
+
 <a name="top"></a>
-<!--<nav th:replace="partials/partials.html :: nav"></nav>-->
 <!-- -&#45;&#45; Title of Page & how it works -&#45;&#45;-->
 <h1>Your all-in-one Goat manager</h1>
 <h2>How it works</h2>
@@ -18,17 +16,20 @@
 
 
 
-<!-- -&#45;&#45; Stock image that will include a button that will link to registration page-->
-<embed type="image/jpeg" src="brownGoat.jpeg" width="500" height="300">
+<!--Stock image that will include a button that will link to registration page-->
 
 
 
-<!-- -&#45;&#45; footer -&#45;&#45;-->
-<footer>
-    <p>Copyright © 2022, All Right Reserved </p>
+
+</body>
+</html>
+<button onclick="document.location='http://localhost:8080/register'">Register now</button>
+<br>
+
+    <footer th:replace="partials/partials.html :: footer">
     <a href="#top">BarnDoor</a>
+    </footer>
 
-</footer>
 
 </body>
 </html>
