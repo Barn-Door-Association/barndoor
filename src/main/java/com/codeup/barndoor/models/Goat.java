@@ -21,7 +21,7 @@ public class Goat {
     private String name;
 
     //Date Format YYYY-MM-DD
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "date")
     private Date dob;
 
     @Column(nullable = false)
