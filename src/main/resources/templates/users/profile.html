@@ -1,20 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<!DOCTYPE html>
+
+<head th:replace="partials/partials.html :: head('Profile')"></head>
+<body>
+<nav th:replace="partials/partials.html :: nav"></nav>
+
 <head>
     <meta charset="UTF-8">
     <title>Profile Page</title>
 </head>
-<body>
 
 <div profile-class="container justify-content-center align-content">
-    <h1>Welcome, ${sessionScope.users.username}!</h1>
-    <h2>You are currently managing ranch: ${sessionScope.users.ranch_name}!</h2>
+    <h1> Welcome, <span th:text="${user.username}">!</span></h1>
+    <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
     <br>
     <h2>Your profile details</h2>
-    <h3>First name: ${sessionScope.users.first_name}!</h3>
-    <h3>Last name: ${sessionScope.users.last_name}!</h3>
-    <h3>Email Address: ${sessionScope.users.email}!</h3>
+    <h3>First name: <span th:text="${user.firstName}">!</span></h3>
+    <h3>Last name: <span th:text="${user.lastName}">!</span></h3>
+    <h3>Email Address: <span th:text="${user.email}">!</span></h3>
 </div>
 
 

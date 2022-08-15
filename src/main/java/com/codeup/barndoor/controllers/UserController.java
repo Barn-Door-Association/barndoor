@@ -2,6 +2,8 @@ package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.User;
 import com.codeup.barndoor.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,5 +36,17 @@ public class UserController {
         userDao.save(user);
         return "redirect:/login";
 
+    }
+
+    @GetMapping("/login")
+    public String showLoginForm() {
+        return "users/login-page";
+    }
+
+    @GetMapping("/profile")
+    public String showProfilePage(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
+        return "users/profile";
     }
 }
