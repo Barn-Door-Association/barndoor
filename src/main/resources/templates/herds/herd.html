@@ -80,6 +80,9 @@
         document.getElementById("add-goat-cancel-button").addEventListener("click", () => {
             $("#modal-container").html("");
         });
+        document.getElementById("add-goat-add-button").addEventListener("click", () => {
+            $("#modal-container").html("");
+        });
     });
     document.getElementById("edit-goat-button").addEventListener("click", () => {
         alert("edit-goat-button clicked.");
@@ -91,27 +94,25 @@
     // Add new goat modal form
     const addGoatForm = () => {
         return `
-            <div class="modal-wrapper container">
-            <form action="">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name"><br>
-                <label for="dob">Date of birth</label>
-                <input type="text" id="dob" name="dob"><br>
-                <label for="breed">Breed</label>
-                <input type="text" id="breed" name="breed"><br>
-                <label for="sex">Sex</label>
-                <input type="text" id="sex" name="sex"><br>
-                <label for="tag_id">Tag ID</label>
-                <input type="text" id="tag_id" name="tab_id"><br>
-                <label for="weight_in_pounds">Weight in pounds</label>
-                <input type="text" id="weight_in_pounds" name="weight_in_pounds"><br>
-                <label for="herd_id">Herd ID</label>
-                <input type="text" id="herd_id" name="herd_id"><br>
-                <div id="add-goat-button-container" class="d-flex justify-content-between py-1">
+            <div class="modal-wrapper container py-3">
+                <label for="name" style="width: 150px;" class="py-1">Name</label>
+                <input type="text" id="name" name="name" style="width:300px;"><br>
+                <label for="dob" style="width: 150px;" class="py-1">Date of birth</label>
+                <input type="text" id="dob" name="dob" style="width:300px;"><br>
+                <label for="breed" style="width: 150px;" class="py-1">Breed</label>
+                <input type="text" id="breed" name="breed" style="width:300px;"><br>
+                <label for="sex" style="width: 150px;" class="py-1">Sex</label>
+                <input type="text" id="sex" name="sex" style="width:300px;"><br>
+                <label for="tag_id" style="width: 150px;" class="py-1">Tag ID</label>
+                <input type="text" id="tag_id" name="tab_id" style="width:300px;"><br>
+                <label for="weight_in_pounds" style="width: 150px;" class="py-1">Weight in pounds</label>
+                <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;"><br>
+                <label for="herd_id" style="width: 150px;" class="py-1">Herd ID</label>
+                <input type="text" id="herd_id" name="herd_id" style="width:300px;"><br>
+                <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
                     <button class="add-goat-button" id="add-goat-cancel-button">Cancel</button>
                     <button class="add-goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
                 </div>
-                </form>
             </div>
             `
     };
