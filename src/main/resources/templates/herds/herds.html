@@ -18,32 +18,40 @@
                 <h2>View All Herds Owned By <span th:text="${user}"></span>!</h2>
             </div>
             <div class="d-flex justify-content-center">
-                <button id="edit-herd-button">Edit</button>
-                <button id="delete-herd-button">Delete</button>
                 <button id="add-herd-button">Add Herd</button>
             </div>
             <br>
-            <div class="d-flex justify-content-center" id="herd-table">
-                <div class="d-flex" th:each="herd : ${herds}">
-                    <div class="container">
-                        <div class="px-5">
-                            <div th:text="${herd.herdName}"></div>
+            <div class="d-flex justify-content-center" th:each="herd : ${herds}">
+            <div class="card mb-3" style="max-width: 450px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="..." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8 justify-content-center">
+                        <div class="card-body" id="herdName">
+                            <h5 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h5>
+                            <p class="card-text">Maybe we should add a herd description here so farmers know whats in the herd</p>
+                            <ul class="list-group list-group-flush justify-content-center">
+                                <li class="list-group-item">Herd ID: <span th:text="${herd.id}"></span> </li>
+                                <li class="list-group-item">Are we still including the number of goats here?</li>
+                            </ul>
+                            <div class="card-body">
+                                <button id="delete-herd-button">Delete</button></div>
                         </div>
                     </div>
                 </div>
             </div>
-<!--
-    </article>
+        </div>
+            <!--
+            <!-Bonus features if we can get to them, could possibly go here, or where ever we want  -->
+            <article class="d-flex justify-content-center py-5">
+                <h1>Goat pic carousel</h1>
+            </article>
 
-<!-Bonus features if we can get to them, could possibly go here, or where ever we want  -->
-    <article class="d-flex justify-content-center py-5">
-        <h1>Goat pic carousel</h1>
-    </article>
-
-    <!--    Link to the top of the page (if we need it / for a large herd)  -->
-    <article class="d-flex justify-content-center">
-        <a href="#">Return to top of page</a>
-    </article>
+            <!--    Link to the top of the page (if we need it / for a large herd)  -->
+            <article class="d-flex justify-content-center">
+                <a href="#">Return to top of page</a>
+            </article>
 </section>
 
 </section>
@@ -51,10 +59,13 @@
     document.getElementById("add-herd-button").addEventListener("click", () => {
         alert("add-herd-button clicked.");
     });
-    document.getElementById("edit-herd-button").addEventListener("click", () => {
-        alert("edit-herd-button clicked.");
+    document.getElementById("herdName").addEventListener("click", () => {
+        alert("This will link to the herd page when clicked.");
     });
-    document.getElementById("delete-goat-button").addEventListener("click", () => {
+    // document.getElementById("edit-herd-button").addEventListener("click", () => {
+    //     alert("edit-herd-button clicked.");
+    // });
+    document.getElementById("delete-herd-button").addEventListener("click", () => {
         alert("delete-herd-button clicked.");
     });
 </script>
