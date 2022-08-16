@@ -5,6 +5,18 @@
 <!-- Navbar partial -->
 <nav th:replace="partials/partials.html :: nav"></nav>
 
+<container class="d-flex justify-content-center">
+    <img src="../goatpic.jpeg" alt="" style="width: 350px;">
+    <div class="d-flex row bg-warning">
+        <h1 th:text="${goat.name}"></h1>
+        <h3 th:text="${goat.breed}"></h3>
+        <h3 th:text="${goat.dob}"></h3>
+        <h3 th:text="${goat.sex}"></h3>
+        <h3 th:text="${goat.weightInPounds}"></h3>
+        <h3 th:text="${goat.herd.id}"></h3>
+    </div>
+</container>
+
 <!-- Footer partial -->
 <section th:replace="partials/partials.html :: footer"></section>
 </body>
