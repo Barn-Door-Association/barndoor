@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <head th:replace="partials/partials.html :: head('Herd')"></head>
+    <meta th:name="_csrf" th:content="${_csrf.token}">
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
     <link type="text/css" rel="stylesheet" href="/modaltest.css">
 </head>
 <body>
@@ -79,7 +81,7 @@
             $("#modal-container").html("");
         });
         document.getElementById("add-goat-add-button").addEventListener("click", () => {
-            $("#modal-container").html("");
+            addNewGoat();
         });
     });
     document.getElementById("edit-goat-button").addEventListener("click", () => {
@@ -89,7 +91,7 @@
         alert("delete-goat-button clicked.");
     });
 
-    // Add new goat modal form
+    // Add form for adding a new goat
     const addGoatForm = () => {
         return `
             <div class="modal-wrapper container py-3">
@@ -99,7 +101,7 @@
                 </div>
                 <div>
                     <label for="dob" style="width: 150px;" class="">Date of birth</label>
-                    <input type="text" id="dob" name="dob" style="width:300px;">
+                    <input type="text" id="dob" name="dob" style="width:300px;" placeholder="yyyy-mm-dd">
                 </div>
                 <div>
                     <label for="breed" style="width: 150px;" class="">Breed</label>
@@ -111,7 +113,7 @@
                 </div>
                 <div>
                     <label for="tag_id" style="width: 150px;" class="">Tag ID</label>
-                    <input type="text" id="tag_id" name="tab_id" style="width:300px;">
+                    <input type="text" id="tag_id" name="tag_id" style="width:300px;">
                 </div>
                 <div>
                     <label for="weight_in_pounds" style="width: 150px;" class="">Weight in pounds</label>
@@ -129,7 +131,30 @@
             `
     };
 
-    const editHerdForm = () => {
+    // This function takes the data entered into the modal and sends it to java controller
+    const addNewGoat = () => {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        let settings = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: $("#name").val(),
+                dob: $("#dob").val(),
+                breed: $("#breed").val(),
+                sex: $("#sex").val(),
+                tagId: $("#tag_id").val(),
+                weightInPounds: $("#weight_in_pounds").val(),
+                herdId: $("#herd_id").val(),
+            })
+        }
+        settings.headers[header] = token;
+        fetch("/add/new/goat", settings)
+            .then(() => {
+                location.reload();
+            })
     }
 </script>
 </body>

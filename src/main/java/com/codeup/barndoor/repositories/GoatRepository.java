@@ -1,6 +1,7 @@
 package com.codeup.barndoor.repositories;
 
 import com.codeup.barndoor.models.Goat;
+import com.codeup.barndoor.models.Herd;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -15,7 +15,7 @@ public class Goat {
     private long id;
 
     @Column(nullable = false, unique = true)
-    private int tagId;
+    private long tagId;
 
     @Column(nullable = false, unique = true)
     private String name;
@@ -32,7 +32,7 @@ public class Goat {
 
     //Weight in pounds
     @Column(nullable = false)
-    private int weightInPounds;
+    private long weightInPounds;
 
     // Adds relationship to Herd table using "herd_id" as foreign key
     @ManyToOne
@@ -53,8 +53,7 @@ public class Goat {
     public Goat() {
     }
 
-    public Goat(long id, int tagId, String name, Date dob, char sex, String breed, int weightInPounds, Herd herd) {
-        this.id = id;
+    public Goat(long tagId, String name, Date dob, char sex, String breed, long weightInPounds, Herd herd) {
         this.tagId = tagId;
         this.name = name;
         this.dob = dob;
@@ -72,11 +71,11 @@ public class Goat {
         this.id = id;
     }
 
-    public int getTagId() {
+    public long getTagId() {
         return tagId;
     }
 
-    public void setTagId(int tagId) {
+    public void setTagId(long tagId) {
         this.tagId = tagId;
     }
 
@@ -112,11 +111,11 @@ public class Goat {
         this.breed = breed;
     }
 
-    public int getWeightInPounds() {
+    public long getWeightInPounds() {
         return weightInPounds;
     }
 
-    public void setWeightInPounds(int weightInPounds) {
+    public void setWeightInPounds(long weightInPounds) {
         this.weightInPounds = weightInPounds;
     }
 

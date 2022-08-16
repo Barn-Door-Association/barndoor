@@ -13,7 +13,7 @@
     background-color: #a1b5ff;
     border-radius: 10px;
     border: 2px solid royalblue;
-    box-shadow: 3px 3px #252525;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);
 }
 
 .add-goat-button {
