@@ -7,7 +7,9 @@
     <link type="text/css" rel="stylesheet" href="/modaltest.css">
 </head>
 <body>
+<!-- This is the navbar fragment / partial -->
 <nav th:replace="partials/partials.html :: nav"></nav>
+
 <!--  This is the main section of the page  -->
 <section class="container py-5">
     <article class="d-flex justify-content-center">
@@ -61,7 +63,7 @@
     </article>
 </section>
 
-<!--  The following section is where we would include a footer partial  -->
+<!--  The following section is footer partial  -->
 <section th:replace="partials/partials.html :: footer"></section>
 
 <!-- Bootstrap CDN-->
