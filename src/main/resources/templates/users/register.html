@@ -3,51 +3,56 @@
 <head th:replace="partials/partials.html :: head('Register')"></head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<div class="container">
-    <h1 class="register">Create an account</h1>
-    <form th:action="@{/register}" method="POST" th:object="${user}" class="content-center">
-        <div class="row mb-3">
-            <label for="username" class="col-sm-2 col-form-label">Username</label>
-            <div class="col-sm-10">
-                <input id="username" th:field="*{username}" class="form-control"/>
+<section class="container py-5">
+    <article class="d-flex justify-content-center">
+        <div class="d-flex card reg-card" style="width: 50%">
+
+                <h2 class="d-flex justify-content-center reg-header">Create an account</h2>
+                <br><br>
+
+                <form th:action="@{/register}" method="POST" th:object="${user}" class="content-center">
+
+                        <div class="mb-3">
+                            <input id="username" placeholder="Username"th:field="*{username}" class="form-control"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="firstName" class="form-control" placeholder="First Name" th:field="*{firstName}"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="lastName" class="form-control" placeholder="Last Name"th:field="*{lastName}"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="password" type="password" class="form-control" placeholder="Password" th:field="*{password}"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="email" class="form-control" placeholder="Email" th:field="*{email}"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <input id="ranchName" class="form-control" placeholder="Ranch Name" th:field="*{ranchName}"/>
+                        </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-primary" value="Sign me up!" type="submit"/>
+                    </div>
+
+                    <div class="login-here">
+                        <p>Already have an account? <a href="/login">Login Here</a></p>
+                    </div>
+                </form>
+
             </div>
-        </div>
-        <div class="row mb-3">
-            <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-                <input id="firstName" class="form-control" th:field="*{firstName}"/>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-                <input id="lastName" class="form-control" th:field="*{lastName}"/>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input id="password" type="password" class="form-control" th:field="*{password}"/>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="email" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input id="email" class="form-control" th:field="*{email}"/>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="ranchName" class="col-sm-2 col-form-label">Ranch Name</label>
-            <div class="col-sm-10">
-                <input id="ranchName" class="form-control" th:field="*{ranchName}"/>
-            </div>
-        </div>
-        <div class="text-center">
-            <input class="btn btn-primary" value="Sign me up!" type="submit"/>
-        </div>
-    </form>
-</div>
+
+    </article>
+</section>
+
+<footer th:replace="partials/partials.html :: footer"></footer>
+
 
 </body>
-<footer th:replace="partials/partials.html :: footer"></footer>
+
 </html>
