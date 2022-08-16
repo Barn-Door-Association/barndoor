@@ -1,0 +1,14 @@
+.indexHeader {
+    text-align: center;
+}
+
+.indexHeader2 {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
