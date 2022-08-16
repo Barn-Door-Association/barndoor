@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials.html :: head('Welcome to BarnDoor')"></head>
+<head ><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/index.css">
+</head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <a name="top"></a>
-<!-- -&#45;&#45; Title of Page & how it works -&#45;&#45;-->
-<h1>Your all-in-one Goat manager</h1>
-<h2>How it works</h2>
-<!-- -&#45;&#45; Introduction on how the app works -&#45;&#45;-->
-<p>Step 1. Register for an account to gain access to our goat organization tools.</p>
-<p>Step 2. Document existing goat data with our user friendly features.</p>
-<p>Step 3. Manage your goats and herds by checking in on the app and updating their status daily!</p>
+<!--Title of Page-->
+<h1 class="indexHeader">Your all-in-one Goat manager</h1>
+<h2 class="indexHeader2">How it works</h2>
+<br>
+<br>
+<!--Introduction on how the app works-->
 
+<div class="row">
+    <div class="column col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Step 1.</h5>
+                <p class="card-text">Register for an account to gain access to our goat organization tools.</p>
+            </div>
+        </div>
+    </div>
+    <div class="column col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Step 2.</h5>
+                <p class="card-text">Document existing goat data with our user-friendly features.</p>
+            </div>
+        </div>
+    </div>
+    <div class="column col">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Step 3.</h5>
+            <p class="card-text">Manage your goats and herds by checking in on the app and updating their status daily!</p>
+        </div>
+    </div>
+    </div>
+</div>
+<br>
+<hr>
 
 
 
 <!--Stock image that will include a button that will link to registration page-->
+<img src="/brownGoat.jpeg"> <a href="https://github.com/Barn-Door-Association"></a>
+<br>
+
 
 
 
 
 </body>
 </html>
-<button onclick="document.location='http://localhost:8080/register'">Register now</button>
-<br>
+<!--Customized button to direct us to the registration page-->
 
+<button class="button" onclick="document.location='http://localhost:8080/register'">Register now</button>
+<br>
     <footer th:replace="partials/partials.html :: footer">
     <a href="#top">BarnDoor</a>
     </footer>
-
-
 </body>
 </html>
