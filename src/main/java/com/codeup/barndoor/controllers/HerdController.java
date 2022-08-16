@@ -1,15 +1,16 @@
 package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.Goat;
+import com.codeup.barndoor.models.GoatRequest;
 import com.codeup.barndoor.models.Herd;
 import com.codeup.barndoor.repositories.GoatRepository;
 import com.codeup.barndoor.repositories.HerdRepository;
 import com.codeup.barndoor.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
