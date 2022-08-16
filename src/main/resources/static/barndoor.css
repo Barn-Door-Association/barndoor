@@ -1,16 +1,32 @@
 nav {
-    background: royalblue;
+    background: #198754;
 }
 
-.register {
-    color: black;
-    text-align: center;
-    font-size: 200%;
+.reg-header {
+    background: #198754;
+    color: white;
 }
 
-.reg-form {
-    color: black;
+.reg-card {
+    padding: 0;
+}
+
+.navbar-nav{
+    text-align: right;
+}
+
+.form-control{
+    width: 80%;
+    margin: 5% 10%;
+}
+
+.login-here{
     text-align: center;
+    margin-top: 10%;
+}
+
+.logout-btn{
+    padding-top: 10%;
 }
 
 /*footer {*/
