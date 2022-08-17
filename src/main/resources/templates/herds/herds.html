@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials.html :: head('Register')">
-    <meta charset="UTF-8">
-    <title>Herds</title>
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<head th:replace="partials/partials.html :: head('Herd')">
+    <meta th:name="_csrf" th:content="${_csrf.token}">
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
+    <!--    CSS Link-->
+    <link type="text/css" rel="stylesheet" href="/herds.css">
 </head>
 <body>
+<!--NavBar partial-->
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <!--  This is the main section of the page  -->
@@ -17,47 +17,131 @@
             <div class="d-flex justify-content-center">
                 <h2>View All Herds Owned By <span th:text="${user}"></span>!</h2>
             </div>
+
+
+            <!-- Add herd button -->
             <div class="d-flex justify-content-center">
-                <button id="edit-herd-button">Edit</button>
-                <button id="delete-herd-button">Delete</button>
                 <button id="add-herd-button">Add Herd</button>
             </div>
+            <!--Modal container injection (this is where the modal will pop up)-->
+            <div id="modal-container"></div>
+
             <br>
-            <div class="d-flex justify-content-center" id="herd-table">
-                <div class="d-flex" th:each="herd : ${herds}">
-                    <div class="container">
-                        <div class="px-5">
-                            <div th:text="${herd.herdName}"></div>
+            <!-- Card to display list of herds -->
+            <div class="d-flex justify-content-center" th:each="herd : ${herds}">
+                <div class="card mb-3" style="max-width: 450px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="..." class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body justify-content-center" id="herdName">
+                                <h2 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h2>
+                                <h5 class="card-text"><span th:text="${herd.description}"></span></h5>
+                                <ul class="list-group list-group-flush justify-content-center">
+                                    <li class="list-group-item"><h6>Herd ID: <span th:text="${herd.id}"></span></h6>
+                                    </li>
+                                    <li class="list-group-item">Bonus: Are we still including the number of goats in
+                                        herd here?
+                                    </li>
+                                </ul>
+                                <div class="card-body">
+                                    <button id="delete-herd-button">Delete</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-<!--
-    </article>
+            <!--
+            <!-Bonus features if we can get to them, could possibly go here, or where ever we want  -->
+            <article class="d-flex justify-content-center py-5">
+                <h1>Goat pic carousel</h1>
+            </article>
 
-<!-Bonus features if we can get to them, could possibly go here, or where ever we want  -->
-    <article class="d-flex justify-content-center py-5">
-        <h1>Goat pic carousel</h1>
-    </article>
-
-    <!--    Link to the top of the page (if we need it / for a large herd)  -->
-    <article class="d-flex justify-content-center">
-        <a href="#">Return to top of page</a>
-    </article>
+            <!--    Link to the top of the page (if we need it / for a large herd)  -->
+            <article class="d-flex justify-content-center">
+                <a href="#">Return to top of page</a>
+            </article>
 </section>
+<!--  The following section is footer partial  -->
+<footer th:replace="partials/partials.html :: footer"></footer>
 
 </section>
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+<!-- JQuery CDN-->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+</script>
+
 <script>
-    document.getElementById("add-herd-button").addEventListener("click", () => {
-        alert("add-herd-button clicked.");
+    // Event Listeners for buttons
+
+    $("#add-herd-button").on("click", () => {
+        $("#modal-container").html(addHerdForm());
+        document.getElementById("add-herd-cancel-button").addEventListener("click", () => {
+            $("#modal-container").html("");
+        });
+        document.getElementById("add-herd-add-button").addEventListener("click", () => {
+            addNewHerd();
+        });
     });
-    document.getElementById("edit-herd-button").addEventListener("click", () => {
-        alert("edit-herd-button clicked.");
+    document.getElementById("herdName").addEventListener("click", () => {
+        alert("This will link to the herd page when clicked.");
     });
-    document.getElementById("delete-goat-button").addEventListener("click", () => {
+    document.getElementById("delete-herd-button").addEventListener("click", () => {
         alert("delete-herd-button clicked.");
     });
+
+    // Form to add a new herd
+    const addHerdForm = () => {
+        return `
+            <div class="modal-wrapper container py-3">
+                <div>
+                    <label for="herd_name" style="width: 150px;" class="">Herd Name</label>
+                    <input type="text" id="herd_name" name="herd_name" style="width:300px;">
+                </div>
+                <div>
+                    <label for="description" style="width: 150px;" class="">Description</label>
+                    <input type="text" id="description" name="description" style="width:300px;">
+                </div>
+                <div>
+                    <label for="user_id" style="width: 150px;" class="">User_ID</label>
+                    <input type="text" id="user_id" name="user_id" style="width:300px;">
+                </div>
+                <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+                    <button class="add-herd-button" id="add-herd-cancel-button">Cancel</button>
+                    <button class="add-herd-button" id="add-herd-add-button" type="submit">Add Herd</button>
+                </div>
+            </div>
+            `
+    };
+
+    // This function takes the data entered into the modal and sends it to java controller
+    const addNewHerd = () => {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        let settings = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                herd_name: $("#herd_name").val(),
+                description: $("#description").val(),
+                user_id: $("#user_id").val(),
+            })
+        }
+        settings.headers[header] = token;
+        fetch("/add/new/herd", settings)
+            .then(() => {
+                location.reload();
+            })
+    }
 </script>
 </body>
-<footer th:replace="partials/partials.html :: footer"></footer>
 </html>
