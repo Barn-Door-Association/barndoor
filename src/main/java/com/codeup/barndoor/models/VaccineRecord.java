@@ -21,7 +21,11 @@ public class VaccineRecord {
     @Column(nullable = false)
     private boolean isBooster;
 
-    @OneToOne
+//    @OneToOne
+//    private Vaccine vaccine;
+
+    @ManyToOne
+    @JoinColumn(name = "vaccine_id") //assigns foreign key
     private Vaccine vaccine;
 
     @ManyToOne

@@ -9,15 +9,15 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <!--  Modal injection container  -->
-<div id="modal-container">
+<div id="modal-container" style="display: none;">
     <div class="modal-wrapper container py-3">
         <div th:each="record : ${goat.records}">
-            <h3 th:text="${record.dateAdministered}"></h3>
+            <h5 th:text="${record.dateAdministered}"></h5>
             <h3>text</h3>
         </div>
         <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-            <button class="goat-button" id="add-goat-cancel-button">Cancel</button>
-            <button class="goat-button" id="add-goat-add-button" type="submit">Add Record</button>
+            <button class="goat-button" id="modal-cancel-button">Cancel</button>
+            <button class="goat-button" id="add-vaccine-button" type="submit">Add Record</button>
         </div>
     </div>
 </div>
@@ -33,8 +33,9 @@
             <h3 th:text="${goat.weightInPounds}"></h3>
             <h3 th:text="${goat.herd.id}"></h3>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-evenly">
             <button class="goat-button" id="vaccine-records-button">Vaccine Records</button>
+            <button class="goat-button" id="edit-goat-button">Edit Goat Details</button>
         </div>
     </div>
 </container>
@@ -55,36 +56,11 @@
 <!--  Custom Script  -->
 <script>
     $("#vaccine-records-button").on("click", () => {
-        $("#modal-container").html(getVaccineRecords());
-        $("#close-vaccine-records").on("click", () => {
-            // close modal
-            alert("close-vaccine-records button clicked");
-        });
-        $("#add-vaccine-records").on("click", () => {
-            // new modal form to add vaccine
-            alert("add-vaccine-records button clicked");
-        });
-        $("#edit-vaccine-records").on("click", () => {
-            // new pre-populated modal to edit a vaccine record
-            alert("edit-vaccine-records button clicked");
-        });
+        $("#modal-container").attr("style", "display: block;");
     });
-
-    // Modal for vaccine records
-    const getVaccineRecords = () => {
-        return `
-            <div class="modal-wrapper container py-3">
-                <div th:each="record : ${records}">
-                 <h3 th:text="${record.date_administered}"></h3>
-                </div>
-
-                <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-                    <button class="goat-button" id="add-goat-cancel-button">Cancel</button>
-                    <button class="goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
-                </div>
-            </div>
-            `
-    }
+    $("#modal-cancel-button").on("click", () => {
+        $("#modal-container").attr("style", "display: none;")
+    })
 </script>
 </body>
 </html>
