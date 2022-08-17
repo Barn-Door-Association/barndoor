@@ -2,6 +2,16 @@ nav {
     background: #198754;
 }
 
+body{
+
+    padding-top: 100px;
+}
+
+body.watermark{
+    background: url("BARNDOOR_3.png") no-repeat center center fixed;
+    opacity: 90%;
+}
+
 .reg-header {
     background: #198754;
     color: white;
@@ -9,10 +19,17 @@ nav {
 
 .reg-card {
     padding: 0;
+
 }
 
 .navbar-nav{
     text-align: right;
+}
+
+.nav-logo{
+    height: 50px;
+    background: #D9D9D9;
+
 }
 
 .form-control{
@@ -26,9 +43,20 @@ nav {
 }
 
 .logout-btn{
-    padding-top: 10%;
+    padding-top: 6px;
+    justify-content: center;
+    align-items: center;
 }
 
-/*footer {*/
-/*    background: darkseagreen;*/
-/*}*/
+.reg-btn {
+    background: #198754;
+    color: white;
+}
+
+footer {
+    text-align: center;
+}
+
+section {
+    margin-bottom: 30px;
+}
