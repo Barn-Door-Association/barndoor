@@ -10,7 +10,7 @@ values ('nia.d.watson@gmail.com', 'Nia', 'Watson', '$2a$10$3HPsxjm.bqA5vv1k5spNu
 insert into herds (herd_name, description, user_id)
 VALUES ('Boys', 'This herd is home to all bucks. (Sire and Wethers)', 1),
        ('Older Ladies', 'This herd is home to all does that can be bred (Dams 18 months and older)', 1),
-       ('Young Ladies', 'This herd is home to all does than can not be bred (Dams under 18 months old)', 1);
+       ('Young Ladies', 'This herd is home to all does that can not be bred (Dams under 18 months old)', 1);
 
 insert into goats (tag_id, name, dob, sex, breed, weight_in_pounds, herd_id)
 VALUES (221, 'Latte', '2019-03-19', 'F', 'Boer/Kiko/Nubian/LaMancha/Spanish', 92, 2),
