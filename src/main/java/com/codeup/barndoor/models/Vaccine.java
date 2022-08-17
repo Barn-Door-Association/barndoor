@@ -17,6 +17,43 @@ public class Vaccine {
     @Column(nullable = false)
     private String description;
 
+    @OneToOne
+    private VaccineRecord vaccineRecord;
 
+    public Vaccine() {
+    }
 
+    public Vaccine(String vaccineName, String description, VaccineRecord vaccinesRecord) {
+        this.vaccineName = vaccineName;
+        this.description = description;
+        this.vaccineRecord = vaccinesRecord;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getVaccineName() {
+        return vaccineName;
+    }
+
+    public void setVaccineName(String vaccineName) {
+        this.vaccineName = vaccineName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public VaccineRecord getVaccinesRecord() {
+        return vaccineRecord;
+    }
+
+    public void setVaccinesRecord(VaccineRecord vaccinesRecord) {
+        this.vaccineRecord = vaccinesRecord;
+    }
 }
