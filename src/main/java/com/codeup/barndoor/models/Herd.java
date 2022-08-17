@@ -13,10 +13,14 @@ public class Herd {
     @Column(nullable = false, unique = true)
     private String herdName;
 
+
+    @Column(nullable = false)
+    private String description;
+
     // Adds relationship to User table using "user_id" as foreign key
-   @ManyToOne
-   @JoinColumn (name = "user_id") //assigns foreign key
-   private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id") //assigns foreign key
+    private User user;
 
 
     // Adds relationship to Goat table
@@ -26,9 +30,16 @@ public class Herd {
     public Herd() {
     }
 
-    public Herd(long id, String herdName) {
+    public Herd(long id, String herdName, String description, User user) {
         this.id = id;
         this.herdName = herdName;
+        this.description = description;
+        this.user = user;
+    }
+
+
+    public Herd(String herd_name, String description, Herd byId) {
+
     }
 
     public long getId() {
@@ -61,5 +72,13 @@ public class Herd {
 
     public void setGoats(List<Goat> goats) {
         this.goats = goats;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
