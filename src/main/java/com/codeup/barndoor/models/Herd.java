@@ -30,10 +30,16 @@ public class Herd {
     public Herd() {
     }
 
-    public Herd(long id, String herdName, String description) {
+    public Herd(long id, String herdName, String description, User user) {
         this.id = id;
         this.herdName = herdName;
         this.description = description;
+        this.user = user;
+    }
+
+
+    public Herd(String herd_name, String description, Herd byId) {
+
     }
 
     public long getId() {
