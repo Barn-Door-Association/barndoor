@@ -1,5 +1,7 @@
 package com.codeup.barndoor.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -61,7 +63,6 @@ public class Goat {
         this.weightInPounds = weightInPounds;
         this.herd = herd;
     }
-
     public long getId() {
         return id;
     }
