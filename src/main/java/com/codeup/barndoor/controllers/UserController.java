@@ -43,6 +43,8 @@ public class UserController {
         return "users/login-page";
     }
 
+
+
     @GetMapping("/profile")
     public String showProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
