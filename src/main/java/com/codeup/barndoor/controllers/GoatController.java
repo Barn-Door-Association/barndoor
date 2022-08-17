@@ -2,34 +2,22 @@ package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.Goat;
 import com.codeup.barndoor.models.GoatRequest;
-import com.codeup.barndoor.models.Vaccine;
-import com.codeup.barndoor.models.VaccineRecord;
 import com.codeup.barndoor.repositories.GoatRepository;
 import com.codeup.barndoor.repositories.HerdRepository;
-import com.codeup.barndoor.repositories.VaccineRecordRepository;
-import com.codeup.barndoor.repositories.VaccineRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class GoatController {
 
     private final GoatRepository goatDao;
     private final HerdRepository herdDao;
-    private final VaccineRecordRepository vaccineRecordDao;
-    private final VaccineRepository vaccineDao;
 
 
-    public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao, VaccineRepository vaccineDao) {
+    public GoatController(GoatRepository goatDao, HerdRepository herdDao) {
         this.goatDao = goatDao;
         this.herdDao = herdDao;
-        this.vaccineRecordDao = vaccineRecordDao;
-        this.vaccineDao = vaccineDao;
     }
 
     @GetMapping("/goat/{id}")
