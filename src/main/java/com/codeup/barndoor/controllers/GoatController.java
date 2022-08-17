@@ -35,7 +35,7 @@ public class GoatController {
     public String showGoatInfo(@PathVariable long id, Model model) {
         model.addAttribute("goat", goatDao.findById(id));
         model.addAttribute("records", goatDao.findById(id).getRecords());
-        return "goats/goatTESTPAGE";
+        return "goats/goat";
     }
 
     // Captures data from modal form post request, data is stored in a GoatRequest
