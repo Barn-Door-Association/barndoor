@@ -2,10 +2,15 @@ nav {
     background: #198754;
 }
 
-/*body{*/
-/*    background: url("BARNDOOR_1.png") no-repeat center center fixed;*/
-/*    opacity: 90%;*/
-/*}*/
+body{
+
+    padding-top: 100px;
+}
+
+body.watermark{
+    background: url("BARNDOOR_3.png") no-repeat center center fixed;
+    opacity: 90%;
+}
 
 .reg-header {
     background: #198754;
@@ -14,7 +19,7 @@ nav {
 
 .reg-card {
     padding: 0;
-    margin-top: 5%;
+
 }
 
 .navbar-nav{
@@ -23,7 +28,7 @@ nav {
 
 .nav-logo{
     height: 50px;
-    background: white;
+    background: #D9D9D9;
 
 }
 
@@ -50,4 +55,8 @@ nav {
 
 footer {
     text-align: center;
+}
+
+section {
+    margin-bottom: 30px;
 }
