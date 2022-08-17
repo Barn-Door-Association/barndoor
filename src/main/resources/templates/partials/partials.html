@@ -18,7 +18,8 @@
 <nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <!--            Nav Brand on left side-->
-        <a class="navbar-brand" href="/">BarnDoor</a>
+        <a class="navbar-brand" href="/">
+            <img class="nav-logo" src="/BARNDOOR_1.png"> BarnDoor</a>
 
         <!--            Toggler button -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -43,9 +44,9 @@
                         <a class="nav-link active" href="/profile" sec:authorize="isAuthenticated()">Profile</a>
                     </li>
 
-                    <li class="nav-item active" sec:authorize="isAuthenticated()">
+                    <li class="nav-item " sec:authorize="isAuthenticated()">
                         <form th:action="@{/logout}" th:method="POST">
-                            <button class="nav-link btn logout-btn" style="float: right;">Logout</button>
+                            <button class="nav-link btn logout-btn active" style="float: right;">Logout</button>
                         </form>
                     </li>
 

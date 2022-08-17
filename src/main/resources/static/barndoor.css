@@ -2,6 +2,11 @@ nav {
     background: #198754;
 }
 
+/*body{*/
+/*    background: url("BARNDOOR_1.png") no-repeat center center fixed;*/
+/*    opacity: 90%;*/
+/*}*/
+
 .reg-header {
     background: #198754;
     color: white;
@@ -9,11 +14,17 @@ nav {
 
 .reg-card {
     padding: 0;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .navbar-nav{
     text-align: right;
+}
+
+.nav-logo{
+    height: 50px;
+    background: white;
+
 }
 
 .form-control{
