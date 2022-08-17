@@ -1,69 +1,118 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head ><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/barndoor.css">
     <title>Welcome to BarnDoor</title>
 </head>
-
-<body>
+<body class="watermark">
 <nav th:replace="partials/partials.html :: nav"></nav>
 
-<a name="top"></a>
 <!--Title of Page-->
-<h1 class="indexHeader">Your all-in-one Goat manager</h1>
-<h2 class="indexHeader2">How it works</h2>
-<br>
-<br>
+
+<!--<h2 class="indexHeader2">How it works</h2>-->
+<!--<br>-->
+<!--<br>-->
 <!--Introduction on how the app works-->
-
-<div class="row">
-    <div class="column col">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Step 1.</h5>
-                <p class="card-text">Register for an account to gain access to our goat organization tools.</p>
+<section class="container py-5">
+    <h1 class="indexHeader">Your all-in-one Goat manager</h1>
+    <div class="row">
+        <div class="column col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Step 1.</h5>
+                    <p class="card-text">Register for an account to gain access to our goat organization tools.</p>
+                </div>
+            </div>
+        </div>
+        <div class="column col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Step 2.</h5>
+                    <p class="card-text">Document existing goat data with our user-friendly features.</p>
+                </div>
+            </div>
+        </div>
+        <div class="column col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Step 3.</h5>
+                    <p class="card-text">Manage your goats and herds by checking in on the app and updating their status
+                        daily!</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="column col">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Step 2.</h5>
-                <p class="card-text">Document existing goat data with our user-friendly features.</p>
+    <br>
+    <hr>
+
+
+    <section class="container goat-container">
+        <article>
+            <div class="d-flex card landing-card column" style="width: 100%">
+                <!--Stock image that will include a button that will link to registration page-->
+                <img class="goat-img" src="/brownGoat.jpeg">
+                <br>
+
             </div>
-        </div>
-    </div>
-    <div class="column col">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Step 3.</h5>
-            <p class="card-text">Manage your goats and herds by checking in on the app and updating their status daily!</p>
-        </div>
-    </div>
-    </div>
-</div>
-<br>
-<hr>
-
-
-
-<!--Stock image that will include a button that will link to registration page-->
-<img src="/brownGoat.jpeg"> <a href="https://github.com/Barn-Door-Association"></a>
-<br>
+        </article>
 
 
 
 
+        <article>
+            <div class="d-flex card reg-card column">
 
+                <h2 class="d-flex justify-content-center reg-header">Create an account</h2>
+                <br><br>
+
+<!--                <form th:action="@{/}" method="POST" th:object="${user}" class="content-center">-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <input id="username" placeholder="Username" th:field="*{username}" class="form-control"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <input id="firstName" class="form-control" placeholder="First Name" th:field="*{firstName}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <input id="lastName" class="form-control" placeholder="Last Name" th:field="*{lastName}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <input id="password" type="password" class="form-control" placeholder="Password"-->
+<!--                               th:field="*{password}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <input id="email" class="form-control" placeholder="Email" th:field="*{email}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="mb-3">-->
+<!--                        <input id="ranchName" class="form-control" placeholder="Ranch Name" th:field="*{ranchName}"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="text-center">-->
+<!--                        <input class="btn reg-btn" value="Sign me up!" type="submit"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="login-here">-->
+<!--                        <p>Already have an account? <a href="/login">Login Here</a></p>-->
+<!--                    </div>-->
+<!--                </form>-->
+
+            </div>
+
+        </article>
+    </section>
+
+
+
+</section>
+<footer th:replace="partials/partials.html :: footer"></footer>
 </body>
-</html>
-<!--Customized button to direct us to the registration page-->
 
-<button class="button" onclick="document.location='http://localhost:8080/register'">Register now</button>
-<br>
-    <footer th:replace="partials/partials.html :: footer">
-    <a href="#top">BarnDoor</a>
-    </footer>
-</body>
 </html>
