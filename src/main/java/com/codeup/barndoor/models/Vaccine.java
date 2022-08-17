@@ -1,6 +1,5 @@
 package com.codeup.barndoor.models;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -17,7 +16,7 @@ public class Vaccine {
     @Column(nullable = false)
     private String description;
 
-    @OneToOne
+    @OneToOne(mappedBy = "vaccine")
     private VaccineRecord vaccineRecord;
 
     public Vaccine() {

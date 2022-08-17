@@ -8,4 +8,5 @@ import java.util.List;
 public interface VaccineRecordRepository extends JpaRepository<VaccineRecord, Long> {
     Record findById (long id);
     List<Record> findAllByGoatId (long id);
+    List<Record> findAllById (long id);
 }
