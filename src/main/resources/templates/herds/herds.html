@@ -36,7 +36,8 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body justify-content-center" id="herdName">
-                                <h2 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h2>
+                                <!-- This <a></a> makes the name of the herd clickable and link to the controller-->
+                                <a th:href="@{/herds/{id}(id=${herd.id})}"> <h2 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h2></a>
                                 <h5 class="card-text"><span th:text="${herd.description}"></span></h5>
                                 <ul class="list-group list-group-flush justify-content-center">
                                     <li class="list-group-item"><h6>Herd ID: <span th:text="${herd.id}"></span></h6>
