@@ -36,7 +36,7 @@ insert into vaccines (description, vaccine_name)
 VALUES ('pneumonia', 'Presponse HM'),
        ('provides long-term protection against overeating disease (types C&D) and tetanus.', 'CD/T');
 
-insert into vaccine_records (date_administered, dosage_in_ccs, is_booster, goat_id, vaccines_id)
+insert into vaccine_records (date_administered, dosage_in_ccs, is_booster, goat_id, vaccine_id)
 VALUES ('2022-07-02', 2, 1, 8, 2),
        ('2022-07-02', 2, 1, 9, 2),
        ('2022-07-02', 1, 1, 8, 1),
