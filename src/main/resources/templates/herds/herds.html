@@ -27,13 +27,13 @@
                     <div class="col-md-4">
                         <img src="..." class="img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="col-md-8 justify-content-center">
-                        <div class="card-body" id="herdName">
-                            <h5 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h5>
-                            <p class="card-text">Maybe we should add a herd description here so farmers know whats in the herd</p>
+                    <div class="col-md-8">
+                        <div class="card-body justify-content-center" id="herdName">
+                            <h2 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h2>
+                            <h5 class="card-text"> <span th:text="${herd.description}"></span></h5>
                             <ul class="list-group list-group-flush justify-content-center">
-                                <li class="list-group-item">Herd ID: <span th:text="${herd.id}"></span> </li>
-                                <li class="list-group-item">Are we still including the number of goats here?</li>
+                                <li class="list-group-item"><h6>Herd ID: <span th:text="${herd.id}"></span></h6></li>
+                                <li class="list-group-item">Bonus: Are we still including the number of goats in herd here?</li>
                             </ul>
                             <div class="card-body">
                                 <button id="delete-herd-button">Delete</button></div>
