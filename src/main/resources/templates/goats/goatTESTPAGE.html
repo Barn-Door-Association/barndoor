@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <head th:replace="partials/partials.html :: head(${goat.name})"></head>
-  <link type="text/css" rel="stylesheet" href="/modaltest.css">
+    <head th:replace="partials/partials.html :: head(${goat.name})"></head>
+    <link type="text/css" rel="stylesheet" href="/modaltest.css">
 </head>
 <body>
 <!-- Navbar partial -->
@@ -10,35 +10,37 @@
 
 <!--  Modal injection container  -->
 <div id="modal-container" style="display: none;">
-  <div class="modal-wrapper container py-3">
-    <div th:each="record : ${goat.records}">
-      <!--            <h5 th:text="${record.vaccine.vaccineName}"></h5>-->
-      <h5 th:text="${record.dateAdministered}"></h5>
-      <h3>text</h3>
+    <div class="modal-wrapper container py-3">
+        <div th:each="record : ${goat.records}">
+            <h4 th:text="${record.vaccine.vaccineName}"></h4>
+            <h5 th:text="${record.dateAdministered}"></h5>
+            <h5 th:text="${record.isBooster}"></h5>
+            <h5 th:text="${record.dosageInCcs}"></h5>
+            <h3>text</h3>
+        </div>
+        <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="goat-button" id="modal-cancel-button">Cancel</button>
+            <button class="goat-button" id="add-vaccine-button" type="submit">Add Record</button>
+        </div>
     </div>
-    <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-      <button class="goat-button" id="modal-cancel-button">Cancel</button>
-      <button class="goat-button" id="add-vaccine-button" type="submit">Add Record</button>
-    </div>
-  </div>
 </div>
 
 <container class="d-flex justify-content-center">
-  <img src="../goatpic.jpeg" alt="" style="width: 350px;">
-  <div class="d-flex bg-warning card">
-    <div>
-      <h1 th:text="${goat.name}"></h1>
-      <h3 th:text="${goat.breed}"></h3>
-      <h3 th:text="${goat.dob}"></h3>
-      <h3 th:text="${goat.sex}"></h3>
-      <h3 th:text="${goat.weightInPounds}"></h3>
-      <h3 th:text="${goat.herd.id}"></h3>
+    <img src="../goatpic.jpeg" alt="" style="width: 350px;">
+    <div class="d-flex bg-warning card">
+        <div>
+            <h1 th:text="${goat.name}"></h1>
+            <h3 th:text="${goat.breed}"></h3>
+            <h3 th:text="${goat.dob}"></h3>
+            <h3 th:text="${goat.sex}"></h3>
+            <h3 th:text="${goat.weightInPounds}"></h3>
+            <h3 th:text="${goat.herd.id}"></h3>
+        </div>
+        <div class="d-flex justify-content-evenly">
+            <button class="goat-button" id="vaccine-records-button">Vaccine Records</button>
+            <button class="goat-button" id="edit-goat-button">Edit Goat Details</button>
+        </div>
     </div>
-    <div class="d-flex justify-content-evenly">
-      <button class="goat-button" id="vaccine-records-button">Vaccine Records</button>
-      <button class="goat-button" id="edit-goat-button">Edit Goat Details</button>
-    </div>
-  </div>
 </container>
 
 <!-- Footer partial -->
@@ -56,12 +58,12 @@
 
 <!--  Custom Script  -->
 <script>
-  $("#vaccine-records-button").on("click", () => {
-    $("#modal-container").attr("style", "display: block;");
-  });
-  $("#modal-cancel-button").on("click", () => {
-    $("#modal-container").attr("style", "display: none;")
-  })
+    $("#vaccine-records-button").on("click", () => {
+        $("#modal-container").attr("style", "display: block;");
+    });
+    $("#modal-cancel-button").on("click", () => {
+        $("#modal-container").attr("style", "display: none;")
+    })
 </script>
 </body>
 </html>

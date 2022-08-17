@@ -3,6 +3,7 @@ package com.codeup.barndoor.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "vaccine_records")
@@ -21,11 +22,7 @@ public class VaccineRecord {
     @Column(nullable = false)
     private boolean isBooster;
 
-//    @OneToOne
-//    private Vaccine vaccine;
-
-    @ManyToOne
-    @JoinColumn(name = "vaccine_id") //assigns foreign key
+    @OneToOne
     private Vaccine vaccine;
 
     @ManyToOne
@@ -71,11 +68,11 @@ public class VaccineRecord {
         isBooster = booster;
     }
 
-    public Vaccine getVaccines() {
+    public Vaccine getVaccine() {
         return vaccine;
     }
 
-    public void setVaccines(Vaccine vaccines) {
+    public void setVaccine(Vaccine vaccine) {
         this.vaccine = vaccine;
     }
 
