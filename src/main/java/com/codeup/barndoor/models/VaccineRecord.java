@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "vaccine_records")
-public class VaccineRecords {
+public class VaccineRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,30 +22,25 @@ public class VaccineRecords {
     private boolean isBooster;
 
     @OneToOne
-    private Vaccine vaccines;
+    private Vaccine vaccine;
 
     @ManyToOne
-    @JoinColumn (name = "goat_id")
+    @JoinColumn(name = "goat_id")
     private Goat goat;
 
-    public VaccineRecords() {
+    public VaccineRecord() {
     }
 
-    public VaccineRecords(long id, int dosageInCcs, Date dateAdministered, boolean isBooster, Vaccine vaccines, Goat goat) {
-        this.id = id;
+    public VaccineRecord(int dosageInCcs, Date dateAdministered, boolean isBooster, Vaccine vaccine, Goat goat) {
         this.dosageInCcs = dosageInCcs;
         this.dateAdministered = dateAdministered;
         this.isBooster = isBooster;
-        this.vaccines = vaccines;
+        this.vaccine = vaccine;
         this.goat = goat;
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public int getDosageInCcs() {
@@ -73,11 +68,11 @@ public class VaccineRecords {
     }
 
     public Vaccine getVaccines() {
-        return vaccines;
+        return vaccine;
     }
 
     public void setVaccines(Vaccine vaccines) {
-        this.vaccines = vaccines;
+        this.vaccine = vaccine;
     }
 
     public Goat getGoat() {

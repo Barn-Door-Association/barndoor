@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <head th:replace="partials/partials.html :: head(${goat.name})"></head>
     <link type="text/css" rel="stylesheet" href="/modaltest.css">
@@ -9,7 +9,18 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <!--  Modal injection container  -->
-<div id="modal-container"></div>
+<div id="modal-container">
+    <div class="modal-wrapper container py-3">
+        <div th:each="record : ${goat.records}">
+            <h3 th:text="${record.dateAdministered}"></h3>
+            <h3>text</h3>
+        </div>
+        <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="goat-button" id="add-goat-cancel-button">Cancel</button>
+            <button class="goat-button" id="add-goat-add-button" type="submit">Add Record</button>
+        </div>
+    </div>
+</div>
 
 <container class="d-flex justify-content-center">
     <img src="../goatpic.jpeg" alt="" style="width: 350px;">
@@ -43,53 +54,30 @@
 
 <!--  Custom Script  -->
 <script>
-    $("vaccine-records-button").on("click", () => {
-        $("#modal-container").html();
+    $("#vaccine-records-button").on("click", () => {
+        $("#modal-container").html(getVaccineRecords());
         $("#close-vaccine-records").on("click", () => {
             // close modal
-            alert("close-vaccine-records button clicked")
+            alert("close-vaccine-records button clicked");
         });
         $("#add-vaccine-records").on("click", () => {
             // new modal form to add vaccine
-            alert("add-vaccine-records button clicked")
+            alert("add-vaccine-records button clicked");
         });
         $("#edit-vaccine-records").on("click", () => {
             // new pre-populated modal to edit a vaccine record
-            alert("edit-vaccine-records button clicked")
-        })
+            alert("edit-vaccine-records button clicked");
+        });
     });
 
     // Modal for vaccine records
     const getVaccineRecords = () => {
         return `
             <div class="modal-wrapper container py-3">
-                <div>
-<!--                <h3 th:text="${vaccine-records.date_administered}"></h3>-->
+                <div th:each="record : ${records}">
+                 <h3 th:text="${record.date_administered}"></h3>
                 </div>
-                <div>
-                    <label for="dob" style="width: 150px;" class="">Date of birth</label>
-                    <input type="text" id="dob" name="dob" style="width:300px;" placeholder="yyyy-mm-dd">
-                </div>
-                <div>
-                    <label for="breed" style="width: 150px;" class="">Breed</label>
-                    <input type="text" id="breed" name="breed" style="width:300px;">
-                </div>
-                <div>
-                    <label for="sex" style="width: 150px;" class="">Sex</label>
-                    <input type="text" id="sex" name="sex" style="width:300px;">
-                </div>
-                <div>
-                    <label for="tag_id" style="width: 150px;" class="">Tag ID</label>
-                    <input type="text" id="tag_id" name="tag_id" style="width:300px;">
-                </div>
-                <div>
-                    <label for="weight_in_pounds" style="width: 150px;" class="">Weight in pounds</label>
-                    <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;">
-                </div>
-                <div>
-                    <label for="herd_id" style="width: 150px;" class="">Herd ID</label>
-                    <input type="text" id="herd_id" name="herd_id" style="width:300px;">
-                </div>
+
                 <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
                     <button class="goat-button" id="add-goat-cancel-button">Cancel</button>
                     <button class="goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
