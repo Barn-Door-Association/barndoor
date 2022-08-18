@@ -3,12 +3,12 @@ nav {
 }
 
 body{
-
-    padding-top: 75px;
+    padding-top: 70px;
 }
 
 body.watermark{
     background: url("BARNDOOR_3.png") no-repeat center center fixed;
+    background-size: 25%;
     opacity: 90%;
 }
 
@@ -38,6 +38,11 @@ body.watermark{
 }
 
 .login-here{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.register-here{
     text-align: center;
     margin-top: 10%;
 }

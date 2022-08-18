@@ -70,31 +70,44 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/partials.html :: head('Login')"></head>
-<body>
+<body class="watermark">
 <nav th:replace="partials/partials.html :: nav"></nav>
 
+<section class="container py-5">
+    <article class="d-flex justify-content-center">
+        <div class="d-flex card reg-card" style="width: 50%">
+            <h2 class="d-flex justify-content-center reg-header">Login</h2>
+            <br><br>
+            <div class="container">
+                <div class="text-center" th:if="${param.error}">
+                    <h5>Invalid Username and Password.</h5>
+                </div>
+                <div class="text-center" th:if="${param.logout}">
+                    <h5>You have been logged out.</h5>
+                </div>
+            </div>
 
+            <form th:action="@{/login}" method="post" class="content-center">
+                <div class="mb-3">
+                    <!--                <label for="username">Username</label>-->
+                    <input id="username" class="form-control" placeholder="Username" name="username" type="text"/>
+                </div>
+                <!--                <label for="password">Password</label>-->
+                <input id="password" class="form-control" placeholder="Password" name="password" type="password"/>
+                <br>
 
-<div class="container">
-    <h1>Log In</h1>
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-</div>
+                <div class="text-center">
+                    <input class="btn reg-btn" type="submit" value="Log In"/>
+                </div>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <br>
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <br>
-    <input type="submit" value="Log In" />
-</form>
+                <div class="register-here">
+                    <p>Don't have an account? <a href="/register">Register Here</a></p>
+                </div>
+            </form>
 
+        </div>
+    </article>
+</section>
 
 </body>
 
