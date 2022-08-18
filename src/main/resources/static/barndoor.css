@@ -19,7 +19,6 @@ body.watermark{
 
 .reg-card {
     padding: 0;
-
 }
 
 .navbar-nav{
@@ -69,11 +68,17 @@ section {
 .landing-card {
     max-width: 50%;
     height: auto;
+    padding: 0;
 }
 
 .column {
     float: left;
     width: 50%;
+
+    /*padding: 0 10px;*/
+}
+
+#mission {
     padding: 0 10px;
 }
 
