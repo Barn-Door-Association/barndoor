@@ -51,6 +51,10 @@ public class Goat {
     )
     private Set<Goat> parents;
 
+    @ManyToMany(mappedBy = "parents")
+    @JsonIgnore
+    private Set<Goat> children;
+
     public Goat() {
     }
 
@@ -63,6 +67,7 @@ public class Goat {
         this.weightInPounds = weightInPounds;
         this.herd = herd;
     }
+
     public long getId() {
         return id;
     }
@@ -141,5 +146,13 @@ public class Goat {
 
     public void setParents(Set<Goat> parents) {
         this.parents = parents;
+    }
+
+    public Set<Goat> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Set<Goat> children) {
+        this.children = children;
     }
 }
