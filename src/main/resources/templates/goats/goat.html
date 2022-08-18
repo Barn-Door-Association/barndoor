@@ -12,12 +12,35 @@
 <div id="modal-container" style="display: none;">
     <div class="modal-wrapper container py-3">
         <div th:each="record : ${goat.records}">
+            <h4 th:text="${record.vaccine.vaccineName}"></h4>
             <h5 th:text="${record.dateAdministered}"></h5>
-            <h3>text</h3>
+            <h5 th:text="${record.isBooster}"></h5>
+            <h5 th:text="${record.dosageInCcs}"></h5>
         </div>
         <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
             <button class="goat-button" id="modal-cancel-button">Cancel</button>
             <button class="goat-button" id="add-vaccine-button" type="submit">Add Record</button>
+        </div>
+    </div>
+</div>
+
+<!--model injection container for edit goat feature-->
+<div id="edit-goat-modal-container" style="display: none;">
+    <div class="edit-goat-modal-wrapper container py-3">
+        <div>
+            <h5 th:text="${goat.name}"></h5>
+            <h5 th:text="${goat.tagId}"></h5>
+            <h5 th:text="${goat.breed}"></h5>
+            <h5 th:text="${goat.sex}"></h5>
+            <h5 th:text="${goat.dob}"></h5>
+            <h5 th:text="${goat.weightInPounds}"></h5>
+            <h5 th:text="${goat.herd.id}"></h5>
+
+            <h3>hello world</h3>
+        </div>
+        <div id="edit-goat-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="edit-goat-button" id="edit-cancel-button">Cancel</button>
+            <button class="edit-goat-button" id="save-changes-button" type="submit">Save Changes</button>
         </div>
     </div>
 </div>
@@ -60,7 +83,10 @@
     });
     $("#modal-cancel-button").on("click", () => {
         $("#modal-container").attr("style", "display: none;")
-    })
+    });
+    $("#edit-goat-button").on("click", () => {
+        $("#edit-goat-modal-container").attr("style", "display: block;");
+    });
 </script>
 </body>
 </html>
