@@ -70,31 +70,44 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/partials.html :: head('Login')"></head>
-<body>
+<body class="watermark">
 <nav th:replace="partials/partials.html :: nav"></nav>
 
+<section class="container py-5">
+    <article class="d-flex justify-content-center">
+        <div class="d-flex card reg-card" style="width: 50%">
+            <h2 class="d-flex justify-content-center reg-header">Login</h2>
+            <br>
+            <div class="container">
+                <div th:if="${param.error}">
+                    Invalid Username and Password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+            </div>
 
+            <form th:action="@{/login}" method="post" class="content-center">
+                <div class="mb-3">
+                    <!--                <label for="username">Username</label>-->
+                    <input id="username" placeholder="Username" type="text" class="form-control"/>
+                </div>
+                <div class="mb-3">
+                    <!--                <label for="password">Password</label>-->
+                    <input id="password" placeholder="password" type="password" class="form-control"/>
+                </div>
+                <!--                <br>-->
+                <div class="text-center">
+                    <input class="text-center btn reg-btn" type="submit" value="Log In"/>
+                </div>
+                <div class="login-here">
+                    <p>Don't have an account? <a href="/register">Register Here</a></p>
+                </div>
+            </form>
 
-<div class="container">
-    <h1>Log In</h1>
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-</div>
-
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <br>
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <br>
-    <input type="submit" value="Log In" />
-</form>
-
+        </div>
+    </article>
+</section>
 
 </body>
 
