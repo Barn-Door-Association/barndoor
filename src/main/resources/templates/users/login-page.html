@@ -77,30 +77,30 @@
     <article class="d-flex justify-content-center">
         <div class="d-flex card reg-card" style="width: 50%">
             <h2 class="d-flex justify-content-center reg-header">Login</h2>
-            <br>
+            <br><br>
             <div class="container">
-                <div th:if="${param.error}">
-                    Invalid Username and Password.
+                <div class="text-center" th:if="${param.error}">
+                    <h5>Invalid Username and Password.</h5>
                 </div>
-                <div th:if="${param.logout}">
-                    You have been logged out.
+                <div class="text-center" th:if="${param.logout}">
+                    <h5>You have been logged out.</h5>
                 </div>
             </div>
 
             <form th:action="@{/login}" method="post" class="content-center">
                 <div class="mb-3">
                     <!--                <label for="username">Username</label>-->
-                    <input id="username" placeholder="Username" type="text" class="form-control"/>
+                    <input id="username" class="form-control" placeholder="Username" name="username" type="text"/>
                 </div>
-                <div class="mb-3">
-                    <!--                <label for="password">Password</label>-->
-                    <input id="password" placeholder="password" type="password" class="form-control"/>
-                </div>
-                <!--                <br>-->
+                <!--                <label for="password">Password</label>-->
+                <input id="password" class="form-control" placeholder="Password" name="password" type="password"/>
+                <br>
+
                 <div class="text-center">
-                    <input class="text-center btn reg-btn" type="submit" value="Log In"/>
+                    <input class="btn reg-btn" type="submit" value="Log In"/>
                 </div>
-                <div class="login-here">
+
+                <div class="register-here">
                     <p>Don't have an account? <a href="/register">Register Here</a></p>
                 </div>
             </form>

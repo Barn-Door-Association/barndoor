@@ -42,6 +42,11 @@ body.watermark{
     margin-top: 10%;
 }
 
+.register-here{
+    text-align: center;
+    margin-top: 10%;
+}
+
 .logout-btn{
     padding-top: 6px;
     justify-content: center;
