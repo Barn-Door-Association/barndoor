@@ -1,6 +1,8 @@
 package com.codeup.barndoor.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +25,7 @@ public class VaccineRecord {
     private boolean isBooster;
 
     @OneToOne
+
     private Vaccine vaccine;
 
     @ManyToOne

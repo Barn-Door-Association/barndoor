@@ -1,6 +1,7 @@
 package com.codeup.barndoor.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -38,9 +39,11 @@ public class Goat {
     // Adds relationship to Herd table using "herd_id" as foreign key
     @ManyToOne
     @JoinColumn(name = "herd_id") //assigns foreign key
+    @JsonIgnore
     private Herd herd;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "goat")
+    @JsonIgnore
     private List<VaccineRecord> records;
 
     @ManyToMany(cascade = CascadeType.ALL)
