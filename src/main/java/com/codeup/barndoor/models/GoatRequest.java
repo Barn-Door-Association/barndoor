@@ -11,6 +11,8 @@ public class GoatRequest {
     private long tagId;
     private long weightInPounds;
     private long herdId;
+    private String sireName;
+    private String damName;
 
     public GoatRequest() {
     }
@@ -69,5 +71,21 @@ public class GoatRequest {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSireName() {
+        return sireName;
+    }
+
+    public void setSireName(String sireName) {
+        this.sireName = sireName;
+    }
+
+    public String getDamName() {
+        return damName;
+    }
+
+    public void setDamName(String damName) {
+        this.damName = damName;
     }
 }
