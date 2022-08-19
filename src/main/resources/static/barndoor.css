@@ -2,6 +2,10 @@ nav {
     background: #198754;
 }
 
+h2{
+    text-align: center;
+}
+
 body{
     padding-top: 70px;
 }
@@ -66,14 +70,13 @@ section {
 }
 
 .landing-card {
-    max-width: 50%;
-    height: auto;
     padding: 0;
+    border: 0;
 }
 
 .column {
     float: left;
-    width: 50%;
+    /*width: 50%;*/
 
     /*padding: 0 10px;*/
 }
@@ -89,4 +92,10 @@ section {
 
 .goat-container {
     width: 100%;
+}
+
+#steps-landing{
+    justify-items: center;
+    justify-content: center;
+    padding: 0;
 }
