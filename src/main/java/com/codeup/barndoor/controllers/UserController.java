@@ -33,7 +33,6 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
-
     }
 
     @GetMapping("/login")
