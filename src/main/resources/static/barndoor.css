@@ -51,7 +51,7 @@ body.watermark {
 }
 
 .logout-btn {
-    padding-top: 6px;
+    /*padding-top: 6px;*/
     justify-content: center;
     align-items: center;
 }
