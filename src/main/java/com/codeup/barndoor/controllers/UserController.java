@@ -1,15 +1,14 @@
 package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.User;
+import com.codeup.barndoor.models.UserRequest;
 import com.codeup.barndoor.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -49,8 +48,16 @@ public class UserController {
         return "users/profile";
     }
 
+    @ResponseBody
     @PostMapping("/profile/edit")
-    public String editProfilePage(Model model) {
+    public String editProfilePage(@RequestBody UserRequest userRequest) {
+        System.out.println("yo");
+        User user = userDao.findById(userRequest.getId());
+        user.setRanchName(userRequest.getRanchName());
+        user.setFirstName(userRequest.getFirstName());
+        user.setLastName(userRequest.getLastName());
+        user.setEmail(userRequest.getEmail());
+        userDao.save(user);
         return "yo";
     }
 }
