@@ -24,8 +24,6 @@
             <!--  Add a New Goat Modal injection container  -->
             <div id="modal-container"></div>
 
-            <!--            &lt;!&ndash; Edit Herd Modal Injection Container&ndash;&gt;-->
-            <!--            <div id="modal-container-edit-herd"></div>-->
 
             <div class="d-flex justify-content-center">
                 <div class="px-3">
@@ -90,8 +88,8 @@
 
 <!--  Custom Script -->
 <script>
-            // Event Listeners for all buttons
-            // Add Goat Button
+    // Event Listeners for all buttons
+    // Add Goat Button
     $("#add-goat-button").on("click", () => {
         $("#modal-container").html(addGoatForm());
         document.getElementById("add-goat-cancel-button").addEventListener("click", () => {
@@ -102,16 +100,19 @@
         });
     });
 
-        // Edit Herd Button
+    // Edit Herd Button
     $("#edit-herd-button").on("click", () => {
         $("#modal-container").html(editHerdForm());
         document.getElementById("edit-herd-cancel-button").addEventListener("click", () => {
             $("#modal-container").html("");
         });
         document.getElementById("edit-herd-submit-button").addEventListener("click", () => {
-            saveEditHerd();
+            console.log("hello");
+            // saveEditHerd();
         });
+
     });
+
 
     // Add form for adding a new goat
     const addGoatForm = () => {
@@ -191,44 +192,41 @@
     // Edit form for editing herd
     const editHerdForm = () => {
         return `
-            <div class="modal-container-herd wrapper py-3" th:each="herd : ${herds}">
+            <div class="modal-container-herd wrapper py-3">
                 <div>
                     <label for="name" style="width: 150px;" class="">Herd Name</label>
-                    <input type="text" id="name" name="name" style="width:300px;" th:value="${herd.herdName}">
+                    <input type="text" id="name" name="name" style="width:300px;">
                 </div>
                 <div>
                     <label for="description" style="width: 150px;" class="">Herd Description</label>
-                    <input type="text" id="description" name="description" style="width:300px;" th:text="${herd.description}">
-                </div>
-                <div>
-                    <label for="herd-id" style="width: 150px;" class="">Herd ID</label>
-                    <input type="text" id="herd-id" name="herd-id" style="width:300px;">
+                    <input type="text" id="description" name="description" style="width:300px;">
                 </div>
                 <div id="edit-herd-button-container" class="d-flex justify-content-evenly py-1">
                     <button class="herd-button" id="edit-herd-cancel-button">Cancel</button>
-                    <button class="herd-button" id="edit-herd-submit-button" type="submit">Save Changes</button>
+                    <button class="herd-button" id="edit-herd-submit-button">Save Changes</button>
                 </div>
             </div>
             `
     }
     // This function takes the data entered into the modal and sends it to java controller
+
     const saveEditHerd = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
         let settings = {
-            method: "PUT",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                herdName: $("#name").val(),
-                description: $("#description").val(),
-                herd_id: $("#herd-id").val()
+                herd_name: $("#name").val(),
+                description: $("#description").val()
             })
         }
         settings.headers[header] = token;
         fetch("/edit/herds/id", settings)
             .then(() => {
+                console.log("show");
                 location.reload();
             })
     }

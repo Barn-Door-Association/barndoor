@@ -55,11 +55,13 @@ public class HerdController {
         return "New Herd";
     }
 
-//    @ResponseBody
-//    @PostMapping("/edit/herds/id")
-//    public String editHerd(@ResponseBody HerdRequest herdRequest) {
-//        Herd saveHerd = herdDao.findById(herdRequest.getHerd_id());
-//
-//
-//    }
+    @ResponseBody
+    @PostMapping("/edit/herds/id")
+    public String editHerd(@RequestBody HerdRequest herdRequest) {
+        Herd editedHerd = herdDao.findById(herdRequest.getHerd_id());
+        editedHerd.setHerdName(herdRequest.getHerd_name());
+        editedHerd.setDescription(herdRequest.getDescription());
+        herdDao.save(editedHerd);
+        return "herds";
+    }
 }
