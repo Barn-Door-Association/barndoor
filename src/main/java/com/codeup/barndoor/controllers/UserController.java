@@ -51,13 +51,17 @@ public class UserController {
     @ResponseBody
     @PostMapping("/profile/edit")
     public String editProfilePage(@RequestBody UserRequest userRequest) {
-        System.out.println("yo");
-        User user = userDao.findById(userRequest.getId());
+        User editedUser = userDao.findById(userRequest.getId());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user.setRanchName(userRequest.getRanchName());
         user.setFirstName(userRequest.getFirstName());
         user.setLastName(userRequest.getLastName());
         user.setEmail(userRequest.getEmail());
-        userDao.save(user);
+        editedUser.setRanchName(userRequest.getRanchName());
+        editedUser.setFirstName(userRequest.getFirstName());
+        editedUser.setLastName(userRequest.getLastName());
+        editedUser.setEmail(userRequest.getEmail());
+        userDao.save(editedUser);
         return "yo";
     }
 }
