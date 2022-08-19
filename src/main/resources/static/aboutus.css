@@ -33,11 +33,17 @@
     height: auto;
 }
 
-.gith24 {
-
-
+.icons {
+   display: flex;
+    justify-content: center;
 }
 
-.linked24 {
+.pfp {
+    border-radius: 120px;
+    width: 120px;
+    border-style: solid;
+}
 
+.card-title {
+    text-align: center;
 }
