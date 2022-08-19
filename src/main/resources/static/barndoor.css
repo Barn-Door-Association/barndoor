@@ -2,15 +2,15 @@ nav {
     background: #198754;
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-body{
+body {
     padding-top: 70px;
 }
 
-body.watermark{
+body.watermark {
     background: url("BARNDOOR_3.png") no-repeat center center fixed;
     background-size: 25%;
     opacity: 90%;
@@ -25,32 +25,32 @@ body.watermark{
     padding: 0;
 }
 
-.navbar-nav{
+.navbar-nav {
     text-align: right;
 }
 
-.nav-logo{
+.nav-logo {
     height: 50px;
     background: #D9D9D9;
 
 }
 
-.form-control{
+.form-control {
     width: 80%;
     margin: 5% 10%;
 }
 
-.login-here{
+.login-here {
     text-align: center;
     margin-top: 10%;
 }
 
-.register-here{
+.register-here {
     text-align: center;
     margin-top: 10%;
 }
 
-.logout-btn{
+.logout-btn {
     padding-top: 6px;
     justify-content: center;
     align-items: center;
@@ -76,9 +76,6 @@ section {
 
 .column {
     float: left;
-    /*width: 50%;*/
-
-    /*padding: 0 10px;*/
 }
 
 #mission {
@@ -90,12 +87,16 @@ section {
     height: auto;
 }
 
+#reg-logo img {
+    width: 75%;
+    height: auto;
+    align-self: center;
+    justify-content: center;
+    display: block;
+    margin: auto;
+}
+
 .goat-container {
     width: 100%;
 }
 
-#steps-landing{
-    justify-items: center;
-    justify-content: center;
-    padding: 0;
-}

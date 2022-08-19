@@ -12,7 +12,7 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <section class="container py-5">
-    <h1 class="indexHeader">Your all-in-one Goat manager</h1>
+    <h1 class="indexHeader card">Your all-in-one Goat manager</h1>
     <div class="row container-fluid">
         <div class="column col-md">
             <div class="card h-100">
@@ -42,27 +42,27 @@
         </div>
     </div>
     <br>
-
     <hr>
-
     <div class="container">
         <div class="row">
-            <div class="col-md column-md d-none d-md-inline-block card landing-card " style="width: 100%">
-                <!--Stock image that will include a button that will link to registration page-->
+            <div class="col-md column-md d-none d-md-inline-block card " style="width: 100%">
                 <img class="goat-img" src="/brownGoat.jpeg">
-                <!--                <br>-->
             </div>
-            <div class="col-md card landing-card">
-                <h2 class="d-flex justify-content-center reg-header" style="padding: 0">Mission Statement</h2>
+
+            <div class="col-md card reg-card">
+                <h2 class="d-flex justify-content-center card reg-header" style="padding: 0">Mission Statement</h2>
                 <br>
-                <p id="mission">Our goal at BarnDoor is to provide custom services that improve both goat documentation and organization, in an effort to continually monitor the well-being of our livestock.</p>
+                <p id="mission">Our goal at BarnDoor is to provide custom services that improve both goat documentation
+                    and organization, in an effort to continually monitor the well-being of our livestock.</p>
             </div>
         </div>
     </div>
 </section>
+
 <div class="login-here">
     <p>Want to create an account? <a href="/register">Register Here</a></p>
 </div>
+
 <footer th:replace="partials/partials.html :: footer"></footer>
 </body>
 </html>
