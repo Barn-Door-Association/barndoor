@@ -6,6 +6,8 @@ public class HerdRequest {
     private String description;
     private long userid;
 
+    private long herd_id;
+
 public HerdRequest() {
 }
     public String getHerd_name() {
@@ -30,5 +32,13 @@ public HerdRequest() {
 
     public void setUserid(long userid) {
         this.userid = userid;
+    }
+
+    public long getHerd_id() {
+        return herd_id;
+    }
+
+    public void setHerd_id(long herd_id) {
+        this.herd_id = herd_id;
     }
 }

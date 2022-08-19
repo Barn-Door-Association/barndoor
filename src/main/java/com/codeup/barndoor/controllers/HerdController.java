@@ -54,4 +54,12 @@ public class HerdController {
         herdDao.save(newHerd);
         return "New Herd";
     }
+
+//    @ResponseBody
+//    @PostMapping("/edit/herds/id")
+//    public String editHerd(@ResponseBody HerdRequest herdRequest) {
+//        Herd saveHerd = herdDao.findById(herdRequest.getHerd_id());
+//
+//
+//    }
 }
