@@ -1,21 +1,55 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-
-<head th:replace="partials/partials.html :: head('Profile')"></head>
+<head>
+    <head th:replace="partials/partials.html :: head('Profile')"></head>
+    <link rel="stylesheet" href="/modaltest.css">
+</head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 
-
-
-<div profile-class="container justify-content-center align-content">
-    <h1> Welcome, <span th:text="${user.username}">!</span></h1>
-    <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
-    <br>
-    <h2>Your profile details</h2>
-    <h3>First name: <span th:text="${user.firstName}">!</span></h3>
-    <h3>Last name: <span th:text="${user.lastName}">!</span></h3>
-    <h3>Email Address: <span th:text="${user.email}">!</span></h3>
+<!--  Edit Profile Modal -->
+<!--<div id="modal-container" style="display: none;">-->
+<!--    <div class="modal-wrapper container py-3">-->
+<!--        <div>-->
+<!--            <label for="ranch-name" style="width: 150px;" class="">Ranch Name</label>-->
+<!--            <input type="text" id="ranch-name" name="ranch-name" style="width:300px;" th:value="${user.ranchName}">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="first-name" style="width: 150px;" class="">First Name</label>-->
+<!--            <input type="text" id="first-name" name="first-name" style="width:300px;" th:value="${user.firstName}">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="last-name" style="width: 150px;" class="">Last Name</label>-->
+<!--            <input type="text" id="last-name" name="last-name" style="width:300px;" th:value="${user.lastName}">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="email" style="width: 150px;" class="">Email</label>-->
+<!--            <input type="text" id="email" name="email" style="width:300px;" th:value="${user.email}">-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label for="tag_id" style="width: 150px;" class="">Tag ID</label>-->
+<!--            <input type="text" id="tag_id" name="tag_id" style="width:300px;">-->
+<!--        </div>-->
+<!--        <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">-->
+<!--            <button class="goat-button" id="add-goat-cancel-button">Cancel</button>-->
+<!--            <button class="goat-button" id="add-goat-add-button" type="submit">Add Goat</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div>
+    <div profile-class="container justify-content-center align-content">
+        <h1> Welcome, <span th:text="${user.username}">!</span></h1>
+        <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
+        <br>
+        <h2>Your profile details</h2>
+        <h3>First name: <span th:text="${user.firstName}">!</span></h3>
+        <h3>Last name: <span th:text="${user.lastName}">!</span></h3>
+        <h3>Email Address: <span th:text="${user.email}">!</span></h3>
+    </div>
+    <div>
+        <button class="goat-button" id="edit-profile-button">Edit Profile</button>
+    </div>
 </div>
 
 

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @Controller
 public class UserController {
 
@@ -24,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegisterPage(Model model){
+    public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
         return "users/register";
     }
@@ -43,12 +42,15 @@ public class UserController {
         return "users/login-page";
     }
 
-
-
     @GetMapping("/profile")
     public String showProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         return "users/profile";
+    }
+
+    @PostMapping("/profile/edit")
+    public String editProfilePage(Model model) {
+        return "yo";
     }
 }
