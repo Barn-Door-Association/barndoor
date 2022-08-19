@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/herds") // user's home page, it can be any URL
+                .defaultSuccessUrl("/herds") // user's home page will be the herds page
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -49,21 +49,19 @@ public class SecurityConfiguration {
                 .authorizeRequests()
 
                 //Allowing access to all pages until we get the site complete so we do not have to keep logging in
-                .antMatchers("/", "/about", "/profile", "/vaccine") // anyone can see the home and the ads pages
+                .antMatchers("/", "/about") // anyone can see the home and the ads pages
                 .permitAll()
 
-        
                 /* Pages that require authentication */
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers(
-//                        //Need to add herds, goats, vaccines
-//                        "/herds", // only authenticated users can create ads
-//                        "/goats", // only authenticated users can edit posts
-//                        "/vaccines" // only authenticated users can delete posts
-//                )
-//                .authenticated()
-        ;
+                .and()
+                .authorizeRequests()
+                .antMatchers(
+                        "/herds", "/herds/{id}", // only authenticated users can view, add or edit herd/herds information
+                        "/goat", "/goat/{id}", // only authenticated users can view, add or edit goat/goats information
+                        "/pedigree", "/pedigree/{id}", // only authenticated users can view pedigree information
+                        "/profile" // only authenticated users can view or edit profile information
+                )
+                .authenticated();
         return http.build();
     }
 
