@@ -24,6 +24,9 @@ body.watermark {
 .reg-card {
     padding: 0;
 }
+.register-here{
+    padding: 10px;
+}
 
 .navbar-nav {
     text-align: right;
