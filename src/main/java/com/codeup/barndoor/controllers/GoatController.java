@@ -1,5 +1,6 @@
 package com.codeup.barndoor.controllers;
 
+import com.codeup.barndoor.models.EditGoatRequest;
 import com.codeup.barndoor.models.Goat;
 import com.codeup.barndoor.models.GoatRequest;
 import com.codeup.barndoor.repositories.GoatRepository;
@@ -53,5 +54,24 @@ public class GoatController {
     @GetMapping("/goats/{id}/pedigree")
     public String showPedigree(Model model) {
         return "pedigree";
+    }
+
+
+    // controller for edit goat feature
+    // testing functionality
+    @GetMapping
+    @ResponseBody
+    @PostMapping("/edit/goat")
+    public String editGoat(@RequestBody EditGoatRequest editGoatRequest, Model model) {
+        Goat editedGoat = goatDao.findById(editGoatRequest.getGoatId());
+        editedGoat.setName(editGoatRequest.getName());
+        editedGoat.setTagId(editGoatRequest.getTagId());
+        editedGoat.setBreed(editGoatRequest.getBreed());
+        editedGoat.setSex(editGoatRequest.getSex());
+        editedGoat.setDob(editGoatRequest.getDob());
+        editedGoat.setWeightInPounds(editGoatRequest.getWeightInPounds());
+
+        goatDao.save(editedGoat);
+        return "goat";
     }
 }
