@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
 
 
 @Controller
@@ -40,6 +42,12 @@ public class GoatController {
     @PostMapping("/add/new/goat")
     public String addNewGoat(@RequestBody GoatRequest goatRequest) {
         Goat newGoat = new Goat(goatRequest.getTagId(), goatRequest.getName(), goatRequest.getDob(), goatRequest.getSex(), goatRequest.getBreed(), goatRequest.getWeightInPounds(), herdDao.findById(goatRequest.getHerdId()));
+        Goat sire = goatDao.findByName(goatRequest.getSireName());
+        Goat dam = goatDao.findByName(goatRequest.getDamName());
+        Set<Goat> parents = new HashSet<>();
+        parents.add(sire);
+        parents.add(dam);
+        newGoat.setParents(parents);
         goatDao.save(newGoat);
         return "yo";
     }
