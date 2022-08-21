@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h4 class="card-title" th:text="${goat.name}"></h4>
+                                    <a th:href="@{/goat/{id}(id=${goat.id})}"><h4 class="card-title" th:text="${goat.name}"></h4></a>
                                     <h5 class="card-text" th:text="${goat.breed}"></h5>
                                     <h5 class="card-text" th:text="${goat.sex}"></h5>
                                     <h6 class="card-text">ID: <span th:text="${goat.id}"></span></h6>
