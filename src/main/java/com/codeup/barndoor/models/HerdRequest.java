@@ -2,20 +2,20 @@ package com.codeup.barndoor.models;
 
 public class HerdRequest {
 
-    private String herd_name;
+    private String herdName;
     private String description;
-    private long userid;
+    private long userId;
 
-    private long herd_id;
+    private long herdId;
 
 public HerdRequest() {
 }
-    public String getHerd_name() {
-        return herd_name;
+    public String getHerdName() {
+        return herdName;
     }
 
-    public void setHerd_name(String herd_name) {
-        this.herd_name = herd_name;
+    public void setHerdName(String herdName) {
+        this.herdName = herdName;
     }
 
     public String getDescription() {
@@ -26,19 +26,19 @@ public HerdRequest() {
         this.description = description;
     }
 
-    public long getUserid() {
-        return userid;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUserid(long userid) {
-        this.userid = userid;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public long getHerd_id() {
-        return herd_id;
+    public long getHerdId() {
+        return herdId;
     }
 
-    public void setHerd_id(long herd_id) {
-        this.herd_id = herd_id;
+    public void setHerdId(long herdId) {
+        this.herdId = herdId;
     }
 }
