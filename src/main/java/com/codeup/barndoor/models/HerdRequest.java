@@ -5,11 +5,17 @@ public class HerdRequest {
     private String herdName;
     private String description;
     private long userId;
-
     private long herdId;
 
-public HerdRequest() {
-}
+    public HerdRequest() {
+    }
+
+    public HerdRequest(String herdName, String description, long userId) {
+        this.herdName = herdName;
+        this.description = description;
+        this.userId = userId;
+    }
+
     public String getHerdName() {
         return herdName;
     }
