@@ -14,14 +14,12 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
-
 @Controller
 public class GoatController {
 
     @Autowired
     private final GoatRepository goatDao;
     private final HerdRepository herdDao;
-
 
     public GoatController(GoatRepository goatDao, HerdRepository herdDao) {
         this.goatDao = goatDao;
@@ -55,8 +53,7 @@ public class GoatController {
     @GetMapping("/pedigree/{id}")
     @ResponseBody
     public Goat getPedigree(@PathVariable long id) {
-        Goat goat = goatDao.findById(id);
-        return goat;
+        return goatDao.findById(id);
     }
 
     @GetMapping("/goats/{id}/pedigree")
@@ -64,10 +61,7 @@ public class GoatController {
         return "goats/pedigree";
     }
 
-
     // controller for edit goat feature
-    // testing functionality
-//    @GetMapping
     @ResponseBody
     @PostMapping("/edit/goat")
     public String editGoat(@RequestBody EditGoatRequest editGoatRequest) {
