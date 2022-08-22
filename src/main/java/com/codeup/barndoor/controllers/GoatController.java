@@ -67,11 +67,19 @@ public class GoatController {
 
     // controller for edit goat feature
     // testing functionality
-    @GetMapping
+//    @GetMapping
     @ResponseBody
     @PostMapping("/edit/goat")
-    public String editGoat(@RequestBody EditGoatRequest editGoatRequest, Model model) {
+    public String editGoat(@RequestBody EditGoatRequest editGoatRequest) {
+        Goat goat = goatDao.findById(editGoatRequest.getGoatId());
         Goat editedGoat = goatDao.findById(editGoatRequest.getGoatId());
+        goat.setName(editGoatRequest.getName());
+        goat.setTagId(editGoatRequest.getTagId());
+        goat.setBreed(editGoatRequest.getBreed());
+        goat.setSex(editGoatRequest.getSex());
+        goat.setDob(editGoatRequest.getDob());
+        goat.setWeightInPounds(editGoatRequest.getWeightInPounds());
+
         editedGoat.setName(editGoatRequest.getName());
         editedGoat.setTagId(editGoatRequest.getTagId());
         editedGoat.setBreed(editGoatRequest.getBreed());
