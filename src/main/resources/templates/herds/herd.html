@@ -21,14 +21,10 @@
                 <div><h2 th:text="${herd.description}"></h2></div>
             </div>
 
-            <div class="d-flex justify-content-center py-1">
-                <span>HERD ID: </span><span th:text="${herd.id}"></span>
-            </div>
-
             <!--  Add a New Goat Modal injection container  -->
             <div id="modal-container"></div>
 
-            <input type="hidden" th:value="${herd.id}" id="hidden-id">
+            <input type="hidden" th:value="${herd.id}" id="herd-id">
 
 
             <div class="d-flex justify-content-center">
@@ -148,10 +144,6 @@
                     <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;">
                 </div>
                 <div>
-                    <label for="herd_id" style="width: 150px;" class="">Herd ID</label>
-                    <input type="text" id="herd_id" name="herd_id" style="width:300px;">
-                </div>
-                <div>
                     <label for="sire_name" style="width: 150px;" class="">Sire Name</label>
                     <input type="text" id="sire_name" name="sire_name" style="width:300px;">
                 </div>
@@ -183,7 +175,7 @@
                 sex: $("#sex").val(),
                 tagId: $("#tag_id").val(),
                 weightInPounds: $("#weight_in_pounds").val(),
-                herdId: $("#herd_id").val(),
+                herdId: $("#herd-id").val(),
                 sireName: $("#sire_name").val(),
                 damName: $("#dam_name").val()
             })
@@ -225,7 +217,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                herdId: $("#hidden-id").val(),
+                herdId: $("#herd-id").val(),
                 herdName: $("#name").val(),
                 description: $("#description").val()
             })

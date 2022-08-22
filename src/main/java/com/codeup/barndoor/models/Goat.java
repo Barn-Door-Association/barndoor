@@ -48,9 +48,7 @@ public class Goat {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "pedigree", joinColumns = {
             @JoinColumn(name = "goat_id")
-    }, inverseJoinColumns = {@JoinColumn(name = "parent_id")
-    }
-    )
+    }, inverseJoinColumns = {@JoinColumn(name = "parent_id")})
     private Set<Goat> parents;
 
     @ManyToMany(mappedBy = "parents")
