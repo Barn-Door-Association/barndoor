@@ -2,27 +2,34 @@ package com.codeup.barndoor.models;
 
 import java.util.Date;
 
-public class GoatRequest {
-
+public class EditGoatRequest {
     private String name;
-    private Date dob;
+    private long tagId;
     private String breed;
     private char sex;
-    private long tagId;
+    private Date dob;
     private long weightInPounds;
     private long herdId;
-    private String sireName;
-    private String damName;
+    private long goatId;
 
-    public GoatRequest() {
+
+    public EditGoatRequest() {
     }
 
-    public Date getDob() {
-        return dob;
+    public String getName() {
+        return name;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(long tagId) {
+        this.tagId = tagId;
     }
 
     public String getBreed() {
@@ -41,12 +48,12 @@ public class GoatRequest {
         this.sex = sex;
     }
 
-    public long getTagId() {
-        return tagId;
+    public Date getDob() {
+        return dob;
     }
 
-    public void setTagId(long tagId) {
-        this.tagId = tagId;
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public long getWeightInPounds() {
@@ -65,27 +72,11 @@ public class GoatRequest {
         this.herdId = herdId;
     }
 
-    public String getName() {
-        return name;
+    public long getGoatId() {
+        return goatId;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSireName() {
-        return sireName;
-    }
-
-    public void setSireName(String sireName) {
-        this.sireName = sireName;
-    }
-
-    public String getDamName() {
-        return damName;
-    }
-
-    public void setDamName(String damName) {
-        this.damName = damName;
+    public void setGoatId(long goatId) {
+        this.goatId = goatId;
     }
 }

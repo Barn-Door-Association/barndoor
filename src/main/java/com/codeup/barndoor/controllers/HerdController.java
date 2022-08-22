@@ -38,9 +38,8 @@ public class HerdController {
 
     @GetMapping("/herds/{id}")
     public String showHerdPage(@PathVariable long id, Model model){
-         List<Goat> herd = goatDao.findAllByHerdId(id);
-         model.addAttribute("herd_id", id);
-         model.addAttribute("herd_name", "Details for: " + herdDao.findById(id).getHerdName());
+//         List<Goat> herd = goatDao.findAllByHerdId(id);
+         Herd herd = herdDao.findById(id);
          model.addAttribute("herd",  herd);
         return "herds/herd";
     }
@@ -50,8 +49,18 @@ public class HerdController {
     @ResponseBody
     @PostMapping("/add/new/herd")
     public String addNewHerd(@RequestBody HerdRequest herdRequest) {
-        Herd newHerd = new Herd(herdRequest.getHerd_name(), herdRequest.getDescription(), herdDao.findById(herdRequest.getUserid()));
+        Herd newHerd = new Herd(herdRequest.getHerdName(), herdRequest.getDescription(), herdDao.findById(herdRequest.getUserId()));
         herdDao.save(newHerd);
         return "New Herd";
+    }
+
+    @ResponseBody
+    @PostMapping("/edit/herds/id")
+    public String editHerd(@RequestBody HerdRequest herdRequest) {
+        Herd editedHerd = herdDao.findById(herdRequest.getHerdId());
+        editedHerd.setHerdName(herdRequest.getHerdName());
+        editedHerd.setDescription(herdRequest.getDescription());
+        herdDao.save(editedHerd);
+        return "herds";
     }
 }

@@ -37,7 +37,8 @@
                         <div class="col-md-8">
                             <div class="card-body justify-content-center" id="herdName">
                                 <!-- This <a></a> makes the name of the herd clickable and link to the controller-->
-                                <a th:href="@{/herds/{id}(id=${herd.id})}"> <h2 class="card-title">Herd Name: <span th:text="${herd.herdName}"></span></h2></a>
+                                <a th:href="@{/herds/{id}(id=${herd.id})}"><h2 class="card-title">Herd Name: <span
+                                        th:text="${herd.herdName}"></span></h2></a>
                                 <h5 class="card-text"><span th:text="${herd.description}"></span></h5>
                                 <ul class="list-group list-group-flush justify-content-center">
                                     <li class="list-group-item"><h6>Herd ID: <span th:text="${herd.id}"></span></h6>
@@ -46,9 +47,6 @@
                                         herd here?
                                     </li>
                                 </ul>
-                                <div class="card-body">
-                                    <button id="delete-herd-button">Delete</button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +62,10 @@
             <article class="d-flex justify-content-center">
                 <a href="#">Return to top of page</a>
             </article>
+        </div>
+    </article>
 </section>
+
 <!--  The following section is footer partial  -->
 <footer th:replace="partials/partials.html :: footer"></footer>
 
@@ -91,13 +92,6 @@
             addNewHerd();
         });
     });
-    document.getElementById("herdName").addEventListener("click", () => {
-        alert("This will link to the herd page when clicked.");
-    });
-    document.getElementById("delete-herd-button").addEventListener("click", () => {
-        alert("delete-herd-button clicked.");
-    });
-
     // Form to add a new herd
     const addHerdForm = () => {
         return `
@@ -132,9 +126,9 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                herd_name: $("#herd_name").val(),
+                herdName: $("#herd_name").val(),
                 description: $("#description").val(),
-                user_id: $("#user_id").val(),
+                userId: $("#user_id").val(),
             })
         }
         settings.headers[header] = token;
