@@ -3,12 +3,17 @@ package com.codeup.barndoor.controllers;
 import com.codeup.barndoor.models.User;
 import com.codeup.barndoor.models.UserRequest;
 import com.codeup.barndoor.repositories.UserRepository;
+import com.mysql.cj.callback.UsernameCallback;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -28,7 +33,20 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user, Errors validation, Model model) {
+        List<String> errorMsg = new ArrayList<>();
+
+        if(userDao.findByUsername(user.getUsername()) !=null) {
+            validation.rejectValue("username", "Username cannot be the same");
+            errorMsg.add("Username cannot be the same");
+        }
+
+        if(validation.hasErrors()){
+            model.addAttribute("errorList", errorMsg);
+            model.addAttribute("user", user);
+            return "users/register";
+        }
+
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
