@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/partials.html :: head('Herd')">
-    <meta th:name="_csrf" th:content="${_csrf.token}">
-    <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
-    <!--    CSS Link-->
-    <link type="text/css" rel="stylesheet" href="/herds.css">
+<head>
+    <head th:replace="partials/partials.html :: head('Herd')"></head>
+        <meta th:name="_csrf" th:content="${_csrf.token}">
+        <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
+        <!--    CSS Link-->
+        <link type="text/css" rel="stylesheet" href="/herds.css">
 </head>
 <body>
 <!--NavBar partial-->
@@ -15,7 +16,7 @@
     <article class="d-flex justify-content-center">
         <div class="d-flex card py-2 bg-success" style="width: 70%">
             <div class="d-flex justify-content-center">
-                <h2>View All Herds Owned By <span th:text="${user}"></span>!</h2>
+                <h2>View All Herds Owned By <span th:text="${user.ranchName}"></span>!</h2>
             </div>
 
 
@@ -65,7 +66,7 @@
         </div>
     </article>
 </section>
-
+<input type="hidden" th:value="${user.id}" name="user-id" id="user-id">
 <!--  The following section is footer partial  -->
 <footer th:replace="partials/partials.html :: footer"></footer>
 
@@ -104,10 +105,6 @@
                     <label for="description" style="width: 150px;" class="">Description</label>
                     <input type="text" id="description" name="description" style="width:300px;">
                 </div>
-                <div>
-                    <label for="user_id" style="width: 150px;" class="">User_ID</label>
-                    <input type="text" id="user_id" name="user_id" style="width:300px;">
-                </div>
                 <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
                     <button class="add-herd-button" id="add-herd-cancel-button">Cancel</button>
                     <button class="add-herd-button" id="add-herd-add-button" type="submit">Add Herd</button>
@@ -128,7 +125,7 @@
             body: JSON.stringify({
                 herdName: $("#herd_name").val(),
                 description: $("#description").val(),
-                userId: $("#user_id").val(),
+                userId: $("#user-id").val(),
             })
         }
         settings.headers[header] = token;

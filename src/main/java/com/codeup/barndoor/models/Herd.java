@@ -10,9 +10,9 @@ public class Herd {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false, unique = true)
     private String herdName;
-
 
     @Column(nullable = false)
     private String description;
@@ -37,9 +37,10 @@ public class Herd {
         this.user = user;
     }
 
-
-    public Herd(String herd_name, String description, Herd byId) {
-
+    public Herd(String herdName, String description, User user) {
+        this.herdName = herdName;
+        this.description = description;
+        this.user = user;
     }
 
     public long getId() {

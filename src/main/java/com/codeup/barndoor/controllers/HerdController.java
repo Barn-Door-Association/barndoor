@@ -1,12 +1,10 @@
 package com.codeup.barndoor.controllers;
 
-import com.codeup.barndoor.models.Goat;
-import com.codeup.barndoor.models.GoatRequest;
-import com.codeup.barndoor.models.Herd;
-import com.codeup.barndoor.models.HerdRequest;
+import com.codeup.barndoor.models.*;
 import com.codeup.barndoor.repositories.GoatRepository;
 import com.codeup.barndoor.repositories.HerdRepository;
 import com.codeup.barndoor.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +28,11 @@ public class HerdController {
 
     @GetMapping("/herds")
     public String showHerds(Model model){
-        List<Herd> herds = herdDao.findAll();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userDao.findById(user.getId());
+        List<Herd> herds = herdDao.findByUserId(user.getId());
         model.addAttribute("herds", herds);
-        model.addAttribute("user", userDao.findById(1).getRanchName());
+        model.addAttribute("user", currentUser);
         return "herds/herds";
     }
 
@@ -46,12 +46,14 @@ public class HerdController {
     // Captures data from modal form post request, data is stored in a HerdRequest
     // object and then constructs a new Herd object with the entered values.  Then
     // the new Herd object data is stored in a table
+
     @ResponseBody
     @PostMapping("/add/new/herd")
     public String addNewHerd(@RequestBody HerdRequest herdRequest) {
-        Herd newHerd = new Herd(herdRequest.getHerdName(), herdRequest.getDescription(), herdDao.findById(herdRequest.getUserId()));
+        User user = userDao.findById(herdRequest.getUserId());
+        Herd newHerd = new Herd(herdRequest.getHerdName(), herdRequest.getDescription(), user);
         herdDao.save(newHerd);
-        return "New Herd";
+        return "";
     }
 
     @ResponseBody
