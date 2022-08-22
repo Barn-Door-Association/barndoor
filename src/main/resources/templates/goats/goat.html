@@ -24,6 +24,7 @@
             <h5 th:text="${record.dosageInCcs}"></h5>
         </div>
         <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="goat-button" id="modal-edit-button">Edit</button>
             <button class="goat-button" id="modal-cancel-button">Cancel</button>
             <button class="goat-button" id="add-vaccine-button" type="submit">Add Record</button>
         </div>
@@ -71,6 +72,35 @@
     </div>
 </div>
 
+<!--vaccine modal-->
+<div id="edit-vaccine-modal-container" style="display: none;">
+    <div class="edit-vaccine-modal-wrapper container py-3">
+        <div><h3>Edit Vaccine Details Below:</h3></div>
+        <div>
+            <label for="name" style="width: 150px;" class="">Name</label>
+            <input type="text" id="name" name="name" style="width:300px;">
+        </div>
+        <div>
+            <label for="dob" style="width: 150px;" class="">Date of birth</label>
+            <input type="text" id="dob" name="dob" style="width:300px;" placeholder="yyyy-mm-dd">
+        </div>
+        <div>
+            <label for="breed" style="width: 150px;" class="">Breed</label>
+            <input type="text" id="breed" name="breed" style="width:300px;">
+        </div>
+        <div>
+            <label for="sex" style="width: 150px;" class="">Sex</label>
+            <input type="text" id="sex" name="sex" style="width:300px;">
+        </div>
+            <br>
+            <br>
+        </div>
+        <div id="edit-vaccine-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="edit-vaccine-button" id="edit-vaccine-cancel-button">Cancel</button>
+            <button class="edit-vaccine-button" id="save-vaccine-changes-button" type="submit">Save Changes</button>
+        </div>
+    </div>
+</div>
 <!--passing to the controller to find the specific goat-->
 <input type="hidden" id="goatId" th:value="${goat.id}">
 
