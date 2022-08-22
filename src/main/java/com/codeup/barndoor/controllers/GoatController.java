@@ -1,5 +1,6 @@
 package com.codeup.barndoor.controllers;
 
+import com.codeup.barndoor.models.EditGoatRequest;
 import com.codeup.barndoor.models.Goat;
 import com.codeup.barndoor.models.GoatRequest;
 import com.codeup.barndoor.repositories.GoatRepository;
@@ -61,5 +62,32 @@ public class GoatController {
     @GetMapping("/goats/{id}/pedigree")
     public String showPedigree(Model model) {
         return "pedigree";
+    }
+
+
+    // controller for edit goat feature
+    // testing functionality
+//    @GetMapping
+    @ResponseBody
+    @PostMapping("/edit/goat")
+    public String editGoat(@RequestBody EditGoatRequest editGoatRequest) {
+        Goat goat = goatDao.findById(editGoatRequest.getGoatId());
+        Goat editedGoat = goatDao.findById(editGoatRequest.getGoatId());
+        goat.setName(editGoatRequest.getName());
+        goat.setTagId(editGoatRequest.getTagId());
+        goat.setBreed(editGoatRequest.getBreed());
+        goat.setSex(editGoatRequest.getSex());
+        goat.setDob(editGoatRequest.getDob());
+        goat.setWeightInPounds(editGoatRequest.getWeightInPounds());
+
+        editedGoat.setName(editGoatRequest.getName());
+        editedGoat.setTagId(editGoatRequest.getTagId());
+        editedGoat.setBreed(editGoatRequest.getBreed());
+        editedGoat.setSex(editGoatRequest.getSex());
+        editedGoat.setDob(editGoatRequest.getDob());
+        editedGoat.setWeightInPounds(editGoatRequest.getWeightInPounds());
+
+        goatDao.save(editedGoat);
+        return "goat";
     }
 }
