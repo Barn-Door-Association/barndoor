@@ -8,5 +8,8 @@ import java.util.List;
 
 public interface GoatRepository extends JpaRepository<Goat, Long> {
     Goat findById(long id);
+
     List<Goat> findAllByHerdId(long herd_id);
+
+    Goat findByName(String name);
 }

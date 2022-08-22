@@ -1,16 +1,14 @@
 package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.User;
+import com.codeup.barndoor.models.UserRequest;
 import com.codeup.barndoor.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -24,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegisterPage(Model model){
+    public String showRegisterPage(Model model) {
         model.addAttribute("user", new User());
         return "users/register";
     }
@@ -35,7 +33,6 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/login";
-
     }
 
     @GetMapping("/login")
@@ -43,12 +40,27 @@ public class UserController {
         return "users/login-page";
     }
 
-
-
     @GetMapping("/profile")
     public String showProfilePage(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", user);
         return "users/profile";
+    }
+
+    @ResponseBody
+    @PostMapping("/profile/edit")
+    public String editProfilePage(@RequestBody UserRequest userRequest) {
+        User editedUser = userDao.findById(userRequest.getId());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user.setRanchName(userRequest.getRanchName());
+        user.setFirstName(userRequest.getFirstName());
+        user.setLastName(userRequest.getLastName());
+        user.setEmail(userRequest.getEmail());
+        editedUser.setRanchName(userRequest.getRanchName());
+        editedUser.setFirstName(userRequest.getFirstName());
+        editedUser.setLastName(userRequest.getLastName());
+        editedUser.setEmail(userRequest.getEmail());
+        userDao.save(editedUser);
+        return "yo";
     }
 }

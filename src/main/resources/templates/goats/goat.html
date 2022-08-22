@@ -2,18 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <head th:replace="partials/partials.html :: head(${goat.name})"></head>
-    <link type="text/css" rel="stylesheet" href="/modaltest.css">
+    <meta th:name="_csrf" th:content="${_csrf.token}">
+    <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
+    <link type="text/css" rel="stylesheet" href="/edit-goat-test.css">
+    <style>
+        h3 {text-align: center}
+
+    </style>
 </head>
-<body>
+<body class="watermark">
 <!-- Navbar partial -->
 <nav th:replace="partials/partials.html :: nav"></nav>
 
-<!--  Modal injection container  -->
+<!--  Vaccine Modal injection container  -->
 <div id="modal-container" style="display: none;">
     <div class="modal-wrapper container py-3">
         <div th:each="record : ${goat.records}">
+            <h4 th:text="${record.vaccine.vaccineName}"></h4>
             <h5 th:text="${record.dateAdministered}"></h5>
-            <h3>text</h3>
+            <h5 th:text="${record.isBooster}"></h5>
+            <h5 th:text="${record.dosageInCcs}"></h5>
         </div>
         <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
             <button class="goat-button" id="modal-cancel-button">Cancel</button>
@@ -22,9 +30,55 @@
     </div>
 </div>
 
-<container class="d-flex justify-content-center">
+<!--model injection container for edit goat feature-->
+<div id="edit-goat-modal-container" style="display: none;">
+    <div class="edit-goat-modal-wrapper container py-3">
+        <div><h3>Edit Goat Details Below:</h3></div>
+        <div>
+            <label for="name" style="width: 150px;" class="">Name</label>
+            <input type="text" id="name" name="name" style="width:300px;">
+        </div>
+        <div>
+            <label for="dob" style="width: 150px;" class="">Date of birth</label>
+            <input type="text" id="dob" name="dob" style="width:300px;" placeholder="yyyy-mm-dd">
+        </div>
+        <div>
+            <label for="breed" style="width: 150px;" class="">Breed</label>
+            <input type="text" id="breed" name="breed" style="width:300px;">
+        </div>
+        <div>
+            <label for="sex" style="width: 150px;" class="">Sex</label>
+            <input type="text" id="sex" name="sex" style="width:300px;">
+        </div>
+        <div>
+            <label for="tag_id" style="width: 150px;" class="">Tag ID</label>
+            <input type="text" id="tag_id" name="tag_id" style="width:300px;">
+        </div>
+        <div>
+            <label for="weight_in_pounds" style="width: 150px;" class="">Weight in pounds</label>
+            <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;">
+        </div>
+        <div>
+            <label for="herd_id" style="width: 150px;" class="">Herd ID</label>
+            <input type="text" id="herd_id" name="herd_id" style="width:300px;">
+            <br>
+            <br>
+        </div>
+        <div id="edit-goat-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="edit-goat-button" id="edit-cancel-button">Cancel</button>
+            <button class="edit-goat-button" id="save-changes-button" type="submit">Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<!--passing to the controller to find the specific goat-->
+<input type="hidden" id="goatId" th:value="${goat.id}">
+
+
+<!--Goat profile card available on first view of page-->
+<container class="d-flex justify-content-center" id="goat-profile-container">
     <img src="../goatpic.jpeg" alt="" style="width: 350px;">
-    <div class="d-flex bg-warning card">
+    <div class="d-flex card">
         <div>
             <h1 th:text="${goat.name}"></h1>
             <h3 th:text="${goat.breed}"></h3>
@@ -35,10 +89,11 @@
         </div>
         <div class="d-flex justify-content-evenly">
             <button class="goat-button" id="vaccine-records-button">Vaccine Records</button>
-            <button class="goat-button" id="edit-goat-button">Edit Goat Details</button>
+            <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
         </div>
     </div>
 </container>
+
 
 <!-- Footer partial -->
 <section th:replace="partials/partials.html :: footer"></section>
@@ -55,12 +110,67 @@
 
 <!--  Custom Script  -->
 <script>
+
+    <!--vaccine modal buttons -->
     $("#vaccine-records-button").on("click", () => {
         $("#modal-container").attr("style", "display: block;");
     });
+
     $("#modal-cancel-button").on("click", () => {
         $("#modal-container").attr("style", "display: none;")
-    })
+    });
+
+    $("#add-vaccine-button").on("click", () => {
+        editGoat();
+    });
+
+    //edit goat modal buttons
+    $("#edit-goat-button").on("click", () => {
+        $("#edit-goat-modal-container").attr("style", "display: block;");
+        // document.getElementById("add-goat-save-button").addEventListener("click", () => {
+        //     $("#edit-goat-modal-container").html("");
+        // });
+    });
+    //opening modal
+    $("#edit-goat-modal-button").on("click", () => {
+        $("#edit-goat-modal-container").attr("style", "display: block;");
+    });
+
+    $("#edit-cancel-button").on("click", () => {
+        $("#edit-goat-modal-container").attr("style", "display: none;")
+    });
+
+    $("#save-changes-button").on("click", () => {
+        editGoat();
+    });
+
+
+    //    function for edit goat modal to send updated information to the goat table and reload the page automatically once saved with updated goat info
+    const editGoat = () => {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        let settings = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: $("#name").val(),
+                tagId: $("#tag_id").val(),
+                breed: $("#breed").val(),
+                sex: $("#sex").val(),
+                dob: $("#dob").val(),
+                weightInPounds: $("#weight_in_pounds").val(),
+                herdId: $("#herd_id").val(),
+                goatId: $("#goatId").val(),
+            })
+        }
+        settings.headers[header] = token;
+        fetch("/edit/goat", settings)
+            .then(() => {
+                location.reload();
+            })
+    }
 </script>
 </body>
 </html>
