@@ -5,11 +5,13 @@
     <meta th:name="_csrf" th:content="${_csrf.token}">
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
     <link rel="stylesheet" href="/modaltest.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/barndoor.css">
 </head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
 
-Edit Profile Modal
+<!--Edit Profile Modal-->
 <div id="modal-container" style="display: none;">
     <div class="modal-wrapper container py-3">
         <div>
@@ -35,20 +37,38 @@ Edit Profile Modal
         <input type="hidden" id="user-id" th:value="${user.id}">
     </div>
 </div>
-<div>
-    <div profile-class="container justify-content-center align-content">
-        <h1> Welcome, <span th:text="${user.username}">!</span></h1>
-        <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
-        <br>
-        <h2>Your profile details</h2>
-        <h3>First name: <span th:text="${user.firstName}">!</span></h3>
-        <h3>Last name: <span th:text="${user.lastName}">!</span></h3>
-        <h3>Email Address: <span th:text="${user.email}">!</span></h3>
+
+<!--Profile Information-->
+<section class="container py-5">
+    <div class="row align-items-center">
+        <div class="d-flex card reg-card col-md">
+            <h1 class="d-flex justify-content-center reg-header"> Welcome,&nbsp <span th:text="${user.username}"></span>!
+            </h1>
+
+<!--            Mobile responsive. Text changes with size of screen-->
+            <div class="col-md d-none d-md-inline-block card landing-card">
+                <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
+            </div>
+            <div class="d-sm-block d-lg-none card landing-card">
+                <h2>You're ranch: <span th:text="${user.ranchName}">!</span></h2>
+            </div>
+            <br>
+
+            <h2><u>Your profile details</u></h2>
+<!--            Text breaks after header when in mobile view. On desktop stays on same line-->
+            <div style="text-align: center;">
+                <h3>First name: <br class="d-sm-block d-lg-none card landing-card"><span th:text="${user.firstName}"></span></h3>
+                <h3>Last name: <br class="d-sm-block d-lg-none card landing-card"><span th:text="${user.lastName}"></span></h3>
+                <h3 >Email: <br class="d-sm-block d-lg-none card landing-card"><span th:text="${user.email}"></span></h3>
+            </div>
+
+            <div class="login-here">
+                <button class="btn reg-btn" id="edit-profile-button">Edit Profile</button>
+            </div>
+            <br>
+        </div>
     </div>
-    <div>
-        <button class="goat-button" id="edit-profile-button">Edit Profile</button>
-    </div>
-</div>
+</section>
 
 <!--  The following section is footer partial  -->
 <section th:replace="partials/partials.html :: footer"></section>
