@@ -60,8 +60,8 @@ public class GoatController {
     }
 
     @GetMapping("/goats/{id}/pedigree")
-    public String showPedigree(Model model) {
-        return "pedigree";
+    public String showPedigree(@PathVariable long id) {
+        return "goats/pedigree";
     }
 
 
