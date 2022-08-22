@@ -32,3 +32,23 @@
     width: 100%;
     height: auto;
 }
+
+.icons {
+   display: flex;
+    justify-content: center;
+}
+
+.pfp {
+    border-radius: 120px;
+    width: 120px;
+    border-style: solid;
+}
+
+.card-title {
+    text-align: center;
+    padding-top: 1px;
+}
+
+.card-body {
+
+}
