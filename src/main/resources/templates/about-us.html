@@ -21,28 +21,32 @@
 
 
     <div class="container goat-container">
-            <div class="row">
-            <div class="d-flex card landing-card aboutcolumn column h-100" style="width: 100%">
+        <div class="row">
+            <div class="col-md column-md d-none d-md-inline-block card " style="width: 100%">
                 <!--Stock image that will include a button that will link to registration page-->
                 <img class="goat-img2" src="/baby-goat.jpg">
                 <br>
-
             </div>
 
 
-
-            <div class="d-flex card reg-card aboutcolumn column h-100">
+            <div class="col-md card reg-card">
 
                 <h5 class="d-flex justify-content-left aboutHeader1">About our project:</h5>
                 <hr class="abouthr">
-                <p class="abouttext">Description of languages and frameworks used to launch this app here.</p>
+                <p class="abouttext">Provides registered users with the ability to create and manage livestock. BarnDoor
+                    keeps track of the name, ear tag, gender, breed, pedigree, herd name, date of birth, weight and
+                    vaccine
+                    records of an individual animal. Through HTML, CSS, Bootstrap, JQuery and Javascript we created an
+                    easy
+                    to use frontend experience that gives users the power to update to track their entire livestock data
+                    in
+                    one app.</p>
 
             </div>
-    </div>
+        </div>
     </div>
 
-<br>
-
+    <br>
 
 
 </section>
@@ -52,7 +56,7 @@
     <div class="row">
         <div class="column col">
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-body content-center">
                     <img class="pfp" src="/nia.jpg">
                     <h5 class="card-title">Nia Watson</h5>
                     <hr class="abouthr">
@@ -69,6 +73,7 @@
         <div class="column col">
             <div class="card h-100">
                 <div class="card-body">
+                    <img class="pfp" src="/chase.jpg">
                     <h5 class="card-title">Chase Martinez</h5>
                     <hr class="abouthr">
                     <p class="card-text">Contributions to project will go here</p>
@@ -84,6 +89,7 @@
         <div class="column col">
             <div class="card h-100">
                 <div class="card-body">
+                    <img class="pfp" src="/alex.jpg">
                     <h5 class="card-title">Alexandra Rios</h5>
                     <hr class="abouthr">
                     <p class="card-text">Contributions to project will go here</p>
@@ -99,6 +105,7 @@
         <div class="column col">
             <div class="card h-100">
                 <div class="card-body">
+                    <img class="pfp" src="/leonard.jpg">
                     <h5 class="card-title">Leonard Contreras</h5>
                     <hr class="abouthr">
                     <p class="card-text">Contributions to project will go here</p>
@@ -114,23 +121,23 @@
         <div class="column col">
             <div class="card h-100">
                 <div class="card-body">
+                    <img class="pfp" src="/marcus.png">
                     <h5 class="card-title">Marcus Munoz</h5>
                     <hr class="abouthr">
                     <p class="card-text">Contributions to project will go here</p>
                     <br>
                     <div class="icons">
-                    <img src="/github24.png">
-                    <img src="/linkedin24.png">
+                        <img src="/github24.png">
+                        <img src="/linkedin24.png">
                     </div>
                     <footer>#OpenToWork</footer>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-
-
-<footer th:replace="partials/partials.html :: footer"></footer>
+    <footer th:replace="partials/partials.html :: footer"></footer>
 </body>
 
 </html>
