@@ -99,6 +99,10 @@ section {
     margin: auto;
 }
 
+#errorMsgBox {
+    margin: 0 5%;
+}
+
 .goat-container {
     width: 100%;
 }

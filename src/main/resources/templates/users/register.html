@@ -14,7 +14,11 @@
             <div class="d-flex card reg-card col-md">
                 <h2 class="d-flex justify-content-center reg-header card">Create an account</h2>
                 <br>
-
+                <div id="errorMsgBox">
+                    <div class="errorMsg" th:if="${errorList.size() &gt; 0}" th:each="error:${errorList}"><small
+                            th:text="${error}"></small>
+                    </div>
+                </div>
                 <form th:action="@{/register}" method="POST" th:object="${user}" class="content-center">
                     <div class="mb-3">
                         <input id="username" placeholder="Username" th:field="*{username}" class="form-control"/>

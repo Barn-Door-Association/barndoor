@@ -3,12 +3,17 @@ package com.codeup.barndoor.controllers;
 import com.codeup.barndoor.models.User;
 import com.codeup.barndoor.models.UserRequest;
 import com.codeup.barndoor.repositories.UserRepository;
+import com.mysql.cj.callback.UsernameCallback;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -28,7 +33,30 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user, Errors validation, Model model) {
+        List<String> errorMsg = new ArrayList<>();
+//If username is already in the database
+        if(userDao.findByUsername(user.getUsername()) !=null) {
+            validation.rejectValue("username", "*Username already exists");
+            errorMsg.add("*Username already exists");
+        }
+//If email is already in database
+        if(userDao.findByEmail(user.getEmail()) !=null) {
+            validation.rejectValue("email", "*This email is already used");
+            errorMsg.add("*This email is already used");
+        }
+//If Ranch Name is already in database
+        if (userDao.findByRanchName(user.getRanchName()) != null) {
+            validation.rejectValue("RanchName", "*This Ranch Name already exists");
+            errorMsg.add("*This Ranch Name already exists");
+        }
+//Consolidates
+        if(validation.hasErrors()){
+            model.addAttribute("errorList", errorMsg);
+            model.addAttribute("user", user);
+            return "users/register";
+        }
+
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
