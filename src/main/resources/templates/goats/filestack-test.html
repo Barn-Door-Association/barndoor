@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="">
+    <input type="file" id="filestack-input">
+</form>
+
+
+<th:block th:replace="partials/partials.html :: scripts"></th:block>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    const client = filestack.init(/*[[${filestackKey}]]*/);
+    $("#filestack-input").click( function () {
+
+        client.picker().open().then(function (res){
+            console.log(res);
+        });
+    });
+
+
+    /*]]>*/
+</script>
+</body>
+</html>
