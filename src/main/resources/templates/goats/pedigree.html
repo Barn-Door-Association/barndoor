@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,6 +11,7 @@
 </head>
 <body>
 <h1>hello</h1>
+<input type="hidden" id="goat-id" th:value="${goatId}">
 <div class="chart" id="OrganiseChart1"></div>
 <script src="/js/vendor/raphael.js"></script>
 <script src="/js/vendor/Treant.js"></script>
@@ -18,5 +19,8 @@
 <script src="/js/vendor/jquery.mousewheel.js"></script>
 <script src="/js/vendor/perfect-scrollbar.js"></script>
 <script src="/js/pedigree.js"></script>
+<script>
+    getPedigree($("#goat-id").val())
+</script>
 </body>
 </html>

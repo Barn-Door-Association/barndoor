@@ -57,7 +57,8 @@ public class GoatController {
     }
 
     @GetMapping("/goats/{id}/pedigree")
-    public String showPedigree(@PathVariable long id) {
+    public String showPedigree(@PathVariable long id, Model model) {
+        model.addAttribute("goatId", id);
         return "goats/pedigree";
     }
 

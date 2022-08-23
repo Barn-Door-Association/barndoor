@@ -1,6 +1,8 @@
-fetch("/pedigree/25")
+function getPedigree (id) {
+fetch("/pedigree/" + id)
     .then(res => res.json())
     .then(data => {
+        console.log(data);
         var config = {
                 container: "#OrganiseChart1",
                 rootOrientation: 'WEST', // NORTH || EAST || WEST || SOUTH
@@ -18,45 +20,46 @@ fetch("/pedigree/25")
             },
             goat = {
                 text: {
-                    name: "GOAT",
-                    title: "Chief executive officer",
-                    contact: "Tel: 01 213 123 134",
+                    name: data.name,
+                    breed: data.breed,
+                    sex: data.sex,
                 },
                 image: "../headshots/2.jpg",
                 HTMLid: "goat"
             },
 
-            cto = {
+            parent1 = {
                 parent: goat,
                 text: {
-                    name: "Joe Linux",
+                    name: data.parent[0].name,
                     title: "Chief Technology Officer",
                 },
-                stackChildren: true,
+                // stackChildren: true,
                 image: "../headshots/1.jpg",
                 HTMLid: "coo"
             },
-            cbo = {
+            parent2 = {
                 parent: goat,
                 text: {
                     name: "Linda May",
                     title: "Chief Business Officer",
                 },
                 image: "../headshots/5.jpg",
-                HTMLid: "cbo"
+                HTMLid: "parent2"
             },
-            cdo = {
-                parent: goat,
-                text: {
-                    name: "John Green",
-                    title: "Chief accounting officer",
-                    contact: "Tel: 01 213 123 134",
-                },
-                image: "../headshots/6.jpg",
-                HTMLid: "cdo"
-            },
+            // cdo = {
+            //     parent: parent1,
+            //     text: {
+            //         name: "John Green",
+            //         title: "Chief accounting officer",
+            //         contact: "Tel: 01 213 123 134",
+            //     },
+            //     image: "../headshots/6.jpg",
+            //     HTMLid: "cdo"
+            // },
+
             cio = {
-                parent: cto,
+                parent: parent1,
                 text: {
                     name: "Ron Blomquist",
                     title: "Chief Information Security Officer"
@@ -65,7 +68,7 @@ fetch("/pedigree/25")
                 HTMLid: "cio"
             },
             ciso = {
-                parent: cto,
+                parent: parent1,
                 text: {
                     name: "Michael Rubin",
                     title: "Chief Innovation Officer",
@@ -74,30 +77,31 @@ fetch("/pedigree/25")
                 image: "../headshots/9.jpg",
                 HTMLid: "ciso"
             },
-            cio2 = {
-                parent: cdo,
-                text: {
-                    name: "Erica Reel",
-                    title: "Chief Customer Officer"
-                },
-                link: {
-                    href: "http://www.google.com",
-                    target: "_blank"
-                },
-                image: "../headshots/10.jpg",
-                HTMLid: "cio2"
-            },
-            ciso2 = {
-                parent: cbo,
-                text: {
-                    name: "Alice Lopez",
-                    title: "Chief Communications Officer"
-                },
-                image: "../headshots/7.jpg",
-                HTMLid: "ciso2"
-            },
+            // cio2 = {
+            //     parent: parent1,
+            //     text: {
+            //         name: "Erica Reel",
+            //         title: "Chief Customer Officer"
+            //     },
+            //     link: {
+            //         href: "http://www.google.com",
+            //         target: "_blank"
+            //     },
+            //     image: "../headshots/10.jpg",
+            //     HTMLid: "cio2"
+            // },
+
+            // ciso2 = {
+            //     parent: parent2,
+            //     text: {
+            //         name: "Alice Lopez",
+            //         title: "Chief Communications Officer"
+            //     },
+            //     image: "../headshots/7.jpg",
+            //     HTMLid: "ciso2"
+            // },
             ciso3 = {
-                parent: cbo,
+                parent: parent2,
                 text: {
                     name: "Mary Johnson",
                     title: "Chief Brand Officer"
@@ -106,7 +110,7 @@ fetch("/pedigree/25")
                 HTMLid: "ciso2"
             },
             ciso4 = {
-                parent: cbo,
+                parent: parent2,
                 text: {
                     name: "Kirk Douglas",
                     title: "Chief Business Development Officer"
@@ -118,15 +122,16 @@ fetch("/pedigree/25")
         ALTERNATIVE = [
             config,
             goat,
-            cto,
-            cbo,
-            cdo,
+            parent1,
+            parent2,
+            // cdo,
             cio,
             ciso,
-            cio2,
-            ciso2,
+            // cio2,
+            // ciso2,
             ciso3,
             ciso4
         ];
         new Treant( ALTERNATIVE );
     });
+}
