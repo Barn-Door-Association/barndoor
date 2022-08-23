@@ -90,7 +90,7 @@
         <div class="d-flex justify-content-evenly">
             <button class="goat-button" id="vaccine-records-button">Vaccine Records</button>
             <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
-            <form th:action="@{/pedigree/{id}(id=${goat.id})}" method="GET">
+            <form th:action="@{/goats/{id}/pedigree(id=${goat.id})}" method="GET">
                 <input type="submit" value="View Pedigree" class="goat-button">
             </form>
         </div>
