@@ -17,15 +17,18 @@
 
 .abouttext {
     text-align: left;
-    font-family: "Times New Roman";
+    /*font-family: "Times New Roman";*/
+    padding: 0 10px;
 }
 
 .abouthr {
     height: 5px;
     border: 1px solid black;
     border-radius: 5px;
-    background: linear-gradient(to left, #198754, red );
+    background: linear-gradient(to left, #198754, red);
     width: 20%;
+    /*text-align: center;*/
+    margin: 16px auto;
 }
 
 .goat-img2 {
@@ -34,7 +37,7 @@
 }
 
 .icons {
-   display: flex;
+    display: flex;
     justify-content: center;
 }
 
@@ -50,5 +53,6 @@
 }
 
 .card-body {
-
+    text-align: center;
+    padding: 14px;
 }
