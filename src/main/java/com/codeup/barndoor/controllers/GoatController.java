@@ -18,12 +18,9 @@ public class GoatController {
     @Autowired
     private final GoatRepository goatDao;
     private final HerdRepository herdDao;
-
     private final VaccineRecordRepository vaccineRecordDao;
 
-
     public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao) {
- 
         this.goatDao = goatDao;
         this.herdDao = herdDao;
         this.vaccineRecordDao = vaccineRecordDao;
