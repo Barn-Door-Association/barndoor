@@ -47,4 +47,5 @@ public class HerdRequest {
     public void setHerdId(long herdId) {
         this.herdId = herdId;
     }
+
 }
