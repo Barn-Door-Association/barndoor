@@ -116,6 +116,8 @@
     });
 
 
+
+
     // Add form for adding a new goat
     const addGoatForm = () => {
         return `<div class="modal-wrapper container py-3">
@@ -220,6 +222,7 @@
                 herdId: $("#herd-id").val(),
                 herdName: $("#name").val(),
                 description: $("#description").val()
+
             })
         }
         settings.headers[header] = token;
@@ -228,7 +231,6 @@
                 location.reload();
             })
     }
-
 </script>
 </body>
 </html>

@@ -9,6 +9,7 @@
 <form action="">
     <button id="file-upload-btn">Upload File</button>
     <input id="file-path" type="hidden" name="file-path">
+    <img src="" alt="">
 </form>
 <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -31,6 +32,7 @@
         onFileUploadFinished: callback => {
             const filestackUrl = callback.url;
             $('#file-path').val(filestackUrl);
+            $('img').attr('');
             alert("Upload Success!")
         }
     };

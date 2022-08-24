@@ -81,8 +81,33 @@
             integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
             crossorigin="anonymous"></script>
 <!--    Filestack API -->
-    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js">
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<!--    Filestack Call-->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
 
+        "use strict";
+
+        const key = /*[[${filestackKey}]]*/;
+
+        const client = filestack.init(key);
+
+        const options = {
+            fromSources: ["local_file_system"],
+            accept: ["image/*"],
+            onFileUploadFinished: callback => {
+                const filestackUrl = callback.url;
+                $('#file-path').val(filestackUrl);
+                alert("Upload Success!")
+            }
+        };
+
+        $('#file-upload-btn').click(function (event){
+            event.preventDefault();
+            client.picker(options).open();
+        })
+
+        /*]]>*/
     </script>
 </th:block>
 </footer>
