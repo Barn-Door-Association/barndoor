@@ -23,8 +23,6 @@ public class GoatController {
 
 
     public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao) {
-
-    public GoatController(GoatRepository goatDao, HerdRepository herdDao) {
  
         this.goatDao = goatDao;
         this.herdDao = herdDao;
