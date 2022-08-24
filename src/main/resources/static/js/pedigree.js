@@ -23,7 +23,7 @@ function getPedigree(id) {
                         name: data.name,
                         breed: data.breed,
                         sex: data.sex,
-                        dob: data.dob
+                        dob: new Date(data.dob).toLocaleDateString()
                     },
                     link: {
                         href: "/goat/" + data.id,
@@ -36,13 +36,13 @@ function getPedigree(id) {
                 parent1 = {
                     parent: goat,
                     text: {
-                        name: data.parents[0].name,
-                        breed: data.parents[0].breed,
-                        sex: data.parents[0].sex,
-                        dob: data.parents[0].dob
+                        name: data.parents[0]?.name === undefined ? "Unknown" : data.parents[0].name,
+                        breed: data.parents[0]?.breed === undefined ? "" : data.parents[0].breed,
+                        sex: data.parents[0]?.sex === undefined ? "" : data.parents[0].sex,
+                        dob: data.parents[0]?.dob === undefined ? "" : new Date(data.parents[0]?.dob).toLocaleDateString()
                     },
                     link: {
-                        href: "/goat/" + data.parents[0].id,
+                        href: data.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[0]?.id,
                         target: "_blank"
                     },
                     image: "../headshots/1.jpg",
@@ -51,13 +51,13 @@ function getPedigree(id) {
                 parent2 = {
                     parent: goat,
                     text: {
-                        name: data.parents[1].name,
-                        breed: data.parents[1].breed,
-                        sex: data.parents[1].sex,
-                        dob: data.parents[1].dob
+                        name: data.parents[1]?.name === undefined ? "Unknown" : data.parents[1].name,
+                        breed: data.parents[1]?.breed === undefined ? "" : data.parents[1].breed,
+                        sex: data.parents[1]?.sex === undefined ? "" : data.parents[1].sex,
+                        dob: data.parents[1]?.dob === undefined ? "" : new Date(data.parents[1]?.dob).toLocaleDateString()
                     },
                     link: {
-                        href: "/goat/" + data.parents[1].id,
+                        href: data.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[1].id,
                         target: "_blank"
                     },
                     image: "../headshots/5.jpg",
@@ -66,13 +66,13 @@ function getPedigree(id) {
                 grandParent11 = {
                     parent: parent1,
                     text: {
-                        name: data.parents[0].parents[0].name,
-                        breed: data.parents[0].parents[0].breed,
-                        sex: data.parents[0].parents[0].sex,
-                        dob: data.parents[0].parents[0].dob,
+                        name: data.parents[0]?.parents[0]?.name === undefined ? "Unknown" : data.parents[0].parents[0].name,
+                        breed: data.parents[0]?.parents[0]?.breed === undefined ? "" : data.parents[0].parents[0].breed,
+                        sex: data.parents[0]?.parents[0]?.sex === undefined ? "" : data.parents[0].parents[0].sex,
+                        dob: data.parents[0]?.parents[0]?.dob === undefined ? "" : new Date(data.parents[0]?.parents[0].dob).toLocaleDateString()
                     },
                     link: {
-                        href: "/goat/" + data.parents[0].parents[0].id,
+                        href: data.parents[0]?.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[0].parents[0].id,
                         target: "_blank"
                     },
                     image: "../headshots/8.jpg",
@@ -81,13 +81,13 @@ function getPedigree(id) {
                 grandParent12 = {
                     parent: parent1,
                     text: {
-                        name: data.parents[0].parents[1].name,
-                        breed: data.parents[0].parents[1].breed,
-                        sex: data.parents[0].parents[1].sex,
-                        dob: data.parents[0].parents[1].dob,
+                        name: data.parents[0]?.parents[1]?.name === undefined ? "Unknown" : data.parents[0].parents[1].name,
+                        breed: data.parents[0]?.parents[1]?.breed === undefined ? "" : data.parents[0].parents[1].breed,
+                        sex: data.parents[0]?.parents[1]?.sex === undefined ? "" : data.parents[0].parents[1].sex,
+                        dob: data.parents[0]?.parents[1]?.dob === undefined ? "" : new Date(data.parents[0]?.parents[1].dob).toLocaleDateString()
                     },
                     link: {
-                        href: "/goat/" + data.parents[0].parents[1].id,
+                        href: data.parents[0]?.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[0].parents[1].id,
                         target: "_blank"
                     },
                     image: "../headshots/9.jpg",
@@ -96,13 +96,13 @@ function getPedigree(id) {
                 grandParent21 = {
                     parent: parent2,
                     text: {
-                        name: data.parents[1].parents[0].name,
-                        breed: data.parents[1].parents[0].breed,
-                        sex: data.parents[1].parents[0].sex,
-                        dob: data.parents[1].parents[0].dob,
+                        name: data.parents[1]?.parents[0]?.name === undefined ? "Unknown" : data.parents[1].parents[0].name,
+                        breed: data.parents[1]?.parents[0]?.breed === undefined ? "" : data.parents[1].parents[0].breed,
+                        sex: data.parents[1]?.parents[0]?.sex === undefined ? "" : data.parents[1].parents[0].sex,
+                        dob: data.parents[1]?.parents[0]?.dob === undefined ? "" : new Date(data.parents[1]?.parents[0].dob).toLocaleDateString()
                     },
                     link: {
-                        href: "/goat/" + data.parents[1].parents[0].id,
+                        href: data.parents[1]?.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[1].parents[0].id,
                         target: "_blank"
                     },
                     image: "../headshots/4.jpg",
@@ -111,13 +111,13 @@ function getPedigree(id) {
                 grandParent22 = {
                     parent: parent2,
                     text: {
-                        name: data.parents[1].parents[1].name,
-                        breed: data.parents[1].parents[1].breed,
-                        sex: data.parents[1].parents[1].sex,
-                        dob: data.parents[1].parents[1].dob,
+                        name: data.parents[1]?.parents[1]?.name === undefined ? "Unknown" : data.parents[1].parents[1].name,
+                        breed: data.parents[1]?.parents[1]?.breed === undefined ? "" : data.parents[1].parents[1].breed,
+                        sex: data.parents[1]?.parents[1]?.sex === undefined ? "" : data.parents[1].parents[1].sex,
+                        dob: data.parents[1]?.parents[1]?.dob === undefined ? "" : new Date(data.parents[1]?.parents[1].dob).toLocaleDateString()
                     },
                     link: {
-                        href: "/goat/" + data.parents[1].parents[1].id,
+                        href: data.parents[1]?.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[1].parents[1].id,
                         target: "_blank"
                     },
                     image: "../headshots/11.jpg",
@@ -131,7 +131,6 @@ function getPedigree(id) {
                 parent2,
                 grandParent11,
                 grandParent12,
-                // cio2,
                 grandParent21,
                 grandParent22
             ];
