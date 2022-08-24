@@ -27,18 +27,13 @@
                 <h5 th:text="${record.dosageInCcs}"></h5>
                 <input type="hidden" th:value="${record.id}" name="vaccine-id">
             </div>
-            <div>
-                <button class="goat-button" th:id="" value="Edit"></button>
+            <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+                <button class="goat-button" id="close-records-view">Cancel</button>
+                <button class="goat-button" id="add-vaccine-button">Add Record</button>
             </div>
-
-        </div>
-        <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-            <button class="goat-button" id="close-records-view">Cancel</button>
-            <button class="goat-button" id="add-vaccine-button">Add Record</button>
         </div>
     </div>
 </div>
-
 <!-- Add Vaccine Modal container-->
 <div id="add-vaccine-modal" class="modal-container" style="display: none">
     <div class="modal-wrapper container py-3">
@@ -53,7 +48,8 @@
         </div>
         <div>
             <label for="administered" style="width: 150px;" class="">Date Administered:</label>
-            <input type="text" id="add-administered" name="administered" style="width:300px;" placeholder="yyyy-mm-dd">
+            <input type="text" id="add-administered" name="administered" style="width:300px;"
+                   placeholder="yyyy-mm-dd">
         </div>
         <div>
             <label for="booster" style="width: 150px;" class="">Is this a booster?</label>
@@ -171,7 +167,8 @@
         crossorigin="anonymous"></script>
 
 <!-- JQuery CDN-->
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous">
 </script>
 
