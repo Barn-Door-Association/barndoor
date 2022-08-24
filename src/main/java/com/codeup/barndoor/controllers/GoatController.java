@@ -1,17 +1,15 @@
 package com.codeup.barndoor.controllers;
 
-import com.codeup.barndoor.models.EditGoatRequest;
-import com.codeup.barndoor.models.Goat;
-import com.codeup.barndoor.models.GoatRequest;
+import com.codeup.barndoor.models.*;
 import com.codeup.barndoor.repositories.GoatRepository;
 import com.codeup.barndoor.repositories.HerdRepository;
+import com.codeup.barndoor.repositories.VaccineRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
 
 @Controller
@@ -21,9 +19,14 @@ public class GoatController {
     private final GoatRepository goatDao;
     private final HerdRepository herdDao;
 
-    public GoatController(GoatRepository goatDao, HerdRepository herdDao) {
+    private final VaccineRecordRepository vaccineRecordDao;
+
+
+    public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao) {
+ 
         this.goatDao = goatDao;
         this.herdDao = herdDao;
+        this.vaccineRecordDao = vaccineRecordDao;
     }
 
     @GetMapping("/goat/{id}")
@@ -86,4 +89,16 @@ public class GoatController {
         goatDao.save(editedGoat);
         return "goat";
     }
+    @ResponseBody
+    @PostMapping("/edit/vaccine/id")
+    public String editVaccine(@RequestBody VaccineRecord vaccineRecord) {
+        VaccineRecord editedVaccine = vaccineRecordDao.findById(vaccineRecord.getId());
+        editedVaccine.setDosageInCcs(vaccineRecord.getDosageInCcs());
+        editedVaccine.setDateAdministered(vaccineRecord.getDateAdministered());
+//        editedVaccine.setBooster(vaccineRecord.get());
+        editedVaccine.setVaccine(vaccineRecord.getVaccine());
+        vaccineRecordDao.save(editedVaccine);
+        return "goat";
+    }
+
 }
