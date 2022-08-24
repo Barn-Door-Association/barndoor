@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title> Chart example 1 </title>
     <link rel="stylesheet" href="/css/vendor/Treant.css">
     <link rel="stylesheet" href="/css/vendor/perfect-scrollbar.css">
+    <head th:replace="partials/partials.html :: head('Pedigree')"></head>
     <link rel="stylesheet" href="/css/pedigree.css">
+    <link rel="stylesheet" href="/css/barndoor.css">
 </head>
 <body>
-<h1>hello</h1>
+<nav th:replace="partials/partials.html :: nav"></nav>
+<h1>Viewing pedigree for: <span th:text="${goat.name}"></span></h1>
+<input type="hidden" id="goat-id" th:value="${goat.id}">
 <div class="chart" id="OrganiseChart1"></div>
 <script src="/js/vendor/raphael.js"></script>
 <script src="/js/vendor/Treant.js"></script>
@@ -18,5 +21,9 @@
 <script src="/js/vendor/jquery.mousewheel.js"></script>
 <script src="/js/vendor/perfect-scrollbar.js"></script>
 <script src="/js/pedigree.js"></script>
+<script>
+    getPedigree($("#goat-id").val())
+</script>
+<footer th:replace="partials/partials.html :: footer"></footer>
 </body>
 </html>
