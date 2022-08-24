@@ -12,9 +12,14 @@
 </head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<h1>Viewing pedigree for: <span th:text="${goat.name}"></span></h1>
+<section class="py-5">
+<div class="d-flex justify-content-center">
+    <h1>Viewing pedigree for: <span th:text="${goat.name}"></span></h1>
+</div>
 <input type="hidden" id="goat-id" th:value="${goat.id}">
 <div class="chart" id="OrganiseChart1"></div>
+    <footer th:replace="partials/partials.html :: footer"></footer>
+</section>
 <script src="/js/vendor/raphael.js"></script>
 <script src="/js/vendor/Treant.js"></script>
 <script src="/js/vendor/jquery.min.js"></script>
@@ -24,6 +29,7 @@
 <script>
     getPedigree($("#goat-id").val())
 </script>
-<footer th:replace="partials/partials.html :: footer"></footer>
+
+
 </body>
 </html>
