@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
-
 @Controller
 public class GoatController {
 
@@ -24,6 +23,9 @@ public class GoatController {
 
 
     public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao) {
+
+    public GoatController(GoatRepository goatDao, HerdRepository herdDao) {
+ 
         this.goatDao = goatDao;
         this.herdDao = herdDao;
         this.vaccineRecordDao = vaccineRecordDao;
@@ -56,19 +58,17 @@ public class GoatController {
     @GetMapping("/pedigree/{id}")
     @ResponseBody
     public Goat getPedigree(@PathVariable long id) {
-        Goat goat = goatDao.findById(id);
-        return goat;
+        return goatDao.findById(id);
     }
 
     @GetMapping("/goats/{id}/pedigree")
-    public String showPedigree(@PathVariable long id) {
+    public String showPedigree(@PathVariable long id, Model model) {
+        Goat goat = goatDao.findById(id);
+        model.addAttribute("goat", goat);
         return "goats/pedigree";
     }
 
-
     // controller for edit goat feature
-    // testing functionality
-//    @GetMapping
     @ResponseBody
     @PostMapping("/edit/goat")
     public String editGoat(@RequestBody EditGoatRequest editGoatRequest) {

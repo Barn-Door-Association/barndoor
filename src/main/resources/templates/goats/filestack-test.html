@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Example</title>
+</head>
+<body>
+<h1>Filestack Upload Example</h1>
+<form action="">
+    <button id="file-upload-btn">Upload File</button>
+    <input id="file-path" type="hidden" name="file-path">
+</form>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    "use strict";
+
+    const key = /*[[${filestackKey}]]*/;
+
+    const client = filestack.init(key);
+
+    const options = {
+        fromSources: ["local_file_system"],
+        accept: ["image/*"],
+        onFileUploadFinished: callback => {
+            const filestackUrl = callback.url;
+            $('#file-path').val(filestackUrl);
+            alert("Upload Success!")
+        }
+    };
+
+    $('#file-upload-btn').click(function (event){
+        event.preventDefault();
+        client.picker(options).open();
+    })
+
+    /*]]>*/
+</script>
+</body>
+</html>

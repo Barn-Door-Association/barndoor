@@ -1,6 +1,5 @@
 package com.codeup.barndoor.config;
 
-
 import com.codeup.barndoor.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,8 +60,8 @@ public class SecurityConfiguration {
                         "/pedigree", "/pedigree/{id}", // only authenticated users can view pedigree information
                         "/profile" // only authenticated users can view or edit profile information
                 )
-                .authenticated();
+                .permitAll(); // remove and add .authenticated
+//                .authenticated();
         return http.build();
     }
-
 }

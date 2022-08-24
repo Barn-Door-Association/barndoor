@@ -151,6 +151,9 @@
         <div class="d-flex justify-content-evenly">
             <button class="goat-button" id="vaccine-records-button">Vaccine Records</button>
             <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
+            <form th:action="@{/goats/{id}/pedigree(id=${goat.id})}" method="GET">
+                <input type="submit" value="View Pedigree" class="goat-button">
+            </form>
         </div>
     </div>
 </container>
@@ -172,7 +175,7 @@
 <!--  Custom Script  -->
 <script>
 
-    <!--vaccine modal buttons -->
+    // vaccine modal buttons
     $("#vaccine-records-button").on("click", () => {
         $("#modal-container").attr("style", "display: block;");
     });
@@ -227,7 +230,6 @@
         });
 
     });
-
 
     //    function for edit goat modal to send updated information to the goat table and reload the page automatically once saved with updated goat info
     const editGoat = () => {

@@ -11,7 +11,7 @@ body {
 }
 
 body.watermark {
-    background: url("BARNDOOR_3.png") no-repeat center center fixed;
+    background: url("../img/BARNDOOR_3.png") no-repeat center center fixed;
     background-size: 25%;
     opacity: 90%;
 }
@@ -97,6 +97,10 @@ section {
     justify-content: center;
     display: block;
     margin: auto;
+}
+
+#errorMsgBox {
+    margin: 0 5%;
 }
 
 .goat-container {

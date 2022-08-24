@@ -1,7 +1,7 @@
 USE barndoor_db;
 
 insert into users (email, first_name, last_name, password, ranch_name, username)
-values ('nia.d.watson@gmail.com', 'Nia', 'Watson', '$2a$10$3HPsxjm.bqA5vv1k5spNu.LmXk6xOuISwfcnatwQgrWdHAZn0YL16',
+values ('nia.d.watson@gmail.com', 'Nia', 'Watson', 'password',
         'Watson & Son, LLC', 'goat_queen');
 
 insert into herds (herd_name, description, user_id)
