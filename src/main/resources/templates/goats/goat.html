@@ -137,7 +137,7 @@
 
 <!--Goat profile card available on first view of page-->
 <container class="d-flex justify-content-center" id="goat-profile-container">
-    <img src="/img/goatpic.jpeg" alt="" style="width: 350px;">
+    <img th:src="${goat.img}" alt="" style="width: 350px;">
     <div class="d-flex card">
         <div>
             <h1 th:text="${goat.name}"></h1>
