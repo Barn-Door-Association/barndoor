@@ -54,7 +54,6 @@ public class UserController {
             validation.rejectValue("RanchName", "*This Ranch Name already exists");
             errorMsg.add("*This Ranch Name already exists");
         }
-
 //  If any fields are left blank
         if (user.getUsername().isEmpty() || user.getFirstName().isEmpty() || user.getLastName().isEmpty() || user.getPassword().isEmpty() || user.getEmail().isEmpty() || user.getRanchName().isEmpty()) {
             validation.rejectValue("RanchName", "*You must provide a Ranch Name");
@@ -69,7 +68,6 @@ public class UserController {
             );
             errorMsg.add("*This is an invalid password");
         }
-
 //  Consolidates
         if (validation.hasErrors()) {
             model.addAttribute("errorList", errorMsg);
@@ -77,10 +75,6 @@ public class UserController {
             return "users/register";
         }
 
-//Validates Password input meets criteria
-        if (!Password.isValid(user.getPassword())) {
-            validation.rejectValue
-        }
 
 //  Hashes Password
         String hash = passwordEncoder.encode(user.getPassword());
