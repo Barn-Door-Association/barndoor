@@ -36,72 +36,53 @@ public class UserController {
     @PostMapping("/register")
     public String saveUser(@ModelAttribute User user, Errors validation, Model model) {
         List<String> errorMsg = new ArrayList<>();
-//If username is already in the database
-        if(userDao.findByUsername(user.getUsername()) !=null) {
+
+//  If username is already in the database
+        if (userDao.findByUsername(user.getUsername()) != null) {
             validation.rejectValue("username", "*Username already exists");
             errorMsg.add("*Username already exists");
         }
 
-//If email is already in database
-        if(userDao.findByEmail(user.getEmail()) !=null) {
+//  If user email is already in database
+        if (userDao.findByEmail(user.getEmail()) != null) {
             validation.rejectValue("email", "*This email is already used");
             errorMsg.add("*This email is already used");
         }
 
-//If Ranch Name is already in database
+//  If the Ranch Name is already in database
         if (userDao.findByRanchName(user.getRanchName()) != null) {
             validation.rejectValue("RanchName", "*This Ranch Name already exists");
             errorMsg.add("*This Ranch Name already exists");
         }
-        //If username field is blank
-        if(userDao.findByUsername(user.getUsername()) == null) {
-            validation.rejectValue("username", "*Username cannot be blank");
-            errorMsg.add("*Username cannot be blank");
-        }
 
-        //If First Name field is blank
-        if(userDao.findByUsername(user.getFirstName()) == null) {
-            validation.rejectValue("username", "*First Name cannot be blank");
-            errorMsg.add("*First Name cannot be blank");
-        }
-
-        //If Last Name field is blank
-        if(userDao.findByUsername(user.getLastName()) == null) {
-            validation.rejectValue("LastName", "*Last Name cannot be blank");
-            errorMsg.add("*Last Name cannot be blank");
-        }
-
-        //If Password field is blank
-        if(userDao.findByUsername(user.getPassword()) == null) {
-            validation.rejectValue("Password", "*You must provide a password");
-            errorMsg.add("*You must provide a password");
-        }
-
-        //If Email field is blank
-        if(userDao.findByUsername(user.getEmail()) == null) {
-            validation.rejectValue("Email", "*You must provide an email");
-            errorMsg.add("*You must provide an email");
-        }
-
-        //If Ranch Name field is blank
-        if(userDao.findByUsername(user.getRanchName()) == null) {
+//  If any fields are left blank
+        if (user.getUsername().isEmpty() || user.getFirstName().isEmpty() || user.getLastName().isEmpty() || user.getPassword().isEmpty() || user.getEmail().isEmpty() || user.getRanchName().isEmpty()) {
             validation.rejectValue("RanchName", "*You must provide a Ranch Name");
-            errorMsg.add("*You must provide a Ranch Name");
+            errorMsg.add("*All fields must be filled out");
+        }
+//  Validates if Password meets criteria
+        if (!Password.isValid(user.getPassword())) {
+            validation.rejectValue(
+                    "password",
+                    "Invalid Password",
+                    "Password must be 8 or more characters, contain at least one upper and lowercase letter, a number and a symbol."
+            );
+            errorMsg.add("*This is an invalid password");
         }
 
-//Consolidates
-        if(validation.hasErrors()){
+//  Consolidates
+        if (validation.hasErrors()) {
             model.addAttribute("errorList", errorMsg);
             model.addAttribute("user", user);
             return "users/register";
         }
 
 //Validates Password input meets criteria
-//        if (!Password.isValid(user.getPassword())) {
-//            validation.rejectValue
-//        }
+        if (!Password.isValid(user.getPassword())) {
+            validation.rejectValue
+        }
 
-//Hashes Password
+//  Hashes Password
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
