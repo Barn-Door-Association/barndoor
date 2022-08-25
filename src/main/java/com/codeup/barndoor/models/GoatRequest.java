@@ -13,8 +13,8 @@ public class GoatRequest {
     private long herdId;
     private String sireName;
     private String damName;
-
     private String img;
+
     public GoatRequest() {
     }
 

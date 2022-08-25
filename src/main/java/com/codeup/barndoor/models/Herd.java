@@ -17,7 +17,6 @@ public class Herd {
     @Column(nullable = false)
     private String description;
 
-
     // Adds relationship to User table using "user_id" as foreign key
     @ManyToOne
     @JoinColumn(name = "user_id") //assigns foreign key

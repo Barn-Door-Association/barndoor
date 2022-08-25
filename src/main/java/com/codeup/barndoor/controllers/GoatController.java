@@ -39,7 +39,19 @@ public class GoatController {
     @ResponseBody
     @PostMapping("/add/new/goat")
     public String addNewGoat(@RequestBody GoatRequest goatRequest) {
-        Goat newGoat = new Goat(goatRequest.getTagId(), goatRequest.getName(), goatRequest.getDob(), goatRequest.getSex(), goatRequest.getBreed(), goatRequest.getWeightInPounds(), goatRequest.getImg(), herdDao.findById(goatRequest.getHerdId()));
+        if(goatRequest.getImg() == null || goatRequest.getImg().equals("")){
+            goatRequest.setImg("/img/defaultgoat.jpg");
+        }
+        Goat newGoat = new Goat(
+                goatRequest.getTagId(),
+                goatRequest.getName(),
+                goatRequest.getDob(),
+                goatRequest.getSex(),
+                goatRequest.getBreed(),
+                goatRequest.getWeightInPounds(),
+                goatRequest.getImg(),
+                herdDao.findById(goatRequest.getHerdId())
+        );
         Goat sire = goatDao.findByName(goatRequest.getSireName());
         Goat dam = goatDao.findByName(goatRequest.getDamName());
         Set<Goat> parents = new HashSet<>();
