@@ -99,6 +99,7 @@ public class UserController {
     @PostMapping("/profile/edit")
     public String editProfilePage(@RequestBody UserRequest userRequest) {
         User editedUser = userDao.findById(userRequest.getId());
+        System.out.println(editedUser.getUsername());
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         user.setRanchName(userRequest.getRanchName());
         user.setFirstName(userRequest.getFirstName());
@@ -109,6 +110,6 @@ public class UserController {
         editedUser.setLastName(userRequest.getLastName());
         editedUser.setEmail(userRequest.getEmail());
         userDao.save(editedUser);
-        return "yo";
+        return "users/profile";
     }
 }
