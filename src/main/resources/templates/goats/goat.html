@@ -27,10 +27,10 @@
                 <h5 th:text="${record.dosageInCcs}"></h5>
                 <input type="hidden" th:value="${record.id}" name="vaccine-id">
             </div>
-            <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-                <button class="goat-button" id="close-records-view">Cancel</button>
-                <button class="goat-button" id="add-vaccine-button">Add Record</button>
-            </div>
+        </div>
+        <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+            <button class="goat-button" id="close-records-view">Cancel</button>
+            <button class="goat-button" id="add-vaccine-button">Add Record</button>
         </div>
     </div>
 </div>
@@ -39,20 +39,20 @@
     <div class="modal-wrapper container py-3">
         <div><h3>Add Vaccine Details Below</h3></div>
         <div>
-            <label for="vaccine" style="width: 150px;" class="">Vaccine Name:</label>
+            <label for="add-vaccine" style="width: 150px;" class="">Vaccine Name:</label>
             <input type="text" id="add-vaccine" name="vaccine" style="width:300px;">
         </div>
         <div>
-            <label for="dosage" style="width: 150px;" class="">Dosage in Ccs:</label>
+            <label for="add-dosage" style="width: 150px;" class="">Dosage in Ccs:</label>
             <input type="text" id="add-dosage" name="dosage" style="width:300px;">
         </div>
         <div>
-            <label for="administered" style="width: 150px;" class="">Date Administered:</label>
+            <label for="add-administered" style="width: 150px;" class="">Date Administered:</label>
             <input type="text" id="add-administered" name="administered" style="width:300px;"
                    placeholder="yyyy-mm-dd">
         </div>
         <div>
-            <label for="booster" style="width: 150px;" class="">Is this a booster?</label>
+            <label for="add-booster" style="width: 150px;" class="">Is this a booster?</label>
             <input type="text" id="add-booster" name="booster" style="width:300px;">
         </div>
         <div id="add-vaccine-button-container" class="d-flex justify-content-evenly py-1">
@@ -91,13 +91,13 @@
     </div>
 </div>
 
-<!--model injection container for edit goat feature-->
+<!-- Edit Goat modal container -->
 <div id="edit-goat-modal-container" class="modal-container" style="display: none;">
     <div class="modal-wrapper container py-3">
         <div><h3>Edit Goat Details Below:</h3></div>
         <div>
             <label for="name" style="width: 150px;" class="">Name</label>
-            <input type="text" id="name" name="name" style="width:300px;">
+            <input type="text" id="name" name="name" style="width:300px;" th:value="${goat.name}">
         </div>
         <div>
             <label for="dob" style="width: 150px;" class="">Date of birth</label>
@@ -105,23 +105,23 @@
         </div>
         <div>
             <label for="breed" style="width: 150px;" class="">Breed</label>
-            <input type="text" id="breed" name="breed" style="width:300px;">
+            <input type="text" id="breed" name="breed" style="width:300px;" th:value="${goat.breed}">
         </div>
         <div>
             <label for="sex" style="width: 150px;" class="">Sex</label>
-            <input type="text" id="sex" name="sex" style="width:300px;">
+            <input type="text" id="sex" name="sex" style="width:300px;" th:value="${goat.sex}">
         </div>
         <div>
             <label for="tag_id" style="width: 150px;" class="">Tag ID</label>
-            <input type="text" id="tag_id" name="tag_id" style="width:300px;">
+            <input type="text" id="tag_id" name="tag_id" style="width:300px;" th:value="${goat.tagId}">
         </div>
         <div>
             <label for="weight_in_pounds" style="width: 150px;" class="">Weight in pounds</label>
-            <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;">
+            <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;" th:value="${goat.weightInPounds}">
         </div>
         <div>
             <label for="herd_id" style="width: 150px;" class="">Herd ID</label>
-            <input type="text" id="herd_id" name="herd_id" style="width:300px;">
+            <input type="text" id="herd_id" name="herd_id" style="width:300px;" th:value="${goat.herd.id}">
             <br>
             <br>
         </div>
@@ -141,6 +141,7 @@
     <div class="d-flex card">
         <div>
             <h1 th:text="${goat.name}"></h1>
+            <h3 th:text="${goat.tagId}"></h3>
             <h3 th:text="${goat.breed}"></h3>
             <h3 th:text="${goat.dob}"></h3>
             <h3 th:text="${goat.sex}"></h3>
@@ -176,7 +177,6 @@
 <script>
 
     // View Vaccine Records listeners
-
     $("#view-vaccine-records-button").on("click", () => {
         $("#view-records-modal-container").attr("style", "display: block");
     });
@@ -200,17 +200,17 @@
     // Edit Vaccine listeners
     $("#edit-vaccine-cancel-button").on("click", () => {
         $("#edit-vaccine-modal-container").attr("style", "display: none;");
+        // something complicated
+        // and relod
     })
 
-    $("#edit-goat-modal-button").on("click", () => {
+    // Edit Goat listeners
+    $("#edit-goat-button").on("click", () => {
         $("#edit-goat-modal-container").attr("style", "display: block;");
     });
-
-    /////////
     $("#edit-cancel-button").on("click", () => {
         $("#edit-goat-modal-container").attr("style", "display: none;")
     });
-
     $("#save-changes-button").on("click", () => {
         editGoat();
     });
@@ -242,10 +242,11 @@
             })
     }
 
-
     const saveEditVaccine = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
+        let isBooster = $("#booster").val();
+        isBooster = isBooster.toLowerCase() === "y" || isBooster.toLowerCase() === "yes";
         let settings = {
             method: "POST",
             headers: {
