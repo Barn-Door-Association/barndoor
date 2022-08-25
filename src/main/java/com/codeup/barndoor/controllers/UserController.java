@@ -97,9 +97,9 @@ public class UserController {
         }
 
 //Validates Password input meets criteria
-        if (!Password.isValid(user.getPassword())) {
-            validation.rejectValue
-        }
+//        if (!Password.isValid(user.getPassword())) {
+//            validation.rejectValue
+//        }
 
 //Hashes Password
         String hash = passwordEncoder.encode(user.getPassword());

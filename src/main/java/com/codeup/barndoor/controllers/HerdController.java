@@ -4,6 +4,7 @@ import com.codeup.barndoor.models.*;
 import com.codeup.barndoor.repositories.GoatRepository;
 import com.codeup.barndoor.repositories.HerdRepository;
 import com.codeup.barndoor.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import java.util.List;
 @Controller
 public class HerdController {
 
+    @Value("${FILESTACK_API_KEY}")
+    private String filestackKey;
     private final HerdRepository herdDao;
     private final GoatRepository goatDao;
 
@@ -41,6 +44,7 @@ public class HerdController {
 //         List<Goat> herd = goatDao.findAllByHerdId(id);
          Herd herd = herdDao.findById(id);
          model.addAttribute("herd",  herd);
+         model.addAttribute("filestackKey", filestackKey);
         return "herds/herd";
     }
     // Captures data from modal form post request, data is stored in a HerdRequest
