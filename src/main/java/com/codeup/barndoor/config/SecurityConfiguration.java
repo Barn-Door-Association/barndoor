@@ -57,7 +57,7 @@ public class SecurityConfiguration {
                 .antMatchers(
                         "/herds", "/herds/{id}", // only authenticated users can view, add or edit herd/herds information
                         "/goat", "/goat/{id}", // only authenticated users can view, add or edit goat/goats information
-                        "/pedigree", "/pedigree/{id}", // only authenticated users can view pedigree information
+                        "/pedigree", "/pedigree/{id}", "/goats/{id}/pedigree", // only authenticated users can view pedigree information
                         "/profile" // only authenticated users can view or edit profile information
                 )
                 .permitAll(); // remove and add .authenticated
