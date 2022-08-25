@@ -11,6 +11,13 @@ public class UserRequest {
     public UserRequest() {
     }
 
+    public UserRequest(String ranchName, String firstName, String lastName, String email) {
+        this.ranchName = ranchName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public long getId() {
         return id;
     }
