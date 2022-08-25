@@ -3,6 +3,7 @@ package com.codeup.barndoor.controllers;
 import com.codeup.barndoor.models.User;
 import com.codeup.barndoor.models.UserRequest;
 import com.codeup.barndoor.repositories.UserRepository;
+import com.codeup.barndoor.util.Password;
 import com.mysql.cj.callback.UsernameCallback;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -40,16 +41,54 @@ public class UserController {
             validation.rejectValue("username", "*Username already exists");
             errorMsg.add("*Username already exists");
         }
+
 //If email is already in database
         if(userDao.findByEmail(user.getEmail()) !=null) {
             validation.rejectValue("email", "*This email is already used");
             errorMsg.add("*This email is already used");
         }
+
 //If Ranch Name is already in database
         if (userDao.findByRanchName(user.getRanchName()) != null) {
             validation.rejectValue("RanchName", "*This Ranch Name already exists");
             errorMsg.add("*This Ranch Name already exists");
         }
+        //If username field is blank
+        if(userDao.findByUsername(user.getUsername()) == null) {
+            validation.rejectValue("username", "*Username cannot be blank");
+            errorMsg.add("*Username cannot be blank");
+        }
+
+        //If First Name field is blank
+        if(userDao.findByUsername(user.getFirstName()) == null) {
+            validation.rejectValue("username", "*First Name cannot be blank");
+            errorMsg.add("*First Name cannot be blank");
+        }
+
+        //If Last Name field is blank
+        if(userDao.findByUsername(user.getLastName()) == null) {
+            validation.rejectValue("LastName", "*Last Name cannot be blank");
+            errorMsg.add("*Last Name cannot be blank");
+        }
+
+        //If Password field is blank
+        if(userDao.findByUsername(user.getPassword()) == null) {
+            validation.rejectValue("Password", "*You must provide a password");
+            errorMsg.add("*You must provide a password");
+        }
+
+        //If Email field is blank
+        if(userDao.findByUsername(user.getEmail()) == null) {
+            validation.rejectValue("Email", "*You must provide an email");
+            errorMsg.add("*You must provide an email");
+        }
+
+        //If Ranch Name field is blank
+        if(userDao.findByUsername(user.getRanchName()) == null) {
+            validation.rejectValue("RanchName", "*You must provide a Ranch Name");
+            errorMsg.add("*You must provide a Ranch Name");
+        }
+
 //Consolidates
         if(validation.hasErrors()){
             model.addAttribute("errorList", errorMsg);
@@ -57,6 +96,12 @@ public class UserController {
             return "users/register";
         }
 
+//Validates Password input meets criteria
+        if (!Password.isValid(user.getPassword())) {
+            validation.rejectValue
+        }
+
+//Hashes Password
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
