@@ -153,6 +153,9 @@
                     <label for="dam_name" style="width: 150px;" class="">Dam Name</label>
                     <input type="text" id="dam_name" name="dam_name" style="width:300px;">
                 </div>
+                    <button id="file-upload-btn">Upload File</button>
+                    <input id="file-path" type="hidden" name="img">
+                    <img src="" alt="">
                 <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
                     <button class="goat-button" id="add-goat-cancel-button">Cancel</button>
                     <button class="goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
@@ -179,7 +182,9 @@
                 weightInPounds: $("#weight_in_pounds").val(),
                 herdId: $("#herd-id").val(),
                 sireName: $("#sire_name").val(),
-                damName: $("#dam_name").val()
+                damName: $("#dam_name").val(),
+                img: $("#img").val()
+
             })
         }
         settings.headers[header] = token;
@@ -231,6 +236,35 @@
                 location.reload();
             })
     }
+</script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    "use strict";
+
+    const key = /*[[${filestackKey}]]*/;
+
+    const client = filestack.init(key);
+
+    const options = {
+        fromSources: ["local_file_system"],
+        accept: ["image/*"],
+        onFileUploadFinished: callback => {
+            const filestackUrl = callback.url;
+            $('#file-path').val(filestackUrl);
+            $('img').attr('src', filestackUrl);
+            alert("Upload Success!")
+        }
+    };
+
+    $('#file-upload-btn').click(function (event){
+        alert("hey")
+        event.preventDefault();
+        client.picker(options).open();
+    })
+
+    /*]]>*/
 </script>
 </body>
 </html>

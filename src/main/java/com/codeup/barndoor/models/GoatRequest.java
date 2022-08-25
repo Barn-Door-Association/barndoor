@@ -14,6 +14,7 @@ public class GoatRequest {
     private String sireName;
     private String damName;
 
+    private String img;
     public GoatRequest() {
     }
 
@@ -87,5 +88,13 @@ public class GoatRequest {
 
     public void setDamName(String damName) {
         this.damName = damName;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

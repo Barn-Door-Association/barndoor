@@ -35,6 +35,9 @@ public class Goat {
     @Column(nullable = false)
     private long weightInPounds;
 
+    @Column
+    private String img;
+
     // Adds relationship to Herd table using "herd_id" as foreign key
     @ManyToOne
     @JoinColumn(name = "herd_id") //assigns foreign key
@@ -58,13 +61,14 @@ public class Goat {
     public Goat() {
     }
 
-    public Goat(long tagId, String name, Date dob, char sex, String breed, long weightInPounds, Herd herd) {
+    public Goat(long tagId, String name, Date dob, char sex, String breed, long weightInPounds, String img, Herd herd) {
         this.tagId = tagId;
         this.name = name;
         this.dob = dob;
         this.sex = sex;
         this.breed = breed;
         this.weightInPounds = weightInPounds;
+        this.img = img;
         this.herd = herd;
     }
 
@@ -154,5 +158,13 @@ public class Goat {
 
     public void setChildren(Set<Goat> children) {
         this.children = children;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
