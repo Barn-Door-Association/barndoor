@@ -65,7 +65,7 @@
 <footer class="container" th:fragment="footer">
 
     <hr>
-    <img src="/img/GitHub-Mark-32px.png"> <a href="https://github.com/Barn-Door-Association">BarnDoor|github</a>
+    <img src="/img/GitHub-Mark-32px.png"> <a href="https://github.com/Barn-Door-Association" target="_blank">BarnDoor|github</a>
     <p>©2022 BarnDoor Association</p>
 
 <th:block th:fragment="scripts">
@@ -82,33 +82,7 @@
             crossorigin="anonymous"></script>
 <!--    Filestack API -->
     <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<!--    Filestack Call-->
-    <script th:inline="javascript">
-        /*<![CDATA[*/
 
-        "use strict";
-
-        const key = /*[[${filestackKey}]]*/;
-
-        const client = filestack.init(key);
-
-        const options = {
-            fromSources: ["local_file_system"],
-            accept: ["image/*"],
-            onFileUploadFinished: callback => {
-                const filestackUrl = callback.url;
-                $('#file-path').val(filestackUrl);
-                alert("Upload Success!")
-            }
-        };
-
-        $('#file-upload-btn').click(function (event){
-            event.preventDefault();
-            client.picker(options).open();
-        })
-
-        /*]]>*/
-    </script>
 </th:block>
 </footer>
 
