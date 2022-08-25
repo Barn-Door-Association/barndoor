@@ -32,20 +32,12 @@
             <div class="d-flex justify-content-center" th:each="herd : ${herds}">
                 <div class="card mb-3" style="max-width: 450px;">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="..." class="img-fluid rounded-start" alt="...">
-                        </div>
                         <div class="col-md-8">
                             <div class="card-body justify-content-center" id="herdName">
                                 <!-- This <a></a> makes the name of the herd clickable and link to the controller-->
                                 <a th:href="@{/herds/{id}(id=${herd.id})}"><h2 class="card-title">Herd Name: <span
                                         th:text="${herd.herdName}"></span></h2></a>
                                 <h5 class="card-text"><span th:text="${herd.description}"></span></h5>
-                                <ul class="list-group list-group-flush justify-content-center">
-                                    <li class="list-group-item">Bonus: Are we still including the number of goats in
-                                        herd here?
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
