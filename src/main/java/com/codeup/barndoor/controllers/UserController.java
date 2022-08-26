@@ -4,8 +4,6 @@ import com.codeup.barndoor.models.User;
 import com.codeup.barndoor.models.UserRequest;
 import com.codeup.barndoor.repositories.UserRepository;
 import com.codeup.barndoor.util.Password;
-import com.mysql.cj.callback.UsernameCallback;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

@@ -40,7 +40,10 @@
         <div><h3>Add Vaccine Details Below</h3></div>
         <div>
             <label for="add-vaccine" style="width: 150px;" class="">Vaccine Name:</label>
-            <input type="text" id="add-vaccine" name="vaccine" style="width:300px;">
+            <select id="add-vaccine" style="width: 300px;">
+                <option value="0">Choose Vaccine</option>
+                <option th:each="vaccine : ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.name}"></option>
+            </select>
         </div>
         <div>
             <label for="add-dosage" style="width: 150px;" class="">Dosage in Ccs:</label>
@@ -53,7 +56,10 @@
         </div>
         <div>
             <label for="add-booster" style="width: 150px;" class="">Is this a booster?</label>
-            <input type="text" id="add-booster" name="booster" style="width:300px;">
+            <select name="add-booster" id="add-booster">
+                <option value="yes">No</option>
+                <option value="no">Yes</option>
+            </select>
         </div>
         <div id="add-vaccine-button-container" class="d-flex justify-content-evenly py-1">
             <button class="goat-button" id="close-add-vaccine-view">Cancel</button>
@@ -117,7 +123,8 @@
         </div>
         <div>
             <label for="weight_in_pounds" style="width: 150px;" class="">Weight in pounds</label>
-            <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;" th:value="${goat.weightInPounds}">
+            <input type="text" id="weight_in_pounds" name="weight_in_pounds" style="width:300px;"
+                   th:value="${goat.weightInPounds}">
         </div>
         <div>
             <label for="herd_id" style="width: 150px;" class="">Herd ID</label>
@@ -215,7 +222,7 @@
         editGoat();
     });
 
-    //    function for edit goat modal to send updated information to the goat table and reload the page automatically once saved with updated goat info
+    // Function for edit goat modal to send updated information to the goat table and reload the page automatically once saved with updated goat info
     const editGoat = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -242,6 +249,30 @@
             })
     }
 
+    // Function for adding a NEW vaccine
+    const addNewRecord = () => {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        let settings = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                vaccineName: $("#vaccineName").val(),
+                dosageInCcs: $("#dosage").val(),
+                dateAdministered: $("#administered").val(),
+                isBooster: $("#booster").val()
+            })
+        }
+        settings.headers[header] = token;
+        fetch("/edit/goat", settings)
+            .then(() => {
+                location.reload();
+            })
+    }
+
+    // Function for EDITING an EXISTING vaccine
     const saveEditVaccine = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");

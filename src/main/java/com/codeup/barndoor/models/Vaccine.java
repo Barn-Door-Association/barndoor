@@ -1,9 +1,10 @@
 package com.codeup.barndoor.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "Vaccines")
+@Table(name = "vaccines")
 
 public class Vaccine {
     @Id
