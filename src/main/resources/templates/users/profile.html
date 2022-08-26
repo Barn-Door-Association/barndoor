@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<div id="modal-container"></div>
+<!--<div id="modal-container"></div>-->
 <input type="hidden" th:value="${user.id}" id="user-id">
 
 
@@ -44,6 +44,32 @@
             <br>
         </div>
     </div>
+    <div id="modal-container">
+    <div id="edit-profile-form" style="display:none">
+        <div class="modal-wrapper container py-3">
+            <div>
+                <label for="ranch-name" style="width: 150px;" class="">Ranch Name</label>
+                <input type="text" id="ranch-name" name="ranch-name" style="width:300px;" th:value="${user.ranchName}">
+            </div>
+            <div>
+                <label for="first-name" style="width: 150px;" class="">First Name</label>
+                <input type="text" id="first-name" name="first-name" style="width:300px;" th:value="${user.firstName}">
+            </div>
+            <div>
+                <label for="last-name" style="width: 150px;" class="">Last Name</label>
+                <input type="text" id="last-name" name="last-name" style="width:300px;" th:value="${user.lastName}">
+            </div>
+            <div>
+                <label for="email" style="width: 150px;" class="">Email</label>
+                <input type="text" id="email" name="email" style="width:300px;" th:value="${user.email}">
+            </div>
+            <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+                <button class="goat-button" id="cancel-edit-button">Cancel</button>
+                <button class="goat-button" id="save-profile-edit-button" type="submit">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    </div>
 </section>
 
 <!--  The following section is footer partial  -->
@@ -62,17 +88,13 @@
 <!--  Custom Script  -->
 <script>
     $("#edit-profile-button").on("click", () => {
-        $("#modal-container").html(editProfileForm());
-        document.getElementById("cancel-edit-button").addEventListener("click", () => {
-            $("#modal-container").html("");
+        $("#edit-profile-form").attr("style", "display: block;");
         });
-        document.getElementById("save-profile-edit-button").addEventListener("click", () => {
-            console.log("hello");
-            saveProfileEdit();
-        });
+    $("#edit-cancel-button").on("click", () => {
+        $("#edit-profile-form").attr("style", "display: none;")
     });
-    $("#cancel-button").on("click", () => {
-        $("#modal-container").attr("style", "display: none;")
+    $("#save-profile-edit-button").on("click", () => {
+        saveProfileEdit();
     });
     // $("#save-profile-edit-button").on("click", () => {
     //
@@ -80,34 +102,34 @@
     // });
 
     <!--Edit Profile Modal-->
-    const editProfileForm = () => {
-        return `
-            <div id="modal-container-profile">
-    <div class="modal-wrapper container py-3">
-        <div>
-            <label for="ranch-name" style="width: 150px;" class="">Ranch Name</label>
-            <input type="text" id="ranch-name" name="ranch-name" style="width:300px;">
-        </div>
-        <div>
-            <label for="first-name" style="width: 150px;" class="">First Name</label>
-            <input type="text" id="first-name" name="first-name" style="width:300px;">
-        </div>
-        <div>
-            <label for="last-name" style="width: 150px;" class="">Last Name</label>
-            <input type="text" id="last-name" name="last-name" style="width:300px;" >
-        </div>
-        <div>
-            <label for="email" style="width: 150px;" class="">Email</label>
-            <input type="text" id="email" name="email" style="width:300px;" >
-        </div>
-        <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-            <button class="goat-button" id="cancel-edit-button">Cancel</button>
-            <button class="goat-button" id="save-profile-edit-button" type="submit">Save Changes</button>
-        </div>
-    </div>
-</div>
-            `
-    }
+    // const editProfileForm = () => {
+    //     return `
+//             <div id="modal-container-profile">
+//     <div class="modal-wrapper container py-3">
+//         <div>
+//             <label for="ranch-name" style="width: 150px;" class="">Ranch Name</label>
+//             <input type="text" id="ranch-name" name="ranch-name" style="width:300px;" th:value="${goat.name}">
+//         </div>
+//         <div>
+//             <label for="first-name" style="width: 150px;" class="">First Name</label>
+//             <input type="text" id="first-name" name="first-name" style="width:300px;">
+//         </div>
+//         <div>
+//             <label for="last-name" style="width: 150px;" class="">Last Name</label>
+//             <input type="text" id="last-name" name="last-name" style="width:300px;" >
+//         </div>
+//         <div>
+//             <label for="email" style="width: 150px;" class="">Email</label>
+//             <input type="text" id="email" name="email" style="width:300px;" >
+//         </div>
+//         <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
+//             <button class="goat-button" id="cancel-edit-button">Cancel</button>
+//             <button class="goat-button" id="save-profile-edit-button" type="submit">Save Changes</button>
+//         </div>
+//     </div>
+// </div>
+    //          `
+    // }
 
     // Takes the newly edited information from the modal and sends it to the java controller
     const saveProfileEdit = () => {
@@ -129,7 +151,6 @@
         settings.headers[header] = token;
         fetch("/profile/edit", settings)
             .then(() => {
-                console.log("the .then ran");
                 location.reload();
             })
     }

@@ -101,7 +101,7 @@
         </div>
         <div>
             <label for="dob" style="width: 150px;" class="">Date of birth</label>
-            <input type="text" id="dob" name="dob" style="width:300px;" placeholder="yyyy-mm-dd">
+            <input type="text" id="dob" name="dob" style="width:300px;" th:value="${dob}">
         </div>
         <div>
             <label for="breed" style="width: 150px;" class="">Breed</label>
@@ -143,7 +143,7 @@
             <h1 th:text="${goat.name}"></h1>
             <h3 th:text="${goat.tagId}"></h3>
             <h3 th:text="${goat.breed}"></h3>
-            <h3 th:text="${goat.dob}"></h3>
+            <h3 th:text="${dob}"></h3>
             <h3 th:text="${goat.sex}"></h3>
             <h3 th:text="${goat.weightInPounds}"></h3>
             <h3 th:text="${goat.herd.id}"></h3>
