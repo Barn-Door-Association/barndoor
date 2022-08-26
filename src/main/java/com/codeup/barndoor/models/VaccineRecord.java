@@ -25,7 +25,6 @@ public class VaccineRecord {
     private boolean isBooster;
 
     @OneToOne
-
     private Vaccine vaccine;
 
     @ManyToOne

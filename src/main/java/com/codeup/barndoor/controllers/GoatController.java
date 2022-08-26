@@ -1,15 +1,20 @@
 package com.codeup.barndoor.controllers;
 
 import com.codeup.barndoor.models.*;
-import com.codeup.barndoor.repositories.GoatRepository;
-import com.codeup.barndoor.repositories.HerdRepository;
-import com.codeup.barndoor.repositories.VaccineRecordRepository;
+import com.codeup.barndoor.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.ObjectInputFilter;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -19,11 +24,15 @@ public class GoatController {
     private final GoatRepository goatDao;
     private final HerdRepository herdDao;
     private final VaccineRecordRepository vaccineRecordDao;
+    private final VaccineRepository vaccineDao;
+    private final GenericVaccineRepository genericVaccineDao;
 
-    public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao) {
+    public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao, VaccineRepository vaccineDao, GenericVaccineRepository genericVaccineDao) {
         this.goatDao = goatDao;
         this.herdDao = herdDao;
         this.vaccineRecordDao = vaccineRecordDao;
+        this.vaccineDao = vaccineDao;
+        this.genericVaccineDao = genericVaccineDao;
     }
 
     @GetMapping("/goat/{id}")
@@ -31,6 +40,8 @@ public class GoatController {
         // Add method to fix the date format to yyyy-mm-dd before displaying through the model
         Goat goat = goatDao.findById(id);
         String date = goat.getDob().toString().substring(0, 10);
+        List<GenericVaccine> vaccines = genericVaccineDao.findAll();
+        model.addAttribute("vaccines", vaccines);
         model.addAttribute("dob", date);
         model.addAttribute("goat", goat);
         model.addAttribute("records", goatDao.findById(id).getRecords());
