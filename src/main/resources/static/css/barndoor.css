@@ -1,5 +1,5 @@
 nav {
-    background: #198754;
+    background: #39603D;
 }
 
 h2 {
@@ -17,8 +17,9 @@ body.watermark {
 }
 
 .reg-header {
-    background: #198754;
+    background: #39603D;
     color: white;
+    border-color: white;
 }
 
 .reg-card {
@@ -60,7 +61,7 @@ body.watermark {
 }
 
 .reg-btn {
-    background: #198754;
+    background: #39603D;
     color: white;
 }
 
@@ -74,7 +75,9 @@ section {
 
 .landing-card {
     padding: 0;
-    border: 0;
+    /*border: 0;*/
+    border-color: #3C403D;
+    border-width: thin;
 }
 
 .column {
@@ -83,11 +86,13 @@ section {
 
 #mission {
     padding: 0 10px;
+    text-align: center;
 }
 
 .goat-img {
     width: 100%;
     height: auto;
+    background-color: transparent;
 }
 
 #reg-logo img {

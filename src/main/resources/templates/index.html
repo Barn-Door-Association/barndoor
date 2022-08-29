@@ -9,12 +9,12 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <title>Welcome to BarnDoor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body style="background-color: #DADED4">
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <section class="container py-5">
     <h1 class="indexHeader card">Your all-in-one Goat manager</h1>
-    <div class="row container-fluid">
+    <div class="row container-fluid" style="padding: 0; margin: 0">
         <div class="column col-md">
             <div class="card h-100">
                 <div class="card-body">
@@ -44,13 +44,13 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     </div>
     <br>
     <hr>
-    <div class="container">
-        <div class="row">
+    <div class="container" style="margin: 0; padding: 0">
+        <div class="row" style="margin: 0; padding: 0">
             <div class="col-md column-md d-none d-md-inline-block card" style="width: 100%">
                 <img class="goat-img" src="/img/brownGoat.jpeg">
             </div>
 
-            <div class="col-md card reg-card">
+            <div class="col-md card reg-card" style="width: 100%">
                 <h2 class="d-flex justify-content-center card reg-header" style="padding: 0">Mission Statement</h2>
                 <br>
                 <p id="mission">Our goal at BarnDoor is to provide custom services that improve both goat documentation
