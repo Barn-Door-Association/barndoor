@@ -30,6 +30,8 @@ body { background: #fff; }
 }
 
 .nodeExample1 img {
+    width: 180px;
+    height: auto;
     margin-right:  10px;
 }
 
