@@ -13,45 +13,14 @@
 <nav th:replace="partials/partials.html :: nav"></nav>
 
 <!--Title of Page-->
-
 <section class="container py-5">
-    <h2 class="aboutHeader">ABOUT US</h2>
+    <h1 class="aboutHeader card">About Us</h1>
 
     <br>
     <hr>
 
 
-    <div class="container goat-container">
-        <div class="row">
-            <div class="col-md column-md d-none d-md-inline-block card " style="width: 100%">
-                <!--Stock image that will include a button that will link to registration page-->
-                <img class="goat-img2" src="/img/baby-goat.jpg">
-                <br>
-            </div>
-
-
-            <div class="col-md card reg-card">
-
-                <h5 class="d-flex justify-content-left aboutHeader1">About our project:</h5>
-                <hr class="abouthr">
-                <p class="abouttext">Provides registered users with the ability to create and manage livestock. BarnDoor
-                    keeps track of the name, ear tag, gender, breed, pedigree, herd name, date of birth, weight and
-                    vaccine
-                    records of an individual animal. Through HTML, CSS, Bootstrap, JQuery and Javascript we created an
-                    easy
-                    to use frontend experience that gives users the power to update to track their entire livestock data
-                    in
-                    one app.</p>
-
-            </div>
-        </div>
-    </div>
-
-    <br>
-
-
-</section>
-<h5 class="d-flex justify-content-center aboutHeader2">MEET THE TEAM</h5>
+    <h5 class="d-flex justify-content-center aboutHeader2">MEET THE TEAM</h5>
 
 <section class="container py-5">
     <div class="row">
@@ -158,6 +127,40 @@
     </div>
 </section>
 
+<!-- goat pic and about us message -->
+
+    <div class="container goat-container">
+        <div class="row">
+            <div class="col-md column-md d-none d-md-inline-block card " style="width: 100%">
+                <!--Stock image that will include a button that will link to registration page-->
+                <img class="goat-img2" src="/img/baby-goat.jpg">
+                <br>
+            </div>
+
+
+            <div class="col-md card reg-card">
+
+                <h5 class="d-flex justify-content-left aboutHeader1">About our project:</h5>
+                <hr class="abouthr">
+                <p class="abouttext">Provides registered users with the ability to create and manage livestock. BarnDoor
+                    keeps track of the name, ear tag, gender, breed, pedigree, herd name, date of birth, weight and
+                    vaccine
+                    records of an individual animal. Through HTML, CSS, Bootstrap, JQuery and Javascript we created an
+                    easy
+                    to use frontend experience that gives users the power to update to track their entire livestock data
+                    in
+                    one app.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+</section>
+
+
+<!--FOOTER OF PAGE-->
     <footer th:replace="partials/partials.html :: footer"></footer>
 </body>
 
