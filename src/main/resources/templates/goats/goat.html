@@ -11,7 +11,7 @@
         }
     </style>
 </head>
-<body class="watermark">
+<body>
 
 <!-- Navbar partial -->
 <nav th:replace="partials/partials.html :: nav"></nav>
@@ -170,8 +170,7 @@
         $("#add-vaccine-modal").attr("style", "display: none");
     });
     $("#save-vaccine-record").on("click", () => {
-        console.log($("#add-administered").val());
-        // addNewRecord();
+        addNewRecord();
     });
 
     // Edit Goat listeners
