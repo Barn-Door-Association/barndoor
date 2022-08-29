@@ -39,8 +39,8 @@
     <div class="modal-wrapper container py-3">
         <div><h3>Add Vaccine Details Below</h3></div>
         <div>
-            <label for="add-vaccine" style="width: 150px;" class="">Vaccine Name:</label>
-            <select id="add-vaccine" style="width: 300px;">
+            <label for="add-vaccine-id" style="width: 150px;" class="">Vaccine Name:</label>
+            <select id="add-vaccine-id" style="width: 300px;">
                 <option value="0">Choose Vaccine</option>
                 <option th:each="vaccine : ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.name}"></option>
             </select>
@@ -200,8 +200,7 @@
         $("#add-vaccine-modal").attr("style", "display: none");
     });
     $("#save-vaccine-record").on("click", () => {
-        // something complicated
-        // and reload
+        addNewRecord();
     });
 
     // Edit Vaccine listeners
@@ -259,14 +258,15 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                vaccineName: $("#vaccineName").val(),
+                goatId: $("#goatId").val(),
+                vaccineId: $("#add-vaccine-id").val(),
                 dosageInCcs: $("#dosage").val(),
                 dateAdministered: $("#administered").val(),
-                isBooster: $("#booster").val()
+                isBooster: $("#booster").val(),
             })
         }
         settings.headers[header] = token;
-        fetch("/edit/goat", settings)
+        fetch("/add/vaccine/" + $("#add-vaccine-id").val(), settings)
             .then(() => {
                 location.reload();
             })

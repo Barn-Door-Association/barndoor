@@ -54,7 +54,7 @@ public class GoatController {
     @ResponseBody
     @PostMapping("/add/new/goat")
     public String addNewGoat(@RequestBody GoatRequest goatRequest) {
-        if(goatRequest.getImg() == null || goatRequest.getImg().equals("")){
+        if (goatRequest.getImg() == null || goatRequest.getImg().equals("")) {
             goatRequest.setImg("/img/defaultgoat.jpg");
         }
         Goat newGoat = new Goat(
@@ -113,6 +113,7 @@ public class GoatController {
         goatDao.save(editedGoat);
         return "goat";
     }
+
     @ResponseBody
     @PostMapping("/edit/vaccine/id")
     public String editVaccine(@RequestBody VaccineRecord vaccineRecord) {
@@ -123,6 +124,18 @@ public class GoatController {
         editedVaccine.setVaccine(vaccineRecord.getVaccine());
         vaccineRecordDao.save(editedVaccine);
         return "goat";
+    }
+
+    @ResponseBody
+    @PostMapping("/add/vaccine/{id}")
+    public String addVaccine(@RequestBody VaccineAddRequest vaccineAddRequest) {
+        Goat goat = goatDao.findById((vaccineAddRequest.getGoatId()));
+        Vaccine vaccine = vaccineDao.findById(vaccineAddRequest.getVaccineId());
+
+        VaccineRecord vaccineRecord = new VaccineRecord(vaccineAddRequest.getDosageInCcs(), vaccineAddRequest.getDateAdministered(), vaccineAddRequest.isBooster(), vaccine, goat);
+        vaccineRecordDao.save(vaccineRecord);
+        return "goat";
+
     }
 
 }
