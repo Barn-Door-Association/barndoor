@@ -64,7 +64,7 @@ public class UserController {
                     "Invalid Password",
                     "Password must be 8 or more characters, contain at least one upper and lowercase letter, a number and a symbol."
             );
-            errorMsg.add("*This is an invalid password");
+            errorMsg.add("*Password must be 8 or more characters, contain at least one upper and lowercase letter, a number and a symbol");
         }
 //  Consolidates
         if (validation.hasErrors()) {

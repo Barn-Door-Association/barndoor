@@ -15,38 +15,55 @@
                 <h2 class="d-flex justify-content-center reg-header card">Create an account</h2>
                 <br>
                 <div id="errorMsgBox">
-                    <div class="errorMsg" th:if="${errorList.size() &gt; 0}" th:each="error:${errorList}"><small
+                    <div class="errorMsg" th:if="${errorList.size() &gt; 0}" th:each="error:${errorList}"
+                         style="color: red"><small
                             th:text="${error}"></small>
                     </div>
                 </div>
-                <form th:action="@{/register}" method="POST" th:object="${user}" class="content-center">
-                    <div class="mb-3">
+                <form th:action="@{/register}" method="POST" th:object="${user}" class="mb-3 row">
+                    <div>
                         <label for="username">Username</label>
-                        <input id="username" placeholder="Username" th:field="*{username}" class="form-control"/>
+
+                        <input style="width: 250px" id="username" placeholder="Username" th:field="*{username}"/>
+
+                    </div>
+                    <div>
                         <label for="firstName">First Name</label>
-                        <input id="firstName" class="form-control" placeholder="First Name" th:field="*{firstName}"/>
+                        <input style="width: 250px" id="firstName" placeholder="First Name"
+                               th:field="*{firstName}"/>
+                    </div>
+                    <div>
                         <label for="lastName">Last Name</label>
-                        <input id="lastName" class="form-control" placeholder="Last Name" th:field="*{lastName}"/>
+                        <input style="width: 250px" id="lastName" placeholder="Last Name" th:field="*{lastName}"/>
+                    </div>
+                    <div>
                         <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control" placeholder="Password"
+                        <input style="width: 250px" id="password" type="password" placeholder="Password"
                                th:field="*{password}"/>
+                    </div>
+                    <div>
                         <label for="email">Email Address</label>
-                        <input id="email" class="form-control" placeholder="Email" th:field="*{email}"/>
+                        <input style="width: 250px" id="email" placeholder="Email" th:field="*{email}"/>
+                    </div>
+                    <div>
                         <label for="ranchName">Ranch Name</label>
-                        <input id="ranchName" class="form-control" placeholder="Ranch Name" th:field="*{ranchName}"/>
+                        <input style="width: 250px" id="ranchName" placeholder="Ranch Name"
+                               th:field="*{ranchName}"/>
                     </div>
-
-                    <div class="text-center">
-                        <input class="btn reg-btn" value="Sign me up!" type="submit"/>
-                    </div>
-
-                    <div class="login-here">
-                        <p>Already have an account? <a href="/login">Login Here</a></p>
-                    </div>
-                </form>
 
             </div>
+
+            <div class="text-center">
+                <input class="btn reg-btn" value="Sign me up!" type="submit"/>
+            </div>
+
+            <div class="login-here">
+                <p>Already have an account? <a href="/login">Login Here</a></p>
+            </div>
+            </form>
+
         </div>
+    </div>
     </div>
 
 </section>
