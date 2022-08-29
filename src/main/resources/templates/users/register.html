@@ -21,17 +21,18 @@
                 </div>
                 <form th:action="@{/register}" method="POST" th:object="${user}" class="content-center">
                     <div class="mb-3">
+                        <label for="username">Username</label>
                         <input id="username" placeholder="Username" th:field="*{username}" class="form-control"/>
-
+                        <label for="firstName">First Name</label>
                         <input id="firstName" class="form-control" placeholder="First Name" th:field="*{firstName}"/>
-
+                        <label for="lastName">Last Name</label>
                         <input id="lastName" class="form-control" placeholder="Last Name" th:field="*{lastName}"/>
-
+                        <label for="password">Password</label>
                         <input id="password" type="password" class="form-control" placeholder="Password"
                                th:field="*{password}"/>
-
+                        <label for="email">Email Address</label>
                         <input id="email" class="form-control" placeholder="Email" th:field="*{email}"/>
-
+                        <label for="ranchName">Ranch Name</label>
                         <input id="ranchName" class="form-control" placeholder="Ranch Name" th:field="*{ranchName}"/>
                     </div>
 
