@@ -42,7 +42,8 @@
             <label for="add-vaccine-id" style="width: 150px;" class="">Vaccine Name:</label>
             <select id="add-vaccine-id" style="width: 300px;">
                 <option value="0">Choose Vaccine</option>
-                <option th:each="vaccine : ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.vaccineName}"></option>
+                <option th:each="vaccine : ${vaccines}" th:value="${vaccine.id}"
+                        th:text="${vaccine.vaccineName}"></option>
             </select>
         </div>
         <div>
@@ -84,8 +85,11 @@
             <input type="text" id="breed" name="breed" style="width:300px;" th:value="${goat.breed}">
         </div>
         <div>
-            <label for="sex" style="width: 150px;" class="">Sex</label>
-            <input type="text" id="sex" name="sex" style="width:300px;" th:value="${goat.sex}">
+            <label for="sex" style="width: 150px;">Sex</label>
+            <select name="sex" id="sex" style="width: 300px;">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
         </div>
         <div>
             <label for="tag_id" style="width: 150px;" class="">Tag ID</label>
