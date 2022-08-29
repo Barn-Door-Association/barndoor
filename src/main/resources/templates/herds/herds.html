@@ -5,7 +5,7 @@
     <meta th:name="_csrf" th:content="${_csrf.token}">
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
         <!--    CSS LINK -->
-    <link type="text/css" rel="stylesheet" href="/herds.css">
+    <link type="text/css" rel="stylesheet" href="/css/herds.css">
 </head>
 <body>
         <!--NAVBAR PARTIAL-->
@@ -24,19 +24,27 @@
                 <button id="add-herd-button">Add Herd</button>
             </div>
             <!--ADD NEW HERD MODAL -->
-            <div id="add-herd-modal-container" class="modal-wrapper container py-3" style="display: none;">
-                <div>
-                    <label for="herd_name" style="width: 150px;" class="">Herd Name</label>
-                    <input type="text" id="herd_name" name="herd_name" style="width:300px;">
-                </div>
-                <div>
-                    <label for="description" style="width: 150px;" class="">Description</label>
-                    <input type="text" id="description" name="description" style="width:300px;">
-                </div>
-
-                <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-                    <button class="add-herd-button" id="add-herd-cancel-button">Cancel</button>
-                    <button class="add-herd-button" id="add-herd-add-button" type="submit">Add Herd</button>
+            <div id="add-herd-modal-container" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center">
+                            <h5 class="modal-title">Add a New Herd</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <label for="herd-name" style="width:150px;" class="">Herd Name</label>
+                                <input type="text" id="herd-name" name="herd-name" style="width:300px;">
+                            </div>
+                            <div>
+                                <label for="description" style="width: 150px;" class="">Herd Description</label>
+                                <input type="text" id="description" name="description" style="width:300px;">
+                            </div>
+                            <div id="add-herd-button-container" class="modal-footer">
+                                <button type="button" id="add-herd-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" id="add-goat-add-button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

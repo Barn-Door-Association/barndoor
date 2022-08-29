@@ -7,8 +7,10 @@ public class VaccineAddRequest {
     private long dosageInCcs;
     private Date dateAdministered;
     private boolean isBooster;
-
     private long goatId;
+
+    public VaccineAddRequest() {
+    }
 
     public VaccineAddRequest(long vaccineId, long dosageInCcs, Date dateAdministered, boolean isBooster, long goatId) {
         this.vaccineId = vaccineId;
@@ -34,10 +36,6 @@ public class VaccineAddRequest {
         this.goatId = goatId;
     }
 
-    public VaccineAddRequest() {
-    }
-
-
     public long getDosageInCcs() {
         return dosageInCcs;
     }
@@ -54,13 +52,11 @@ public class VaccineAddRequest {
         this.dateAdministered = dateAdministered;
     }
 
-    public boolean isBooster() {
+    public boolean getIsBooster() {
         return isBooster;
     }
 
     public void setBooster(boolean booster) {
         isBooster = booster;
     }
-
-
 }

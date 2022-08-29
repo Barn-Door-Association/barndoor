@@ -21,6 +21,7 @@
     border-width: medium;
 }
 
+
 .card {
     border-color: #3C403D;
     border-width: medium;
@@ -30,5 +31,14 @@
 /*    border-radius: 75%;*/
 /*}*/
 
+
+h1 {
+ padding: 30px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center;
+}
 
 

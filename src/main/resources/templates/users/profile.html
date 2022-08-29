@@ -47,30 +47,38 @@
         </div>
     </div>
     <!--    EDIT PROFILE MODAL-->
-    <div id="edit-profile-form" style="display:none">
-        <div class="modal-wrapper container py-3">
-            <div>
-                <label for="ranch-name" style="width: 150px;" class="">Ranch Name</label>
-                <input type="text" id="ranch-name" name="ranch-name" style="width:300px;" th:value="${user.ranchName}">
-            </div>
-            <div>
-                <label for="first-name" style="width: 150px;" class="">First Name</label>
-                <input type="text" id="first-name" name="first-name" style="width:300px;" th:value="${user.firstName}">
-            </div>
-            <div>
-                <label for="last-name" style="width: 150px;" class="">Last Name</label>
-                <input type="text" id="last-name" name="last-name" style="width:300px;" th:value="${user.lastName}">
-            </div>
-            <div>
-                <label for="email" style="width: 150px;" class="">Email</label>
-                <input type="text" id="email" name="email" style="width:300px;" th:value="${user.email}">
-            </div>
-            <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
-                <button class="goat-button" id="cancel-edit-button">Cancel</button>
-                <button class="goat-button" id="save-profile-edit-button" type="submit">Save Changes</button>
+    <div id="edit-profile-form" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile Details</h5>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label for="ranch-name" style="width: 150px;" class="">Ranch Name</label>
+                        <input type="text" id="ranch-name" name="ranch-name" style="width:300px;" th:value="${user.ranchName}">
+                    </div>
+                    <div>
+                        <label for="first-name" style="width: 150px;" class="">First Name</label>
+                        <input type="text" id="first-name" name="first-name" style="width:300px;" th:value="${user.firstName}">
+                    </div>
+                    <div>
+                        <label for="last-name" style="width: 150px;" class="">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" style="width:300px;" th:value="${user.lastName}">
+                    </div>
+                    <div>
+                        <label for="email" style="width: 150px;" class="">Email</label>
+                        <input type="text" id="email" name="email" style="width:300px;" th:value="${user.email}">
+                    </div>
+                    <div id="edit-profile-button-container" class="modal-footer">
+                        <button type="button" id="cancel-edit-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="save-profile-edit-button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
 </section>
 
