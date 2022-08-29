@@ -16,7 +16,7 @@ public class VaccineRecord {
     private long id;
 
     @Column(nullable = false)
-    private int dosageInCcs;
+    private long dosageInCcs;
 
     @Column(nullable = false, columnDefinition = "date")
     private Date dateAdministered;
@@ -34,7 +34,7 @@ public class VaccineRecord {
     public VaccineRecord() {
     }
 
-    public VaccineRecord(int dosageInCcs, Date dateAdministered, boolean isBooster, Vaccine vaccine, Goat goat) {
+    public VaccineRecord(long dosageInCcs, Date dateAdministered, boolean isBooster, Vaccine vaccine, Goat goat) {
         this.dosageInCcs = dosageInCcs;
         this.dateAdministered = dateAdministered;
         this.isBooster = isBooster;
@@ -46,11 +46,11 @@ public class VaccineRecord {
         return id;
     }
 
-    public int getDosageInCcs() {
+    public long getDosageInCcs() {
         return dosageInCcs;
     }
 
-    public void setDosageInCcs(int dosageInCcs) {
+    public void setDosageInCcs(long dosageInCcs) {
         this.dosageInCcs = dosageInCcs;
     }
 
