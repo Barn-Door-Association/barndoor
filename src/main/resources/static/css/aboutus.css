@@ -1,7 +1,9 @@
 .aboutHeader {
     text-align: center;
-    padding-top: 5px;
-    font-family: "Times New Roman";
+    background: #39603D;
+    color: white;
+    border-color: #3C403D;
+    border-width: medium;
 }
 
 .aboutHeader1 {
