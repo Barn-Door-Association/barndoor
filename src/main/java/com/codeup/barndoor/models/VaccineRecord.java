@@ -24,7 +24,7 @@ public class VaccineRecord {
     @Column(nullable = false)
     private boolean isBooster;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Vaccine vaccine;
 
     @ManyToOne

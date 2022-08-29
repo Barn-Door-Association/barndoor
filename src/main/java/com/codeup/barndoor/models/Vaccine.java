@@ -17,16 +17,16 @@ public class Vaccine {
     @Column(nullable = false)
     private String description;
 
-    @OneToOne(mappedBy = "vaccine")
-    private VaccineRecord vaccineRecord;
+    @OneToMany(mappedBy = "vaccine", fetch = FetchType.LAZY)
+    private List<VaccineRecord> vaccineRecords;
 
     public Vaccine() {
     }
 
-    public Vaccine(String vaccineName, String description, VaccineRecord vaccinesRecord) {
+    public Vaccine(String vaccineName, String description, List<VaccineRecord> vaccinesRecords) {
         this.vaccineName = vaccineName;
         this.description = description;
-        this.vaccineRecord = vaccinesRecord;
+        this.vaccineRecords = vaccinesRecords;
     }
 
     public long getId() {
@@ -49,11 +49,11 @@ public class Vaccine {
         this.description = description;
     }
 
-    public VaccineRecord getVaccinesRecord() {
-        return vaccineRecord;
+    public List<VaccineRecord> getVaccineRecords() {
+        return vaccineRecords;
     }
 
-    public void setVaccinesRecord(VaccineRecord vaccinesRecord) {
-        this.vaccineRecord = vaccinesRecord;
+    public void setVaccineRecords(List<VaccineRecord> vaccineRecords) {
+        this.vaccineRecords = vaccineRecords;
     }
 }
