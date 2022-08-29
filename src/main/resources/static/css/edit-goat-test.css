@@ -1,20 +1,20 @@
-.modal-container {
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    top: 180px;
-    width: 100%;
-}
+/*.modal-container {*/
+/*    position: fixed;*/
+/*    z-index: 2;*/
+/*    left: 0;*/
+/*    top: 180px;*/
+/*    width: 100%;*/
+/*}*/
 
-.modal-wrapper {
-    width: 500px;
-    height: 300px;
-    color: black;
-    background-color: #a1b5ff;
-    border-radius: 10px;
-    border: 2px solid royalblue;
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);
-}
+/*.modal-wrapper {*/
+/*    width: 500px;*/
+/*    height: 300px;*/
+/*    color: black;*/
+/*    background-color: #a1b5ff;*/
+/*    border-radius: 10px;*/
+/*    border: 2px solid royalblue;*/
+/*    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);*/
+/*}*/
 
 .goat-button {
     display: flex;
@@ -29,15 +29,15 @@
 }
 
 /*styling components for edit goat modal*/
-#edit-goat-modal-container {
-    position: fixed;
-    z-index: 2;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    background-color: lightyellow;
+/*#edit-goat-modal-container {*/
+/*    position: fixed;*/
+/*    z-index: 2;*/
+/*    left: 50%;*/
+/*    top: 50%;*/
+/*    transform: translate(-50%,-50%);*/
+/*    background-color: lightyellow;*/
 
-}
+/*}*/
 
 .edit-goat-button {
     display: flex;
@@ -51,15 +51,15 @@
     height: 50px;
 }
 
-.edit-goat-modal-wrapper {
-    width: 500px;
-    height: 400px;
-    color: black;
-    border-radius: 10px;
-    border: 2px solid gray;
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);
-}
+/*.edit-goat-modal-wrapper {*/
+/*    width: 500px;*/
+/*    height: 400px;*/
+/*    color: black;*/
+/*    border-radius: 10px;*/
+/*    border: 2px solid gray;*/
+/*    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);*/
+/*}*/
 
-#goat-profile-container {
-    justify-content: center;
-}
+/*#goat-profile-container {*/
+/*    justify-content: center;*/
+/*}*/
