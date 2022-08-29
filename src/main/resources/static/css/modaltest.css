@@ -1,20 +1,20 @@
-#modal-container {
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    top: 180px;
-    width: 100%;
-}
+/*#modal-container {*/
+/*    position: fixed;*/
+/*    z-index: 2;*/
+/*    left: 0;*/
+/*    top: 180px;*/
+/*    width: 100%;*/
+/*}*/
 
-.modal-wrapper {
-    width: 500px;
-    height: 300px;
-    color: black;
-    background-color: #a1b5ff;
-    border-radius: 10px;
-    border: 2px solid royalblue;
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);
-}
+/*.modal-wrapper {*/
+/*    width: 500px;*/
+/*    height: 300px;*/
+/*    color: black;*/
+/*    background-color: #a1b5ff;*/
+/*    border-radius: 10px;*/
+/*    border: 2px solid royalblue;*/
+/*    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);*/
+/*}*/
 
 .goat-button {
     display: flex;
