@@ -16,7 +16,7 @@
         <div class="d-flex card py-1">
             <h2 class="card-header" th:text="${herd.herdName}"></h2>
             <div class="card-body">
-                <h5 class="card-title"><span th:text="${herd.description}"></span></h5>
+                <h5 class="card-title d-flex justify-content-center"><span th:text="${herd.description}"></span></h5>
                 <br>
                 <input type="hidden" th:value="${herd.id}" id="herd-id">
                 <div class="d-flex justify-content-center">
