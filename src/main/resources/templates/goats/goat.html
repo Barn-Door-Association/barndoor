@@ -11,7 +11,7 @@
         }
     </style>
 </head>
-<body class="watermark">
+<body>
 
 <!-- Navbar partial -->
 <nav th:replace="partials/partials.html :: nav"></nav>
@@ -39,10 +39,10 @@
     <div class="modal-wrapper container py-3">
         <div><h3>Add Vaccine Details Below</h3></div>
         <div>
-            <label for="add-vaccine" style="width: 150px;" class="">Vaccine Name:</label>
-            <select id="add-vaccine" style="width: 300px;">
+            <label for="add-vaccine-id" style="width: 150px;" class="">Vaccine Name:</label>
+            <select id="add-vaccine-id" style="width: 300px;">
                 <option value="0">Choose Vaccine</option>
-                <option th:each="vaccine : ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.name}"></option>
+                <option th:each="vaccine : ${vaccines}" th:value="${vaccine.id}" th:text="${vaccine.vaccineName}"></option>
             </select>
         </div>
         <div>
@@ -51,49 +51,19 @@
         </div>
         <div>
             <label for="add-administered" style="width: 150px;" class="">Date Administered:</label>
-            <input type="text" id="add-administered" name="administered" style="width:300px;"
-                   placeholder="yyyy-mm-dd">
+            <input type="date" id="add-administered" name="administered" style="width:300px;">
         </div>
         <div>
             <label for="add-booster" style="width: 150px;" class="">Is this a booster?</label>
             <select name="add-booster" id="add-booster">
-                <option value="yes">No</option>
-                <option value="no">Yes</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
             </select>
         </div>
         <div id="add-vaccine-button-container" class="d-flex justify-content-evenly py-1">
             <button class="goat-button" id="close-add-vaccine-view">Cancel</button>
-            <button class="goat-button" id="save-vaccine-record" type="submit">Save Changes</button>
+            <button class="goat-button" id="save-vaccine-record">Save Changes</button>
         </div>
-    </div>
-</div>
-
-<!--  Edit Vaccine Modal container-->
-<div id="edit-vaccine-modal-container" class="modal-container" style="display: none;">
-    <div class="modal-wrapper container py-3">
-        <div>
-            <h3>Edit Vaccine Details Below</h3>
-        </div>
-        <div>
-            <label for="dosage" style="width: 150px;" class="">Dosage in Ccs:</label>
-            <input type="text" id="dosage" name="dosage" style="width:300px;">
-        </div>
-        <div>
-            <label for="administered" style="width: 150px;" class="">Date Administered:</label>
-            <input type="text" id="administered" name="administered" style="width:300px;" placeholder="yyyy-mm-dd">
-        </div>
-        <div>
-            <label for="booster" style="width: 150px;" class="">Is this a booster vaccine?</label>
-            <input type="text" id="booster" name="booster" style="width:300px;">
-        </div>
-        <div>
-            <label for="vaccine" style="width: 150px;" class="">Vaccine Name:</label>
-            <input type="text" id="vaccine" name="vaccine" style="width:300px;">
-        </div>
-    </div>
-    <div id="edit-vaccine-button-container" class="d-flex justify-content-evenly py-1">
-        <button class="goat-button" id="edit-vaccine-cancel-button">Cancel</button>
-        <button class="goat-button" id="save-vaccine-changes-button" type="submit">Save Changes</button>
     </div>
 </div>
 
@@ -107,7 +77,7 @@
         </div>
         <div>
             <label for="dob" style="width: 150px;" class="">Date of birth</label>
-            <input type="text" id="dob" name="dob" style="width:300px;" th:value="${dob}">
+            <input type="date" id="dob" name="dob" style="width:300px;" th:value="${dob}">
         </div>
         <div>
             <label for="breed" style="width: 150px;" class="">Breed</label>
@@ -200,16 +170,8 @@
         $("#add-vaccine-modal").attr("style", "display: none");
     });
     $("#save-vaccine-record").on("click", () => {
-        // something complicated
-        // and reload
+        addNewRecord();
     });
-
-    // Edit Vaccine listeners
-    $("#edit-vaccine-cancel-button").on("click", () => {
-        $("#edit-vaccine-modal-container").attr("style", "display: none;");
-        // something complicated
-        // and relod
-    })
 
     // Edit Goat listeners
     $("#edit-goat-button").on("click", () => {
@@ -253,46 +215,24 @@
     const addNewRecord = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
+        let isBooster = $("#add-booster").val() === "yes";
+        console.log($("#add-booster").val());
+        console.log(isBooster);
         let settings = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                vaccineName: $("#vaccineName").val(),
-                dosageInCcs: $("#dosage").val(),
-                dateAdministered: $("#administered").val(),
-                isBooster: $("#booster").val()
+                goatId: $("#goatId").val(),
+                vaccineId: $("#add-vaccine-id").val(),
+                dosageInCcs: $("#add-dosage").val(),
+                dateAdministered: $("#add-administered").val(),
+                isBooster: isBooster,
             })
         }
         settings.headers[header] = token;
-        fetch("/edit/goat", settings)
-            .then(() => {
-                location.reload();
-            })
-    }
-
-    // Function for EDITING an EXISTING vaccine
-    const saveEditVaccine = () => {
-        var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content");
-        let isBooster = $("#booster").val();
-        isBooster = isBooster.toLowerCase() === "y" || isBooster.toLowerCase() === "yes";
-        let settings = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                dosageInCcs: $("#dosage").val(),
-                dateAdministered: $("#administered").val(),
-                isBooster: $("#booster").val(),
-                vaccine: $("#vaccine").val(),
-                id: $("#vaccine-id"),
-            })
-        }
-        settings.headers[header] = token;
-        fetch("/edit/vaccine/id", settings)
+        fetch("/add/vaccine/" + $("#add-vaccine-id").val(), settings)
             .then(() => {
                 location.reload();
             })

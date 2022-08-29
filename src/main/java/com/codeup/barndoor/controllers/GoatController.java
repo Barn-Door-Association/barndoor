@@ -20,19 +20,18 @@ import java.util.Set;
 @Controller
 public class GoatController {
 
-    @Autowired
     private final GoatRepository goatDao;
     private final HerdRepository herdDao;
     private final VaccineRecordRepository vaccineRecordDao;
     private final VaccineRepository vaccineDao;
-    private final GenericVaccineRepository genericVaccineDao;
+//    private final GenericVaccineRepository genericVaccineDao;
 
-    public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao, VaccineRepository vaccineDao, GenericVaccineRepository genericVaccineDao) {
+    public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao, VaccineRepository vaccineDao) {
         this.goatDao = goatDao;
         this.herdDao = herdDao;
         this.vaccineRecordDao = vaccineRecordDao;
         this.vaccineDao = vaccineDao;
-        this.genericVaccineDao = genericVaccineDao;
+//        this.genericVaccineDao = genericVaccineDao;
     }
 
     @GetMapping("/goat/{id}")
@@ -40,7 +39,8 @@ public class GoatController {
         // Add method to fix the date format to yyyy-mm-dd before displaying through the model
         Goat goat = goatDao.findById(id);
         String date = goat.getDob().toString().substring(0, 10);
-        List<GenericVaccine> vaccines = genericVaccineDao.findAll();
+//        List<GenericVaccine> vaccines = genericVaccineDao.findAll();
+        List<Vaccine> vaccines = vaccineDao.findAll();
         model.addAttribute("vaccines", vaccines);
         model.addAttribute("dob", date);
         model.addAttribute("goat", goat);
@@ -54,7 +54,7 @@ public class GoatController {
     @ResponseBody
     @PostMapping("/add/new/goat")
     public String addNewGoat(@RequestBody GoatRequest goatRequest) {
-        if(goatRequest.getImg() == null || goatRequest.getImg().equals("")){
+        if (goatRequest.getImg() == null || goatRequest.getImg().equals("")) {
             goatRequest.setImg("/img/defaultgoat.jpg");
         }
         Goat newGoat = new Goat(
@@ -113,6 +113,7 @@ public class GoatController {
         goatDao.save(editedGoat);
         return "goat";
     }
+
     @ResponseBody
     @PostMapping("/edit/vaccine/id")
     public String editVaccine(@RequestBody VaccineRecord vaccineRecord) {
@@ -125,4 +126,24 @@ public class GoatController {
         return "goat";
     }
 
+    @ResponseBody
+    @PostMapping("/add/vaccine/{id}")
+    public String addVaccine(@RequestBody VaccineAddRequest vaccineAddRequest) {
+        System.out.println(vaccineAddRequest.getVaccineId());
+        System.out.println(vaccineAddRequest.getGoatId());
+        System.out.println(vaccineAddRequest.getDateAdministered());
+        System.out.println(vaccineAddRequest.getDosageInCcs());
+        System.out.println(vaccineAddRequest.getIsBooster());
+        Goat goat = goatDao.findById((vaccineAddRequest.getGoatId()));
+        Vaccine vaccine = vaccineDao.findById(vaccineAddRequest.getVaccineId()).get();
+        VaccineRecord vaccineRecord = new VaccineRecord(
+                vaccineAddRequest.getDosageInCcs(),
+                vaccineAddRequest.getDateAdministered(),
+                vaccineAddRequest.getIsBooster(),
+                vaccine,
+                goat
+        );
+        vaccineRecordDao.save(vaccineRecord);
+        return "goat";
+    }
 }

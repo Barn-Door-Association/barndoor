@@ -16,7 +16,7 @@
         <div class="d-flex card py-1">
             <h2 class="card-header" th:text="${herd.herdName}"></h2>
             <div class="card-body">
-                <h5 class="card-title"> <span th:text="${herd.description}"></span></h5>
+                <h5 class="card-title"><span th:text="${herd.description}"></span></h5>
                 <br>
                 <input type="hidden" th:value="${herd.id}" id="herd-id">
                 <div class="d-flex justify-content-center">
@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <label for="dob" style="width: 150px;" class="">Date of birth</label>
-                                <input type="text" id="dob" name="dob" style="width:300px;" placeholder="yyyy-mm-dd">
+                                <input type="date" id="dob" name="dob" style="width:300px;">
                             </div>
                             <div>
                                 <label for="breed" style="width: 150px;" class="">Breed</label>
@@ -72,17 +72,18 @@
                                 <label for="dam_name" style="width: 150px;" class="">Dam Name</label>
                                 <input type="text" id="dam_name" name="dam_name" style="width:300px;">
                             </div>
+
                         <div id="add-goat-button-container" class="modal-footer">
                             <button id="file-upload-btn" class="btn btn-secondary">Upload Image</button>
                             <input id="file-path" type="hidden" name="img">
                             <img id="file-upload-img" src="" alt="" style="width: 100px;">
                             <button type="button" id="add-goat-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" id="add-goat-add-button" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
             <!--EDIT A HERD MODAL-->
             <div id="edit-herd-modal-container" class="modal" tabindex="-1">
@@ -117,13 +118,15 @@
                     <div class="card mb-3" style="width:80%;">
                         <div class="row g-0">
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                <a target="_blank" href="https://our_domain_name/goats/${goat.id}"><img th:src="${goat.img}"
-                                                                                                        class="img-fluid rounded-start"
-                                                                                                        alt="..."></a>
+                                <a target="_blank" href="https://our_domain_name/goats/${goat.id}"><img
+                                        th:src="${goat.img}"
+                                        class="img-fluid rounded-start"
+                                        alt="..."></a>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <a th:href="@{/goat/{id}(id=${goat.id})}"><h4 class="card-title" th:text="${goat.name}"></h4></a>
+                                    <a th:href="@{/goat/{id}(id=${goat.id})}"><h4 class="card-title"
+                                                                                  th:text="${goat.name}"></h4></a>
                                     <h5 class="card-text">Tag ID: <span th:text="${goat.tagId}"></span></h5>
                                     <h5 class="card-text">DOB: <span th:text="${goat.dob}"></span></h5>
                                     <h5 class="card-text">Sex: <span th:text="${goat.sex}"></span></h5>
@@ -169,7 +172,7 @@
         $("#add-goat-modal-container").attr("style", "display: none;")
     });
     $("#add-goat-add-button").on("click", () => {
-            addNewGoat();
+        addNewGoat();
     });
 
     // Edit Herd Button
@@ -184,9 +187,7 @@
     });
 
 
-
-
-// THESE FUNCTIONS TAKE ENTERED DATA AND SENDS TO CONTROLLER
+    // THESE FUNCTIONS TAKE ENTERED DATA AND SENDS TO CONTROLLER
     const addNewGoat = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
