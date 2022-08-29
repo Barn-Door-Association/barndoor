@@ -7,10 +7,10 @@
     <link type="text/css" rel="stylesheet" href="/css/modaltest.css">
 </head>
 <body>
-<!-- This is the navbar fragment / partial -->
+<!-- NAVBAR PARTIAL -->
 <nav th:replace="partials/partials.html :: nav"></nav>
 
-<!--  This is the main section of the page  -->
+<!--  MAIN SECTION PAGE  -->
 <section class="container py-5">
     <article class="d-flex justify-content-center">
         <div class="d-flex card py-1">
@@ -29,89 +29,8 @@
                 </div>
             </div>
 
-            <!--  Add a New Goat Modal injection container  -->
-            <div id="modal-container"></div>
-
-
-
-            <br>
-            <!--Card container for the display of goats -->
-            <div class="justify-content-center" id="herd-table">
-                <div class="d-flex justify-content-center" th:each="goat : ${herd.goats}">
-                    <div class="card mb-3" style="width:80%;">
-                        <div class="row g-0">
-                            <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                <a target="_blank" href="https://our_domain_name/goats/${goat.id}"><img th:src="${goat.img}"
-                                                                                                        class="img-fluid rounded-start"
-                                                                                                        alt="..."></a>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <a th:href="@{/goat/{id}(id=${goat.id})}"><h4 class="card-title" th:text="${goat.name}"></h4></a>
-                                    <h5 class="card-text">Tag ID: <span th:text="${goat.tagId}"></span></h5>
-                                    <h5 class="card-text">DOB: <span th:text="${goat.dob}"></span></h5>
-                                    <h5 class="card-text">Sex: <span th:text="${goat.sex}"></span></h5>
-                                    <h5 class="card-text">Breed: <span th:text="${goat.breed}"></span></h5>
-                                    <h5 class="card-text">Weight: <span th:text="${goat.weightInPounds}"></span>lbs</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </article>
-
-    <!--    Link to the top of the page (if we need it / for a large herd)  -->
-    <article class="d-flex justify-content-center">
-        <a href="#">Return to top of page</a>
-    </article>
-</section>
-
-<!--  The following section is footer partial  -->
-<section th:replace="partials/partials.html :: footer"></section>
-
-<!-- Bootstrap CDN-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-
-<!-- JQuery CDN-->
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous">
-</script>
-
-<!--  Custom Script -->
-<script>
-    // Event Listeners for all buttons
-    // Add Goat Button
-    $("#add-goat-button").on("click", () => {
-        $("#modal-container").html(addGoatForm());
-        document.getElementById("add-goat-cancel-button").addEventListener("click", () => {
-            $("#modal-container").html("");
-        });
-        document.getElementById("add-goat-add-button").addEventListener("click", () => {
-            addNewGoat();
-        });
-    });
-
-    // Edit Herd Button
-    $("#edit-herd-button").on("click", () => {
-        $("#modal-container").html(editHerdForm());
-        document.getElementById("edit-herd-cancel-button").addEventListener("click", () => {
-            $("#modal-container").html("");
-        });
-        document.getElementById("edit-herd-submit-button").addEventListener("click", () => {
-            console.log("hello");
-            saveEditHerd();
-        });
-
-    });
-
-
-    // Add form for adding a new goat
-    const addGoatForm = () => {
-        return `<div class="modal-wrapper container py-3">
+            <!--  ADD NEW GOAT MODAL  -->
+            <div id="add-goat-modal-container" class="modal-wrapper container py-3" style="display:none">
                 <div>
                     <label for="name" style="width: 150px;" class="">Name</label>
                     <input type="text" id="name" name="name" style="width:300px;">
@@ -144,18 +63,108 @@
                     <label for="dam_name" style="width: 150px;" class="">Dam Name</label>
                     <input type="text" id="dam_name" name="dam_name" style="width:300px;">
                 </div>
-                    <button id="file-upload-btn">Upload File</button>
-                    <input id="file-path" type="hidden" name="img">
-                    <img id="file-upload-img" src="" alt="" style="width: 100px;">
+                <button id="file-upload-btn">Upload File</button>
+                <input id="file-path" type="hidden" name="img">
+                <img id="file-upload-img" src="" alt="" style="width: 100px;">
                 <div id="add-goat-button-container" class="d-flex justify-content-evenly py-1">
                     <button class="goat-button" id="add-goat-cancel-button">Cancel</button>
                     <button class="goat-button" id="add-goat-add-button" type="submit">Add Goat</button>
                 </div>
             </div>
-            `
-    };
 
-    // This function takes the data entered into the modal and sends it to java controller
+            <!--EDIT A GOAT MODAL-->
+            <div id="edit-goat-modal-container" class="modal-container-herd wrapper py-3" style="display:none">
+                <div>
+                    <label for="name" style="width: 150px;" class="">Herd Name</label>
+                    <input type="text" id="edit-name" name="name" style="width:300px;">
+                </div>
+                <div>
+                    <label for="description" style="width: 150px;" class="">Herd Description</label>
+                    <input type="text" id="description" name="description" style="width:300px;">
+                </div>
+                <div id="edit-herd-button-container" class="d-flex justify-content-evenly py-1">
+                    <button class="herd-button" id="edit-herd-cancel-button">Cancel</button>
+                    <button class="herd-button" id="edit-herd-submit-button">Save Changes</button>
+                </div>
+            </div>
+
+            <br>
+            <!--CARD TO DISPLAY GOAT -->
+            <div class="justify-content-center" id="herd-table">
+                <div class="d-flex justify-content-center" th:each="goat : ${herd.goats}">
+                    <div class="card mb-3" style="width:80%;">
+                        <div class="row g-0">
+                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <a target="_blank" href="https://our_domain_name/goats/${goat.id}"><img th:src="${goat.img}"
+                                                                                                        class="img-fluid rounded-start"
+                                                                                                        alt="..."></a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a th:href="@{/goat/{id}(id=${goat.id})}"><h4 class="card-title" th:text="${goat.name}"></h4></a>
+                                    <h5 class="card-text">Tag ID: <span th:text="${goat.tagId}"></span></h5>
+                                    <h5 class="card-text">DOB: <span th:text="${goat.dob}"></span></h5>
+                                    <h5 class="card-text">Sex: <span th:text="${goat.sex}"></span></h5>
+                                    <h5 class="card-text">Breed: <span th:text="${goat.breed}"></span></h5>
+                                    <h5 class="card-text">Weight: <span th:text="${goat.weightInPounds}"></span>lbs</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!--    LINK TO TOP OF PAGE  -->
+    <article class="d-flex justify-content-center">
+        <a href="#">Return to top of page</a>
+    </article>
+</section>
+
+<!--  FOOTER PARTIAL -->
+<section th:replace="partials/partials.html :: footer"></section>
+
+<!-- BOOTSTRAP CDN-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- JQUERY CDN-->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+</script>
+
+
+<script>
+    // EVENT LISTENERS FOR ALL BUTTONS
+
+    // Add Goat Button
+    $("#add-goat-button").on("click", () => {
+        $("#add-goat-modal-container").attr("style", "display: block;");
+    });
+    $("#add-goat-cancel-button").on("click", () => {
+        $("#add-goat-modal-container").attr("style", "display: none;")
+    });
+    $("#add-goat-add-button").on("click", () => {
+            addNewGoat();
+    });
+
+    // Edit Herd Button
+    $("#edit-herd-button").on("click", () => {
+        $("#edit-goat-modal-container").attr("style", "display: block;");
+    });
+    $("#edit-herd-cancel-button").on("click", () => {
+        $("#edit-goat-modal-container").attr("style", "display: none;")
+    });
+    $("#edit-herd-submit-button").on("click", () => {
+        saveEditHerd();
+    });
+
+
+
+
+// THESE FUNCTIONS TAKE ENTERED DATA AND SENDS TO CONTROLLER
     const addNewGoat = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -184,27 +193,6 @@
             })
     }
 
-    // Edit form for editing herd
-    const editHerdForm = () => {
-        return `
-            <div class="modal-container-herd wrapper py-3">
-                <div>
-                    <label for="name" style="width: 150px;" class="">Herd Name</label>
-                    <input type="text" id="name" name="name" style="width:300px;">
-                </div>
-                <div>
-                    <label for="description" style="width: 150px;" class="">Herd Description</label>
-                    <input type="text" id="description" name="description" style="width:300px;">
-                </div>
-                <div id="edit-herd-button-container" class="d-flex justify-content-evenly py-1">
-                    <button class="herd-button" id="edit-herd-cancel-button">Cancel</button>
-                    <button class="herd-button" id="edit-herd-submit-button">Save Changes</button>
-                </div>
-            </div>
-            `
-    }
-    // This function takes the data entered into the modal and sends it to java controller
-
     const saveEditHerd = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
@@ -215,7 +203,7 @@
             },
             body: JSON.stringify({
                 herdId: $("#herd-id").val(),
-                herdName: $("#name").val(),
+                herdName: $("#edit-name").val(),
                 description: $("#description").val()
 
             })
@@ -226,6 +214,7 @@
                 location.reload();
             })
     }
+
 </script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script th:inline="javascript">
