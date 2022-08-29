@@ -73,12 +73,15 @@
                                 <input type="text" id="dam_name" name="dam_name" style="width:300px;">
                             </div>
 
-                        <div id="add-goat-button-container" class="modal-footer">
-                            <button id="file-upload-btn" class="btn btn-secondary">Upload Image</button>
-                            <input id="file-path" type="hidden" name="img">
-                            <img id="file-upload-img" src="" alt="" style="width: 100px;">
-                            <button type="button" id="add-goat-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" id="add-goat-add-button" class="btn btn-primary">Save changes</button>
+                            <div id="add-goat-button-container" class="modal-footer">
+                                <button id="file-upload-btn" class="btn btn-secondary">Upload Image</button>
+                                <input id="file-path" type="hidden" name="img">
+                                <img id="file-upload-img" src="" alt="" style="width: 100px;">
+                                <button type="button" id="add-goat-cancel-button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close
+                                </button>
+                                <button type="button" id="add-goat-add-button" class="btn btn-primary">Save changes
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -102,14 +105,17 @@
                                 <input type="text" id="description" name="description" style="width:300px;">
                             </div>
                             <div id="edit-herd-button-container" class="modal-footer">
-                                <button type="button" id="edit-herd-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="edit-herd-submit-button" class="btn btn-primary">Save changes</button>
+                                <button type="button" id="edit-herd-cancel-button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close
+                                </button>
+                                <button type="button" id="edit-herd-submit-button" class="btn btn-primary">Save
+                                    changes
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
 
             <br>
             <!--CARD TO DISPLAY GOAT -->
@@ -118,7 +124,7 @@
                     <div class="card mb-3" style="width:80%;">
                         <div class="row g-0">
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
-                                <a target="_blank" href="https://our_domain_name/goats/${goat.id}"><img
+                                <a th:href="@{/goat/{id}(id=${goat.id})}"><img
                                         th:src="${goat.img}"
                                         class="img-fluid rounded-start"
                                         alt="..."></a>
