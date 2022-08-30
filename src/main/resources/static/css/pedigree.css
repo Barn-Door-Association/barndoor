@@ -61,14 +61,13 @@ body {
     font-weight: bold;
 }
 
-.nodeExample1 {
+.node1 {
     padding: 2px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 5px;
     background-color: #202124;
     border: 0px solid #000;
-    box-shadow: 10px 10px 10px #636363;
     width: 270px;
     font-family: Tahoma;
     font-size: 16px;
@@ -76,7 +75,7 @@ body {
     opacity: 90%;
 }
 
-.nodeExample1 img {
+.node1 img {
     height: 100px;
     margin-right: 10px;
 }

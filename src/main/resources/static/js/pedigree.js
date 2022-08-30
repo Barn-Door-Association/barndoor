@@ -15,7 +15,7 @@ function getPedigree(id) {
                         type: 'step'
                     },
                     node: {
-                        HTMLclass: 'nodeExample1'
+                        HTMLclass: 'node1'
                     }
                 },
                 goat = {
