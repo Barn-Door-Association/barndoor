@@ -29,7 +29,7 @@ function getPedigree(id) {
                         href: "/goat/" + data.id,
                         target: "_blank"
                     },
-                    // image: data.img,
+                    image: data.img,
                     HTMLid: "goat"
                 },
 
@@ -45,7 +45,7 @@ function getPedigree(id) {
                         href: data.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[0]?.id,
                         target: "_blank"
                     },
-                    // image: data.parents[0]?.img,
+                    image: data.parents[0]?.img,
                     HTMLid: "parent1"
                 },
                 parent2 = {
@@ -60,7 +60,7 @@ function getPedigree(id) {
                         href: data.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[1].id,
                         target: "_blank"
                     },
-                    // image: data.parents[1]?.img,
+                    image: data.parents[1]?.img,
                     HTMLid: "parent2"
                 },
                 grandParent11 = {
@@ -75,7 +75,7 @@ function getPedigree(id) {
                         href: data.parents[0]?.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[0].parents[0].id,
                         target: "_blank"
                     },
-                    // image: data.parents[0]?.parents[0]?.img,
+                    image: data.parents[0]?.parents[0]?.img,
                     HTMLid: "grandParent11"
                 },
                 grandParent12 = {
@@ -90,7 +90,7 @@ function getPedigree(id) {
                         href: data.parents[0]?.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[0].parents[1].id,
                         target: "_blank"
                     },
-                    // image: data.parents[0]?.parents[1]?.img,
+                    image: data.parents[0]?.parents[1]?.img,
                     HTMLid: "grandParent12"
                 },
                 grandParent21 = {
@@ -105,7 +105,7 @@ function getPedigree(id) {
                         href: data.parents[1]?.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[1].parents[0].id,
                         target: "_blank"
                     },
-                    // image: data.parents[1]?.parents[0]?.img,
+                    image: data.parents[1]?.parents[0]?.img,
                     HTMLid: "grandParent21"
                 },
                 grandParent22 = {
@@ -120,7 +120,7 @@ function getPedigree(id) {
                         href: data.parents[1]?.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[1].parents[1].id,
                         target: "_blank"
                     },
-                    // image: data.parents[1]?.parents[1]?.img,
+                    image: data.parents[1]?.parents[1]?.img,
                     HTMLid: "grandParent22"
                 }
 
