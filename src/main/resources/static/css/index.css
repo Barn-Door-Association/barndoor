@@ -24,7 +24,7 @@
 
 .card {
     border-color: #3C403D;
-    border-width: medium;
+    border-width: 2px;
 }
 
 /*.col-md {*/
@@ -41,4 +41,8 @@ h1 {
     justify-content: center;
 }
 
-
+#mission {
+    padding: 0 10px;
+    text-align: center;
+    font-size: 22px;
+}
