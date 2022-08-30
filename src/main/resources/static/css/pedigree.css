@@ -22,14 +22,16 @@ body { background: #fff; }
     background-color: #202124;
     border: 0px solid #000;
     box-shadow: 10px 10px 10px #636363;
-    width: 200px;
+    width: 270px;
     font-family: Tahoma;
-    font-size: 12px;
+    font-size: 16px;
     color: #ffffff;
     opacity: 90%;
 }
 
 .nodeExample1 img {
+    width: 180px;
+    height: auto;
     margin-right:  10px;
 }
 

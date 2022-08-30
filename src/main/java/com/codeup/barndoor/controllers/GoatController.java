@@ -24,14 +24,12 @@ public class GoatController {
     private final HerdRepository herdDao;
     private final VaccineRecordRepository vaccineRecordDao;
     private final VaccineRepository vaccineDao;
-//    private final GenericVaccineRepository genericVaccineDao;
 
     public GoatController(GoatRepository goatDao, HerdRepository herdDao, VaccineRecordRepository vaccineRecordDao, VaccineRepository vaccineDao) {
         this.goatDao = goatDao;
         this.herdDao = herdDao;
         this.vaccineRecordDao = vaccineRecordDao;
         this.vaccineDao = vaccineDao;
-//        this.genericVaccineDao = genericVaccineDao;
     }
 
     @GetMapping("/goat/{id}")
@@ -39,7 +37,6 @@ public class GoatController {
         // Add method to fix the date format to yyyy-mm-dd before displaying through the model
         Goat goat = goatDao.findById(id);
         String date = goat.getDob().toString().substring(0, 10);
-//        List<GenericVaccine> vaccines = genericVaccineDao.findAll();
         List<Vaccine> vaccines = vaccineDao.findAll();
         model.addAttribute("vaccines", vaccines);
         model.addAttribute("dob", date);

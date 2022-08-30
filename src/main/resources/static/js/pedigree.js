@@ -20,107 +20,107 @@ function getPedigree(id) {
                 },
                 goat = {
                     text: {
-                        name: data.name,
-                        breed: data.breed,
-                        sex: data.sex,
-                        dob: new Date(data.dob).toLocaleDateString()
+                        name: "Name: " + data.name,
+                        breed: "Breed: " + data.breed,
+                        sex: "Sex: " + data.sex,
+                        dob: "DOB: " + new Date(data.dob).toLocaleDateString()
                     },
                     link: {
                         href: "/goat/" + data.id,
                         target: "_blank"
                     },
-                    image: "../headshots/2.jpg",
+                    // image: data.img,
                     HTMLid: "goat"
                 },
 
                 parent1 = {
                     parent: goat,
                     text: {
-                        name: data.parents[0]?.name === undefined ? "Unknown" : data.parents[0].name,
-                        breed: data.parents[0]?.breed === undefined ? "" : data.parents[0].breed,
-                        sex: data.parents[0]?.sex === undefined ? "" : data.parents[0].sex,
-                        dob: data.parents[0]?.dob === undefined ? "" : new Date(data.parents[0]?.dob).toLocaleDateString()
+                        name: data.parents[0]?.name === undefined ? "Unknown" : "Name: " + data.parents[0].name,
+                        breed: data.parents[0]?.breed === undefined ? "" : "Breed: " + data.parents[0].breed,
+                        sex: data.parents[0]?.sex === undefined ? "" : "Sex: " + data.parents[0].sex,
+                        dob: data.parents[0]?.dob === undefined ? "" : "DOB: " + new Date(data.parents[0]?.dob).toLocaleDateString()
                     },
                     link: {
                         href: data.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[0]?.id,
                         target: "_blank"
                     },
-                    image: "../headshots/1.jpg",
-                    HTMLid: "coo"
+                    // image: data.parents[0]?.img,
+                    HTMLid: "parent1"
                 },
                 parent2 = {
                     parent: goat,
                     text: {
-                        name: data.parents[1]?.name === undefined ? "Unknown" : data.parents[1].name,
-                        breed: data.parents[1]?.breed === undefined ? "" : data.parents[1].breed,
-                        sex: data.parents[1]?.sex === undefined ? "" : data.parents[1].sex,
-                        dob: data.parents[1]?.dob === undefined ? "" : new Date(data.parents[1]?.dob).toLocaleDateString()
+                        name: data.parents[1]?.name === undefined ? "Unknown" : "Name: " + data.parents[1].name,
+                        breed: data.parents[1]?.breed === undefined ? "" : "Breed: " + data.parents[1].breed,
+                        sex: data.parents[1]?.sex === undefined ? "" : "Sex: " + data.parents[1].sex,
+                        dob: data.parents[1]?.dob === undefined ? "" : "DOB: " + new Date(data.parents[1]?.dob).toLocaleDateString()
                     },
                     link: {
                         href: data.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[1].id,
                         target: "_blank"
                     },
-                    image: "../headshots/5.jpg",
+                    // image: data.parents[1]?.img,
                     HTMLid: "parent2"
                 },
                 grandParent11 = {
                     parent: parent1,
                     text: {
-                        name: data.parents[0]?.parents[0]?.name === undefined ? "Unknown" : data.parents[0].parents[0].name,
-                        breed: data.parents[0]?.parents[0]?.breed === undefined ? "" : data.parents[0].parents[0].breed,
-                        sex: data.parents[0]?.parents[0]?.sex === undefined ? "" : data.parents[0].parents[0].sex,
-                        dob: data.parents[0]?.parents[0]?.dob === undefined ? "" : new Date(data.parents[0]?.parents[0].dob).toLocaleDateString()
+                        name: data.parents[0]?.parents[0]?.name === undefined ? "Unknown" : "Name: " + data.parents[0].parents[0].name,
+                        breed: data.parents[0]?.parents[0]?.breed === undefined ? "" : "Breed: " + data.parents[0].parents[0].breed,
+                        sex: data.parents[0]?.parents[0]?.sex === undefined ? "" : "Sex: " + data.parents[0].parents[0].sex,
+                        dob: data.parents[0]?.parents[0]?.dob === undefined ? "" : "DOB: " + new Date(data.parents[0]?.parents[0].dob).toLocaleDateString()
                     },
                     link: {
                         href: data.parents[0]?.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[0].parents[0].id,
                         target: "_blank"
                     },
-                    image: "../headshots/8.jpg",
+                    // image: data.parents[0]?.parents[0]?.img,
                     HTMLid: "grandParent11"
                 },
                 grandParent12 = {
                     parent: parent1,
                     text: {
-                        name: data.parents[0]?.parents[1]?.name === undefined ? "Unknown" : data.parents[0].parents[1].name,
-                        breed: data.parents[0]?.parents[1]?.breed === undefined ? "" : data.parents[0].parents[1].breed,
-                        sex: data.parents[0]?.parents[1]?.sex === undefined ? "" : data.parents[0].parents[1].sex,
-                        dob: data.parents[0]?.parents[1]?.dob === undefined ? "" : new Date(data.parents[0]?.parents[1].dob).toLocaleDateString()
+                        name: data.parents[0]?.parents[1]?.name === undefined ? "Unknown" : "Name: " + data.parents[0].parents[1].name,
+                        breed: data.parents[0]?.parents[1]?.breed === undefined ? "" : "Breed: " + data.parents[0].parents[1].breed,
+                        sex: data.parents[0]?.parents[1]?.sex === undefined ? "" : "Sex: " + data.parents[0].parents[1].sex,
+                        dob: data.parents[0]?.parents[1]?.dob === undefined ? "" : "DOB: " + new Date(data.parents[0]?.parents[1].dob).toLocaleDateString()
                     },
                     link: {
                         href: data.parents[0]?.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[0].parents[1].id,
                         target: "_blank"
                     },
-                    image: "../headshots/9.jpg",
+                    // image: data.parents[0]?.parents[1]?.img,
                     HTMLid: "grandParent12"
                 },
                 grandParent21 = {
                     parent: parent2,
                     text: {
-                        name: data.parents[1]?.parents[0]?.name === undefined ? "Unknown" : data.parents[1].parents[0].name,
-                        breed: data.parents[1]?.parents[0]?.breed === undefined ? "" : data.parents[1].parents[0].breed,
-                        sex: data.parents[1]?.parents[0]?.sex === undefined ? "" : data.parents[1].parents[0].sex,
-                        dob: data.parents[1]?.parents[0]?.dob === undefined ? "" : new Date(data.parents[1]?.parents[0].dob).toLocaleDateString()
+                        name: data.parents[1]?.parents[0]?.name === undefined ? "Unknown" : "Name: " + data.parents[1].parents[0].name,
+                        breed: data.parents[1]?.parents[0]?.breed === undefined ? "" : "Breed: " + data.parents[1].parents[0].breed,
+                        sex: data.parents[1]?.parents[0]?.sex === undefined ? "" : "Sex: " + data.parents[1].parents[0].sex,
+                        dob: data.parents[1]?.parents[0]?.dob === undefined ? "" : "DOB: " + new Date(data.parents[1]?.parents[0].dob).toLocaleDateString()
                     },
                     link: {
                         href: data.parents[1]?.parents[0]?.id === undefined ? "" : "/goat/" + data.parents[1].parents[0].id,
                         target: "_blank"
                     },
-                    image: "../headshots/4.jpg",
+                    // image: data.parents[1]?.parents[0]?.img,
                     HTMLid: "grandParent21"
                 },
                 grandParent22 = {
                     parent: parent2,
                     text: {
-                        name: data.parents[1]?.parents[1]?.name === undefined ? "Unknown" : data.parents[1].parents[1].name,
-                        breed: data.parents[1]?.parents[1]?.breed === undefined ? "" : data.parents[1].parents[1].breed,
-                        sex: data.parents[1]?.parents[1]?.sex === undefined ? "" : data.parents[1].parents[1].sex,
-                        dob: data.parents[1]?.parents[1]?.dob === undefined ? "" : new Date(data.parents[1]?.parents[1].dob).toLocaleDateString()
+                        name: data.parents[1]?.parents[1]?.name === undefined ? "Unknown" : "Name: " + data.parents[1].parents[1].name,
+                        breed: data.parents[1]?.parents[1]?.breed === undefined ? "" : "Breed: " + data.parents[1].parents[1].breed,
+                        sex: data.parents[1]?.parents[1]?.sex === undefined ? "" : "Sex: " + data.parents[1].parents[1].sex,
+                        dob: data.parents[1]?.parents[1]?.dob === undefined ? "" : "DOB: " + new Date(data.parents[1]?.parents[1].dob).toLocaleDateString()
                     },
                     link: {
                         href: data.parents[1]?.parents[1]?.id === undefined ? "" : "/goat/" + data.parents[1].parents[1].id,
                         target: "_blank"
                     },
-                    image: "../headshots/11.jpg",
+                    // image: data.parents[1]?.parents[1]?.img,
                     HTMLid: "grandParent22"
                 }
 
