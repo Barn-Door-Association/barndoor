@@ -7,42 +7,79 @@
 
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md d-none d-md-inline-block card landing-card" id="reg-logo">
-                <img src="/img/BARNDOOR_3.png">
+            <div class="col-md d-none d-md-inline-block card justify-content-center"
+                 style="height: 550px; width: 466px; background: #A3BCB6">
+
+                <h2 class="d-flex justify-content-center">Create a Free Account</h2>
+                <br>
+                <div class="align-text-center" style="margin: 10px 50px">
+                    <h5>You can be up and running in a few moments!</h5>
+                    <br>
+                    <h6>First Create A Personalized Username</h6>
+                    <br>
+                    <h6>Then create a unique password that is:</h6>
+                    <ul>
+                        <li>8 or more character</li>
+                        <li>Contains at least one upper and lowercase letter</li>
+                        <li>a number and a symbol</li>
+                    </ul>
+                    <br>
+                    <h6>Lastly fill out your personal information and Ranch Name</h6>
+                </div>
+                <br>
+                <!--                <img src="/img/BARNDOOR_3.png">-->
             </div>
 
-            <div class="d-flex card reg-card col-md">
-                <h2 class="d-flex justify-content-center reg-header card">Create an account</h2>
+            <div class="d-flex card reg-card col-md" style="height: 550px; width: 466px">
+                <h2 class="d-flex justify-content-center reg-header card">Sign-up Now</h2>
                 <br>
                 <div id="errorMsgBox">
-                    <div class="errorMsg" th:if="${errorList.size() &gt; 0}" th:each="error:${errorList}"><small
+                    <div class="errorMsg" th:if="${errorList.size() &gt; 0}" th:each="error:${errorList}"
+                         style="color: red"><small
                             th:text="${error}"></small>
                     </div>
                 </div>
-                <form th:action="@{/register}" method="POST" th:object="${user}" class="content-center">
-                    <div class="mb-3">
-                        <label for="username">Username</label>
-                        <input id="username" placeholder="Username" th:field="*{username}" class="form-control"/>
-                        <label for="firstName">First Name</label>
-                        <input id="firstName" class="form-control" placeholder="First Name" th:field="*{firstName}"/>
-                        <label for="lastName">Last Name</label>
-                        <input id="lastName" class="form-control" placeholder="Last Name" th:field="*{lastName}"/>
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control" placeholder="Password"
-                               th:field="*{password}"/>
-                        <label for="email">Email Address</label>
-                        <input id="email" class="form-control" placeholder="Email" th:field="*{email}"/>
-                        <label for="ranchName">Ranch Name</label>
-                        <input id="ranchName" class="form-control" placeholder="Ranch Name" th:field="*{ranchName}"/>
-                    </div>
+                <form th:action="@{/register}" method="POST" th:object="${user}" class="mb-3 row">
+                    <div style="margin-left: 30px; width: 95%">
+                        <div class="reg-fields">
+                            <label style="width: 21%" for="username">Username</label>
 
-                    <div class="text-center">
+                            <input style="width: 60%" id="username" placeholder="Username" th:field="*{username}"/>
+
+                        </div>
+                        <div class="reg-fields">
+                            <label style="width: 21%" for="firstName">First Name</label>
+                            <input style="width: 60%" id="firstName" placeholder="First Name"
+                                   th:field="*{firstName}"/>
+                        </div>
+                        <div class="reg-fields">
+                            <label style="width: 21%" for="lastName">Last Name</label>
+                            <input style="width: 60%" id="lastName" placeholder="Last Name" th:field="*{lastName}"/>
+                        </div>
+                        <div class="reg-fields">
+                            <label style="width: 21%" for="password">Password</label>
+                            <input style="width: 60%" id="password" type="password" placeholder="Password"
+                                   th:field="*{password}"/>
+                        </div>
+                        <div class="reg-fields">
+                            <label style="width: 21%" for="email">Email</label>
+                            <input style="width: 60%" id="email" placeholder="Email" th:field="*{email}"/>
+                        </div>
+                        <div class="reg-fields">
+                            <label style="width: 21%" for="ranchName">Ranch Name</label>
+                            <input style="width: 60%" id="ranchName" placeholder="Ranch Name"
+                                   th:field="*{ranchName}"/>
+                        </div>
+
+                    </div>
+                    <div class="text-center" style="padding: 20px">
                         <input class="btn reg-btn" value="Sign me up!" type="submit"/>
                     </div>
 
                     <div class="login-here">
                         <p>Already have an account? <a href="/login">Login Here</a></p>
                     </div>
+
                 </form>
 
             </div>

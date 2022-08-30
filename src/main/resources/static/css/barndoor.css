@@ -9,6 +9,7 @@ h2 {
 body {
     padding-top: 70px;
     background-color: #DADED4;
+    font-family: 'Cabin', sans-serif;
 }
 
 body.watermark {
@@ -47,7 +48,7 @@ body.watermark {
 
 .login-here {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 20px;
 }
 
 .register-here {
@@ -64,10 +65,17 @@ body.watermark {
 .reg-btn {
     background: #39603D;
     color: white;
+    margin: 10px;
 }
 
-footer {
+.footerAll {
     text-align: center;
+    /*position: fixed;*/
+    left: 0;
+    bottom:0;
+    width: 100%;
+    padding: 16px;
+
 }
 
 section {
@@ -78,7 +86,7 @@ section {
     padding: 0;
     /*border: 0;*/
     border-color: #3C403D;
-    border-width: thin;
+    border-width: 1px;
 }
 
 .column {
@@ -112,4 +120,9 @@ section {
 .goat-container {
     width: 100%;
 }
+
+.reg-fields {
+    padding-bottom: 10px;
+}
+
 

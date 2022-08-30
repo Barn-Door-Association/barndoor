@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
     This code was adapted from: https://mkyong.com/regular-expressions/how-to-validate-password-with-regular-expression/
  */
 public class Password {
+
     private static final String PASSWORD_PATTERN =
             "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
 
@@ -17,9 +18,14 @@ public class Password {
         return matcher.matches();
     }
 
+    }
+
+
+
+
 //    public static void main(String[] args) {
 //        System.out.println("A4wt1234");
 //
 //    }
 
-}
+
