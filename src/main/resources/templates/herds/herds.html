@@ -4,73 +4,74 @@
     <head th:replace="partials/partials.html :: head('Herd')"></head>
     <meta th:name="_csrf" th:content="${_csrf.token}">
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
-        <!--    CSS LINK -->
+    <!--    CSS LINK -->
     <link type="text/css" rel="stylesheet" href="/css/herds.css">
 </head>
 <body>
-        <!--NAVBAR PARTIAL-->
+<!--NAVBAR PARTIAL-->
 <nav th:replace="partials/partials.html :: nav"></nav>
 
-        <!--  MAIN SECTION OF PAGE  -->
+<!--  MAIN SECTION OF PAGE  -->
 <section class="container py-5">
     <article class="d-flex justify-content-center">
-        <div class="d-flex card py-2">
+        <div class="d-flex card">
             <div class="d-flex card-header justify-content-center">
                 <h2>View All Herds In <span th:text="${user.ranchName}"></span>!</h2>
             </div>
             <div class="card-body">
 
-            <!-- ADD HERD BUTTON -->
-            <div class="d-flex justify-content-center">
-                <button id="add-herd-button" class="btn btn-primary">Add Herd</button>
-            </div>
-            <!--ADD NEW HERD MODAL -->
-            <div id="add-herd-modal-container" class="modal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header d-flex justify-content-center">
-                            <h5 class="modal-title">Add a New Herd</h5>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <label for="herd-name" style="width:150px;" class="">Herd Name</label>
-                                <input type="text" id="herd-name" name="herd-name" style="width:300px;">
+                <!-- ADD HERD BUTTON -->
+                <div class="d-flex justify-content-center">
+                    <button id="add-herd-button" class="btn btn-primary">Add Herd</button>
+                </div>
+                <!--ADD NEW HERD MODAL -->
+                <div id="add-herd-modal-container" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header d-flex justify-content-center">
+                                <h5 class="modal-title">Add a New Herd</h5>
                             </div>
-                            <div>
-                                <label for="description" style="width: 150px;" class="">Herd Description</label>
-                                <input type="text" id="description" name="description" style="width:300px;">
-                            </div>
-                            <div id="add-herd-button-container" class="modal-footer">
-                                <button type="button" id="add-herd-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" id="add-herd-add-button" class="btn btn-primary">Add New Herd</button>
+                            <div class="modal-body">
+                                <div>
+                                    <label for="herd-name" style="width:150px;" class="">Herd Name</label>
+                                    <input type="text" id="herd-name" name="herd-name" style="width:300px;">
+                                </div>
+                                <div>
+                                    <label for="description" style="width: 150px;" class="">Herd Description</label>
+                                    <input type="text" id="description" name="description" style="width:300px;">
+                                </div>
+                                <div id="add-herd-button-container" class="modal-footer">
+                                    <button type="button" id="add-herd-cancel-button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close
+                                    </button>
+                                    <button type="button" id="add-herd-add-button" class="btn btn-primary">Add New
+                                        Herd
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <br>
-            <!-- CARD TO DISPLAY LIST OF HERDS -->
-            <div class="d-flex justify-content-center" th:each="herd : ${herds}">
-                <div class="card mb-3" style="max-width: 450px;">
-                    <div class="row g-0">
-                        <div class="col-md-8">
-                            <div class="card-body justify-content-center" id="herdName">
-                                <!-- ANCHOR TAGS MAKES THE NAME OF THE HERD CLICKABLE & LINK TO CONTROLLER-->
-                                <a th:href="@{/herds/{id}(id=${herd.id})}"><h2 class="card-title">Herd Name: <span
-                                        th:text="${herd.herdName}"></span></h2></a>
-                                <h5 class="card-text"><span th:text="${herd.description}"></span></h5>
-                            </div>
-                        </div>
+                <br>
+                <!-- CARD TO DISPLAY LIST OF HERDS -->
+                <div class="d-flex justify-content-center" th:each="herd : ${herds}">
+                    <div class="card text-center my-3" style="width: 90%;">
+                    <!-- ANCHOR TAGS MAKES THE NAME OF THE HERD CLICKABLE & LINK TO CONTROLLER-->
+                    <h2 class="card-header" id="herdName">Herd Name: <a th:href="@{/herds/{id}(id=${herd.id})}"><span
+                            th:text="${herd.herdName}"></span></a></h2>
+                    <div class="card-body">
+                        <h5 class="card-title"><span th:text="${herd.description}"></span></h5>
+                    </div>
                     </div>
                 </div>
+                <br>
+                <!--  LINK TO TOP OF THE PAGE  -->
+                <article class="d-flex justify-content-center">
+                    <a href="#">Return to top of page</a>
+                </article>
             </div>
-            <!--  LINK TO TOP OF THE PAGE  -->
-            <article class="d-flex justify-content-center">
-                <a href="#">Return to top of page</a>
-            </article>
         </div>
-    </div>
     </article>
 </section>
 <input type="hidden" th:value="${user.id}" name="user-id" id="user-id">
@@ -105,7 +106,7 @@
     });
 
 
-// TAKES DATA FROM FORM AND SENDS TO CONTROLLER
+    // TAKES DATA FROM FORM AND SENDS TO CONTROLLER
     const addNewHerd = () => {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
