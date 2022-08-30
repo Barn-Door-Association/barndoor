@@ -14,14 +14,15 @@
         <!--  MAIN SECTION OF PAGE  -->
 <section class="container py-5">
     <article class="d-flex justify-content-center">
-        <div class="d-flex card py-2" style="width: 70%">
-            <div class="d-flex justify-content-center">
-                <h2>View All Herds Owned By <span th:text="${user.ranchName}"></span>!</h2>
+        <div class="d-flex card py-2">
+            <div class="d-flex card-header justify-content-center">
+                <h2>View All Herds In <span th:text="${user.ranchName}"></span>!</h2>
             </div>
+            <div class="card-body">
 
             <!-- ADD HERD BUTTON -->
             <div class="d-flex justify-content-center">
-                <button id="add-herd-button">Add Herd</button>
+                <button id="add-herd-button" class="btn btn-primary">Add Herd</button>
             </div>
             <!--ADD NEW HERD MODAL -->
             <div id="add-herd-modal-container" class="modal" tabindex="-1">
@@ -69,6 +70,7 @@
                 <a href="#">Return to top of page</a>
             </article>
         </div>
+    </div>
     </article>
 </section>
 <input type="hidden" th:value="${user.id}" name="user-id" id="user-id">
