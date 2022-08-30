@@ -26,10 +26,10 @@
             <div class="modal-body">
                 <div th:each="record : ${goat.records}">
                     <div>
-                        <h4 th:text="${record.vaccine.vaccineName}"></h4>
-                        <h5 th:text="${record.dateAdministered}"></h5>
-                        <h5 th:text="${record.isBooster}"></h5>
-                        <h5 th:text="${record.dosageInCcs}"></h5>
+                        <h4>Vaccine: <span th:text="${record.vaccine.vaccineName}"></span></h4>
+                        <h5>Date: <span th:text="${#dates.format(record.dateAdministered, 'MMM dd, yyyy')}"></span></h5>
+                        <h5>Booster: <span th:text="${record.isBooster}"></span></h5>
+                        <h5>Dosage: <span th:text="${record.dosageInCcs}"></span></h5>
                         <input type="hidden" th:value="${record.id}" name="vaccine-id">
                     </div>
                 </div>
