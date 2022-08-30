@@ -3,7 +3,7 @@
     background: #39603D;
     color: white;
     border-color: #3C403D;
-    border-width: medium;
+    border-width: 2px;
 }
 
 .aboutcolumn {
@@ -59,7 +59,7 @@
 
 .card {
     border-color: #3C403D;
-    border-width: medium;
+    border-width: 2px;
 }
 
 #aboutUs {
