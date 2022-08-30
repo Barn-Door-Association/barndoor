@@ -41,7 +41,6 @@ public class HerdController {
 
     @GetMapping("/herds/{id}")
     public String showHerdPage(@PathVariable long id, Model model){
-//         List<Goat> herd = goatDao.findAllByHerdId(id);
          Herd herd = herdDao.findById(id);
          model.addAttribute("herd",  herd);
          model.addAttribute("filestackKey", filestackKey);

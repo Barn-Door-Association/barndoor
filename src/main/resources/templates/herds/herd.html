@@ -134,7 +134,7 @@
                                     <a th:href="@{/goat/{id}(id=${goat.id})}"><h4 class="card-title"
                                                                                   th:text="${goat.name}"></h4></a>
                                     <h5 class="card-text">Tag ID: <span th:text="${goat.tagId}"></span></h5>
-                                    <h5 class="card-text">DOB: <span th:text="${goat.dob}"></span></h5>
+                                    <h5 class="card-text">DOB: <span th:text="${#dates.format(goat.dob, 'MMM dd, yyyy')}"></span></h5>
                                     <h5 class="card-text">Sex: <span th:text="${goat.sex}"></span></h5>
                                     <h5 class="card-text">Breed: <span th:text="${goat.breed}"></span></h5>
                                     <h5 class="card-text">Weight: <span th:text="${goat.weightInPounds}"></span>lbs</h5>
