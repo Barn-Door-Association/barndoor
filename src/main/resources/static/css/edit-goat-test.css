@@ -1,49 +1,20 @@
-/*.modal-container {*/
-/*    position: fixed;*/
-/*    z-index: 2;*/
-/*    left: 0;*/
-/*    top: 180px;*/
-/*    width: 100%;*/
-/*}*/
-
-/*.modal-wrapper {*/
-/*    width: 500px;*/
-/*    height: 300px;*/
-/*    color: black;*/
-/*    background-color: #a1b5ff;*/
-/*    border-radius: 10px;*/
-/*    border: 2px solid royalblue;*/
-/*    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);*/
-/*}*/
-
 .goat-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: royalblue;
+    background-color: #39603D;
     color: white;
     border-radius: 4px;
     border: 0;
     width: 100px;
     height: 50px;
 }
-
-/*styling components for edit goat modal*/
-/*#edit-goat-modal-container {*/
-/*    position: fixed;*/
-/*    z-index: 2;*/
-/*    left: 50%;*/
-/*    top: 50%;*/
-/*    transform: translate(-50%,-50%);*/
-/*    background-color: lightyellow;*/
-
-/*}*/
 
 .edit-goat-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #329365;
+    background-color: #39603D;
     color: white;
     border-radius: 4px;
     border: 0;
@@ -51,15 +22,23 @@
     height: 50px;
 }
 
-/*.edit-goat-modal-wrapper {*/
-/*    width: 500px;*/
-/*    height: 400px;*/
-/*    color: black;*/
-/*    border-radius: 10px;*/
-/*    border: 2px solid gray;*/
-/*    box-shadow: 3px 3px rgba(0, 0, 0, 0.43);*/
-/*}*/
+.card {
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    color: black;
+    border-color: #3C403D;
+    border-width: 1px;
+}
 
-/*#goat-profile-container {*/
-/*    justify-content: center;*/
-/*}*/
+#goat-profile-details-container {
+    color: black;
+    /*background-color: white;*/
+}
+
+.h1 {
+    padding: 15px;
+}
+
+#goat-profile-buttons {
+    align-content: baseline;
+}

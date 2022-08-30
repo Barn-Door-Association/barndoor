@@ -139,18 +139,24 @@
 <input type="hidden" id="goatId" th:value="${goat.id}">
 
 <!--GOAT PROFILE CARD-->
-<container class="d-flex justify-content-center" id="goat-profile-container">
-    <img th:src="${goat.img}" alt="" style="width: 350px;">
-    <div class="d-flex card">
-        <div>
-            <h1 th:text="${goat.name}"></h1>
-            <h3 th:text="${goat.tagId}"></h3>
-            <h3 th:text="${goat.breed}"></h3>
-            <h3 th:text="${dob}"></h3>
-            <h3 th:text="${goat.sex}"></h3>
-            <h3 th:text="${goat.weightInPounds}"></h3>
-            <h3 th:text="${goat.herd.id}"></h3>
+<section class="container py-5">
+<article class="d-flex justify-content-center">
+    <div class="d-flex card py-1">
+        <div class="d-flex justify-content-center">
+        <h1 th:text="${goat.name}"></h1>
         </div>
+        <container class="d-flex justify-content-center" id="goat-profile-container">
+    <img th:src="${goat.img}" alt="" style="object-fit: contain; width: 400px; height: auto">
+    <div class="d-flex card">
+        <div id="goat-profile-details-container">
+            <h4>Tag ID: <span th:text="${goat.tagId}"></span></h4>
+            <h4>Breed: <span th:text="${goat.breed}"></span></h4>
+            <h4>DOB: <span th:text="${dob}"></span></h4>
+            <h4>Sex: <span th:text="${goat.sex}"></span></h4>
+            <h4>Weight: <span th:text="${goat.weightInPounds}"></span> lbs</h4>
+            <h4>Herd ID: <span th:text="${goat.herd.id}"></span></h4>
+        </div>
+        <br>
         <div class="d-flex justify-content-evenly">
             <button class="goat-button" id="view-vaccine-records-button">Vaccine Records</button>
             <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
@@ -160,7 +166,9 @@
         </div>
     </div>
 </container>
-
+</div>
+</article>
+</section>
 
 <!-- FOOTER PARTIAL -->
 <section th:replace="partials/partials.html :: footer"></section>
