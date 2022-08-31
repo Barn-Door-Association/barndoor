@@ -12,21 +12,17 @@ body {
     font-family: 'Cabin', sans-serif;
 }
 
-body.watermark {
-    background: url("../img/BARNDOOR_3.png") no-repeat center center fixed;
-    background-size: 25%;
-    opacity: 90%;
-}
-
 .reg-header {
     background: #39603D;
     color: white;
     border-color: white;
+    padding: 10px;
 }
 
 .reg-card {
     padding: 0;
 }
+
 .register-here{
     padding: 10px;
 }
@@ -48,7 +44,7 @@ body.watermark {
 
 .login-here {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .register-here {
@@ -57,7 +53,6 @@ body.watermark {
 }
 
 .logout-btn {
-    /*padding-top: 6px;*/
     justify-content: center;
     align-items: center;
 }
@@ -70,12 +65,10 @@ body.watermark {
 
 .footerAll {
     text-align: center;
-    /*position: fixed;*/
     left: 0;
     bottom:0;
     width: 100%;
     padding: 16px;
-
 }
 
 section {
