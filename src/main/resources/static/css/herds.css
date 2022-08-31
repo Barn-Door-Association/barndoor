@@ -28,6 +28,7 @@
     height: 50px;
 }
 
+
 #add-herd-cancel-button {
     background-color: #39603D;
     color: white;
@@ -72,4 +73,10 @@
 
 label, input {
     margin-bottom: 10px;
+
+body {
+    padding-top: 70px;
+    background-color: #DADED4;
+    font-family: 'Cabin', sans-serif;
+
 }

@@ -4,9 +4,14 @@
     <head th:replace="partials/partials.html :: head('Herd')"></head>
     <meta th:name="_csrf" th:content="${_csrf.token}">
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
-    <!--    CSS LINK -->
-    <link type="text/css" rel="stylesheet" href="/css/herds.css">
 </head>
+<!--<head>-->
+<!--    <head th:replace="partials/partials.html :: head('Herds')"></head>-->
+<!--    <meta th:name="_csrf" th:content="${_csrf.token}">-->
+<!--    <meta th:name="_csrf_header" th:content="${_csrf.headerName}">-->
+<!--    &lt;!&ndash;    CSS LINK &ndash;&gt;-->
+
+<!--</head>-->
 <body>
 <!--NAVBAR PARTIAL-->
 <nav th:replace="partials/partials.html :: nav"></nav>
@@ -78,8 +83,6 @@
 <!--  FOOTER PARTIAL  -->
 <footer th:replace="partials/partials.html :: footer"></footer>
 </section>
-
-
 
 <script>
     // EVENT LISTENERS FOR BUTTONS

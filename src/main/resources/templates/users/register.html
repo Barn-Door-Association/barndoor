@@ -10,8 +10,8 @@
             <div class="d-flex col-md d-none d-md-inline-block card"
                  style="height: 550px; width: 466px; background: #A3BCB6">
 
-                <h2 class="d-flex justify-content-center">Create a Free Account</h2>
-                <br>
+                <h2 class="d-flex justify-content-center" style="padding: 10px">Create a Free Account</h2>
+
                 <div style="margin: 10px 50px">
                     <h3>You can be up and running in a few moments!</h3>
                     <br>
@@ -41,37 +41,39 @@
                 <form th:action="@{/register}" method="POST" th:object="${user}" class="mb-3 row">
                     <div style="margin-left: 30px; width: 95%">
                         <div class="reg-fields">
-                            <label style="width: 21%" for="username">Username</label>
-
+                            <label style="width: 24%" for="username">Username</label>
                             <input style="width: 60%" id="username" placeholder="Username" th:field="*{username}"/>
+                        </div>
 
-                        </div>
                         <div class="reg-fields">
-                            <label style="width: 21%" for="firstName">First Name</label>
-                            <input style="width: 60%" id="firstName" placeholder="First Name"
-                                   th:field="*{firstName}"/>
-                        </div>
-                        <div class="reg-fields">
-                            <label style="width: 21%" for="lastName">Last Name</label>
-                            <input style="width: 60%" id="lastName" placeholder="Last Name" th:field="*{lastName}"/>
-                        </div>
-                        <div class="reg-fields">
-                            <label style="width: 21%" for="password">Password</label>
+                            <label style="width: 24%" for="password">Password</label>
                             <input style="width: 60%" id="password" type="password" placeholder="Password"
                                    th:field="*{password}"/>
                         </div>
+
                         <div class="reg-fields">
-                            <label style="width: 21%" for="email">Email</label>
+                            <label style="width: 24%" for="firstName">First Name</label>
+                            <input style="width: 60%" id="firstName" placeholder="First Name"
+                                   th:field="*{firstName}"/>
+                        </div>
+
+                        <div class="reg-fields">
+                            <label style="width: 24%" for="lastName">Last Name</label>
+                            <input style="width: 60%" id="lastName" placeholder="Last Name" th:field="*{lastName}"/>
+                        </div>
+
+                        <div class="reg-fields">
+                            <label style="width: 24%" for="email">Email</label>
                             <input style="width: 60%" id="email" placeholder="Email" th:field="*{email}"/>
                         </div>
+
                         <div class="reg-fields">
-                            <label style="width: 21%" for="ranchName">Ranch Name</label>
-                            <input style="width: 60%" id="ranchName" placeholder="Ranch Name"
-                                   th:field="*{ranchName}"/>
+                            <label style="width: 24%" for="ranchName">Ranch Name</label>
+                            <input style="width: 60%" id="ranchName" placeholder="Ranch Name" th:field="*{ranchName}"/>
                         </div>
 
                     </div>
-                    <div class="text-center" style="padding: 20px">
+                    <div class="text-center" style="padding: 15px;">
                         <input class="btn reg-btn" value="Sign me up!" type="submit"/>
                     </div>
 
