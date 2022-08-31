@@ -16,6 +16,44 @@
 <!-- NAVBAR PARTIAL -->
 <nav th:replace="partials/partials.html :: nav"></nav>
 
+<!--PASSING TO A CONTROLLER TO FIND SPECIFIC GOAT-->
+<input type="hidden" id="goatId" th:value="${goat.id}">
+
+<!--GOAT PROFILE CARD-->
+<div class="d-flex py-5 justify-content-center">
+    <div class="card d-flex justify-content-center" style="max-width: 70%;">
+        <div class="card-header text-center" style="background-color: #39603D;">
+            <h1 th:text="${goat.name}" style="color: white"></h1>
+        </div>
+        <div class="row g-0">
+            <div class="col-md-4 py-2 goat-img-id">
+                <img th:src="${goat.img}" class="img-fluid d-flex justify-content-center" alt="..." style="padding-left: 10px;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="card-text" id="goat-profile-details-container">
+                        <h4><u><strong>Tag ID:</strong></u> <span th:text="${goat.tagId}"></span></h4>
+                        <h4><u><strong>Breed:</strong></u> <span th:text="${goat.breed}"></span></h4>
+                        <h4><u><strong>DOB:</strong></u> <span th:text="${#dates.format(goat.dob, 'MMM dd, yyyy')}"></span></h4>
+                        <h4><u><strong>Sex:</strong></u> <span th:text="${goat.sex}"></span></h4>
+                        <h4><u><strong>Weight:</strong></u> <span th:text="${goat.weightInPounds}"></span> lbs</h4>
+                        <h4><u><strong>Herd ID:</strong></u> <span th:text="${goat.herd.id}"></span></h4>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-evenly">
+                        <button class="goat-button" id="view-vaccine-records-button">Vaccine Records</button>
+                        <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
+                        <form th:action="@{/goats/{id}/pedigree(id=${goat.id})}" method="GET">
+                            <input type="submit" value="View Pedigree" class="goat-button">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--  VIEW VACCINE MODAL  -->
 <div id="view-records-modal-container" class="modal" tabindex="-1">
     <div class="modal-dialog">
@@ -35,7 +73,9 @@
                 </div>
 
                 <div id="view-vaccine-button-container" class="modal-footer">
-                    <button type="button" id="close-records-view" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="close-records-view" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
                     <button type="button" id="add-vaccine-button" class="btn btn-primary">Add Record</button>
                 </div>
             </div>
@@ -74,7 +114,9 @@
                     </select>
                 </div>
                 <div id="add-vaccine-button-container" class="modal-footer">
-                    <button type="button" id="close-add-vaccine-view" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="close-add-vaccine-view" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
                     <button type="button" id="save-vaccine-record" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -127,45 +169,15 @@
                 </div>
 
                 <div id="edit-goat-button-container" class="modal-footer">
-                    <button type="button" id="edit-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="edit-cancel-button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
                     <button type="button" id="save-changes-button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--PASSING TO A CONTROLLER TO FIND SPECIFIC GOAT-->
-<input type="hidden" id="goatId" th:value="${goat.id}">
-
-<!--GOAT PROFILE CARD-->
-<div class="card mb-3 d-flex justify-content-center" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img th:src="${goat.img}" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <div class="card-text" id="goat-profile-details-container">
-                    <h4><u><strong>Tag ID:  </strong></u> <span th:text="${goat.tagId}"></span></h4>
-                    <h4>Breed: <span th:text="${goat.breed}"></span></h4>
-                    <h4>DOB: <span th:text="${dob}"></span></h4>
-                    <h4>Sex: <span th:text="${goat.sex}"></span></h4>
-                    <h4>Weight: <span th:text="${goat.weightInPounds}"></span> lbs</h4>
-                    <h4>Herd ID: <span th:text="${goat.herd.id}"></span></h4>
-                </div>
-                <div class="d-flex justify-content-evenly">
-                    <button class="goat-button" id="view-vaccine-records-button">Vaccine Records</button>
-                    <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
-                    <form th:action="@{/goats/{id}/pedigree(id=${goat.id})}" method="GET">
-                        <input type="submit" value="View Pedigree" class="goat-button">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <!-- FOOTER PARTIAL -->
