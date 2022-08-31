@@ -139,50 +139,37 @@
 <input type="hidden" id="goatId" th:value="${goat.id}">
 
 <!--GOAT PROFILE CARD-->
-<section class="container py-5">
-<article class="d-flex justify-content-center">
-    <div class="d-flex card py-1">
-        <div class="d-flex justify-content-center">
-        <h1 th:text="${goat.name}"></h1>
+<div class="card mb-3 d-flex justify-content-center" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img th:src="${goat.img}" class="img-fluid rounded-start" alt="...">
         </div>
-        <container class="d-flex justify-content-center" id="goat-profile-container">
-    <img th:src="${goat.img}" alt="" style="object-fit: contain; width: 400px; height: auto">
-    <div class="d-flex card">
-        <div id="goat-profile-details-container">
-            <h4>Tag ID: <span th:text="${goat.tagId}"></span></h4>
-            <h4>Breed: <span th:text="${goat.breed}"></span></h4>
-            <h4>DOB: <span th:text="${dob}"></span></h4>
-            <h4>Sex: <span th:text="${goat.sex}"></span></h4>
-            <h4>Weight: <span th:text="${goat.weightInPounds}"></span> lbs</h4>
-            <h4>Herd ID: <span th:text="${goat.herd.id}"></span></h4>
-        </div>
-        <br>
-        <div class="d-flex justify-content-evenly">
-            <button class="goat-button" id="view-vaccine-records-button">Vaccine Records</button>
-            <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
-            <form th:action="@{/goats/{id}/pedigree(id=${goat.id})}" method="GET">
-                <input type="submit" value="View Pedigree" class="goat-button">
-            </form>
+        <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-text" id="goat-profile-details-container">
+                    <h4><u><strong>Tag ID:  </strong></u> <span th:text="${goat.tagId}"></span></h4>
+                    <h4>Breed: <span th:text="${goat.breed}"></span></h4>
+                    <h4>DOB: <span th:text="${dob}"></span></h4>
+                    <h4>Sex: <span th:text="${goat.sex}"></span></h4>
+                    <h4>Weight: <span th:text="${goat.weightInPounds}"></span> lbs</h4>
+                    <h4>Herd ID: <span th:text="${goat.herd.id}"></span></h4>
+                </div>
+                <div class="d-flex justify-content-evenly">
+                    <button class="goat-button" id="view-vaccine-records-button">Vaccine Records</button>
+                    <button class="edit-goat-button" id="edit-goat-button">Edit Goat Details</button>
+                    <form th:action="@{/goats/{id}/pedigree(id=${goat.id})}" method="GET">
+                        <input type="submit" value="View Pedigree" class="goat-button">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</container>
 </div>
-</article>
-</section>
+
+
 
 <!-- FOOTER PARTIAL -->
 <section th:replace="partials/partials.html :: footer"></section>
-
-<!-- BOOTSTRAP CDN-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-
-<!-- JQUERY CDN-->
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous">
-</script>
 
 <script>
     // EVENT LISTENERS
