@@ -1,39 +1,25 @@
-.indexHeader {
+.index-header {
     text-align: center;
     background: #39603D;
     color: white;
-    border-color: #3C403D;
-    border-width: medium;
+    border: 1px solid #3C403D;
+
 }
 
-.indexHeader2 {
-    text-align: center;
-}
-
-.row {
+.goat-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    /*margin: fill;*/
     width: 100%;
-    /*justify-content: space-evenly;*/
-    border-color: #3C403D;
-    border-width: medium;
+    justify-content: space-between;
 }
 
 
 .card {
-    border-color: #3C403D;
-    border-width: 2px;
+    border: 1px solid #3C403D;
 }
 
-/*.col-md {*/
-/*    border-radius: 75%;*/
-/*}*/
-
-
 h1 {
- padding: 30px;
+    padding: 30px;
 }
 
 .modal-header {
@@ -45,4 +31,8 @@ h1 {
     padding: 0 10px;
     text-align: center;
     font-size: 22px;
+}
+
+.index-img {
+    border-radius: 6px;
 }
