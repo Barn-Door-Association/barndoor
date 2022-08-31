@@ -15,7 +15,7 @@ body {
 .reg-header {
     background: #39603D;
     color: white;
-    border-color: white;
+    border: 1px solid #3C403D;
     padding: 10px;
 }
 
