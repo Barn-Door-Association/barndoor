@@ -34,12 +34,9 @@ public class GoatController {
 
     @GetMapping("/goat/{id}")
     public String showGoatInfo(@PathVariable long id, Model model) {
-        // Add method to fix the date format to yyyy-mm-dd before displaying through the model
         Goat goat = goatDao.findById(id);
-        String date = goat.getDob().toString().substring(0, 10);
         List<Vaccine> vaccines = vaccineDao.findAll();
         model.addAttribute("vaccines", vaccines);
-        model.addAttribute("dob", date);
         model.addAttribute("goat", goat);
         model.addAttribute("records", goatDao.findById(id).getRecords());
         return "goats/goat";
