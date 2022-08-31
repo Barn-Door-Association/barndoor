@@ -16,13 +16,16 @@
 
 <!--PROFILE INFORMATION-->
 <section class="container py-5">
-    <div class="row align-items-center">
-        <div class="d-flex card reg-card col-md">
-            <h1 class="d-flex justify-content-center reg-header"> Welcome,&nbsp <span th:text="${user.username}"></span>!
-            </h1>
+
+    <div class="row align-items-center reg-card">
+        <h1 class="d-flex justify-content-center reg-header" style="border-radius: 5px"> Welcome,&nbsp <span th:text="${user.username}"></span>!
+        </h1>
+        <div class="d-flex card reg-card col-md" style="height: 550px; width: 466px">
+<!--        <div class="d-flex card reg-card col-md">-->
+
 
             <!-- MOBILE RESPONSIVENESS -->
-            <div class="col-md d-none d-md-inline-block card landing-card">
+            <div class="d-flex justify-content-center reg-header card">
                 <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
             </div>
             <div class="d-sm-block d-lg-none card landing-card">
@@ -44,6 +47,16 @@
                 <button class="btn reg-btn" id="edit-profile-button">Edit Profile</button>
             </div>
             <br>
+        </div>
+
+        <div class="d-flex col-md d-none d-md-inline-block card"
+             style="height: 550px; width: 466px;">
+            <div class="col-md column-md d-none d-md-inline-block card " style="width: 100%">
+                <!--Stock image that will include a button that will link to registration page-->
+<!--                <img class="goat-img2" src="/img/baby-goat.jpg">-->
+                <img style="width: 100%; height:auto" src="/img/BARNDOOR_7.jpg">
+            </div>
+
         </div>
     </div>
     <!--    EDIT PROFILE MODAL-->

@@ -3,21 +3,6 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
     padding: 0;
 }
 
-.page-header {
-    padding-top: 4px;
-    width: 1200px;
-    border-radius: 12px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.page-header > div {
-    border-radius: 12px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    color: #FFFFFF;
-}
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -55,11 +40,12 @@ body {
 
 /* optional Container STYLES */
 .chart {
-    height: 670px;
+    height: 600px;
     width: 1200px;
-    margin: 5px auto;
-    border: 3px solid #3C403D;
-    border-radius: 12px;
+    margin: 0px auto;
+    border: 1px solid #3C403D;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
     background-color: #ffffff;
 }
 
@@ -115,4 +101,34 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.page-header {
+    padding-top: 48px;
+    width: 1200px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page-header > div {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-top: 1px solid #3C403D;
+    border-left: 1px solid #3C403D;
+    border-right: 1px solid #3C403D;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #FFFFFF;
+}
+
+section div {
+    margin: 0;
+}
+
+img {
+    border-radius: 4px;
+}
+
+.container {
+    max-width: none;
 }

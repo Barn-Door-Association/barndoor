@@ -12,8 +12,8 @@
 </head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<section>
-    <div class="my-3 container page-header">
+<section class="">
+    <div class="container page-header">
         <div class="d-flex justify-content-center" style="background-color: #39603D; width: 100%;">
             <h1><span th:text="${goat.name}"></span>'s Pedigree Chart</h1>
         </div>
@@ -31,7 +31,5 @@
 <script>
     getPedigree($("#goat-id").val())
 </script>
-
-
 </body>
 </html>
