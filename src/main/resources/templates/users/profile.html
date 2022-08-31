@@ -18,29 +18,31 @@
 <section class="container py-5">
 
     <div class="row align-items-center reg-card">
-        <h1 class="d-flex justify-content-center reg-header" style="border-radius: 5px"> Welcome,&nbsp <span th:text="${user.username}"></span>!
+        <h1 class="d-flex justify-content-center reg-header" style="border-radius: 5px; padding: 30px"> Welcome,&nbsp <span th:text="${user.username}"></span>!
         </h1>
+
+        <hr>
         <div class="d-flex card reg-card col-md" style="height: 550px; width: 466px">
-<!--        <div class="d-flex card reg-card col-md">-->
+
 
 
             <!-- MOBILE RESPONSIVENESS -->
-            <div class="d-flex justify-content-center reg-header card">
-                <h2>You are currently managing ranch: <span th:text="${user.ranchName}">!</span></h2>
+            <div class="d-none d-md-inline-block d-flex justify-content-center reg-header card" >
+                <h2>You are managing: <span th:text="${user.ranchName}">!</span></h2>
             </div>
-            <div class="d-sm-block d-lg-none card landing-card">
-                <h2>You're ranch: <span th:text="${user.ranchName}">!</span></h2>
+            <div class="d-sm-block d-lg-none card reg-header landing-card">
+                <h2>Your ranch: <span th:text="${user.ranchName}">!</span></h2>
             </div>
             <br>
 
             <h2><u>Your profile details</u></h2>
             <!--TEXT BREAKS AFTER HEADER WHEN IN MOBILE VIEW. ON DESKTOP STAYS ON SAME LINE-->
             <div style="text-align: center;">
-                <h3>First name: <br class="d-sm-block d-lg-none card landing-card"><span
-                        th:text="${user.firstName}"></span></h3>
-                <h3>Last name: <br class="d-sm-block d-lg-none card landing-card"><span
-                        th:text="${user.lastName}"></span></h3>
-                <h3>Email: <br class="d-sm-block d-lg-none card landing-card"><span th:text="${user.email}"></span></h3>
+                <h4>First name: <br class="d-sm-block d-lg-none card landing-card"><span
+                        th:text="${user.firstName}"></span></h4>
+                <h4>Last name: <br class="d-sm-block d-lg-none card landing-card"><span
+                        th:text="${user.lastName}"></span></h4>
+                <h4>Email: <br class="d-sm-block d-lg-none card landing-card"><span th:text="${user.email}"></span></h4>
             </div>
 
             <div class="login-here">
@@ -49,12 +51,10 @@
             <br>
         </div>
 
-        <div class="d-flex col-md d-none d-md-inline-block card"
-             style="height: 550px; width: 466px;">
+        <div class="d-flex card reg-card col-md d-none d-md-inline-block"
+             style="height: 550px; width: 466px; padding: 0">
             <div class="col-md column-md d-none d-md-inline-block card " style="width: 100%">
-                <!--Stock image that will include a button that will link to registration page-->
-<!--                <img class="goat-img2" src="/img/baby-goat.jpg">-->
-                <img style="width: 100%; height:auto" src="/img/BARNDOOR_7.jpg">
+                <img style="width: 100%; height:100%" src="/img/BARNDOOR_7.jpg">
             </div>
 
         </div>
