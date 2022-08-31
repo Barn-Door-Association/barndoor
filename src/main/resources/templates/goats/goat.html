@@ -58,25 +58,26 @@
 <div id="view-records-modal-container" class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header d-flex justify-content-center">
-                <h5 class="modal-title">Vaccination Records</h5>
+            <div class="modal-header d-flex justify-content-center" style="background-color: #39603D" >
+                <h5 class="modal-title" style="color: white">Vaccination Records</h5>
             </div>
             <div class="modal-body">
                 <div th:each="record : ${goat.records}">
                     <div>
-                        <h4>Vaccine: <span th:text="${record.vaccine.vaccineName}"></span></h4>
-                        <h5>Date: <span th:text="${#dates.format(record.dateAdministered, 'MMM dd, yyyy')}"></span></h5>
-                        <h5>Booster: <span th:text="${record.isBooster}"></span></h5>
-                        <h5>Dosage: <span th:text="${record.dosageInCcs}"></span></h5>
+                        <h4><u><strong>Vaccine:</strong></u>   <span th:text="${record.vaccine.vaccineName}"></span></h4>
+                        <h5><u><strong>Date:</strong></u>   <span th:text="${#dates.format(record.dateAdministered, 'MMM dd, yyyy')}"></span></h5>
+                        <h5><u><strong>Booster:</strong></u>   <span th:text="${record.isBooster}"></span></h5>
+                        <h5><u><strong>Dosage:</strong></u>   <span th:text="${record.dosageInCcs}"></span></h5>
                         <input type="hidden" th:value="${record.id}" name="vaccine-id">
                     </div>
+                    <hr>
                 </div>
 
                 <div id="view-vaccine-button-container" class="modal-footer">
-                    <button type="button" id="close-records-view" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button type="button" id="close-records-view" class="btn" style="background-color: #39603D; color: white;" data-bs-dismiss="modal">
                         Cancel
                     </button>
-                    <button type="button" id="add-vaccine-button" class="btn btn-primary">Add Record</button>
+                    <button type="button" id="add-vaccine-button" class="btn" style="background-color: #39603D; color: white;">Add Record</button>
                 </div>
             </div>
         </div>
