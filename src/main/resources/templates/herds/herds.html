@@ -20,20 +20,20 @@
 <section class="container py-5">
     <article class="d-flex justify-content-center">
         <div class="d-flex card">
-            <div class="d-flex card-header justify-content-center">
-                <h2>View All Herds In <span th:text="${user.ranchName}"></span>!</h2>
+            <div class="d-flex card-header-main justify-content-center">
+                <h1>Viewing All Herds In <span th:text="${user.ranchName}"></span>!</h1>
             </div>
             <div class="card-body">
 
                 <!-- ADD HERD BUTTON -->
                 <div class="d-flex justify-content-center">
-                    <button id="add-herd-button" class="btn btn-primary">Add Herd</button>
+                    <button id="add-herd-button" class="goat-button">Add Herd</button>
                 </div>
                 <!--ADD NEW HERD MODAL -->
                 <div id="add-herd-modal-container" class="modal" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header d-flex justify-content-center">
+                            <div class="modal-header">
                                 <h5 class="modal-title">Add a New Herd</h5>
                             </div>
                             <div class="modal-body">
@@ -46,10 +46,10 @@
                                     <input type="text" id="description" name="description" style="width:300px;">
                                 </div>
                                 <div id="add-herd-button-container" class="modal-footer">
-                                    <button type="button" id="add-herd-cancel-button" class="btn btn-secondary"
+                                    <button type="button" id="add-herd-cancel-button" class="btn"
                                             data-bs-dismiss="modal">Close
                                     </button>
-                                    <button type="button" id="add-herd-add-button" class="btn btn-primary">Add New
+                                    <button type="button" id="add-herd-add-button" class="btn">Add New
                                         Herd
                                     </button>
                                 </div>
