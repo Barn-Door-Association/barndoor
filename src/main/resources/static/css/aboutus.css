@@ -1,9 +1,13 @@
 .aboutHeader {
+    display: flex;
+    justify-content: center;
     text-align: center;
     background: #39603D;
     color: white;
     border-color: #3C403D;
     border-width: 1px;
+    width: 50%;
+    margin: auto;
 }
 
 .aboutcolumn {
@@ -66,4 +70,13 @@
     padding: 0 10px;
     text-align: center;
     font-size: 20px;
+}
+
+.aboutHeader1 {
+    text-align: center;
+    background: #39603D;
+    color: white;
+    border-color: #3C403D;
+    border-width: 1px;
+    width: 50%;
 }
