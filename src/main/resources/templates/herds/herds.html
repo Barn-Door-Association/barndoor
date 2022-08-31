@@ -4,6 +4,7 @@
     <head th:replace="partials/partials.html :: head('Herd')"></head>
     <meta th:name="_csrf" th:content="${_csrf.token}">
     <meta th:name="_csrf_header" th:content="${_csrf.headerName}">
+    <link rel="stylesheet" href="/css/modaltest.css">
 </head>
 <!--<head>-->
 <!--    <head th:replace="partials/partials.html :: head('Herds')"></head>-->
@@ -20,7 +21,7 @@
 <section class="container py-5">
     <article class="d-flex justify-content-center">
         <div class="d-flex card">
-            <div class="d-flex card-header-main justify-content-center">
+            <div class="d-flex card-header-main card-header reg-header justify-content-center">
                 <h1>Viewing All Herds In <span th:text="${user.ranchName}"></span>!</h1>
             </div>
             <div class="card-body">
@@ -46,11 +47,10 @@
                                     <input type="text" id="description" name="description" style="width:300px;">
                                 </div>
                                 <div id="add-herd-button-container" class="modal-footer">
-                                    <button type="button" id="add-herd-cancel-button" class="btn"
+                                    <button type="button" id="add-herd-cancel-button" class="goat-button"
                                             data-bs-dismiss="modal">Close
                                     </button>
-                                    <button type="button" id="add-herd-add-button" class="btn">Add New
-                                        Herd
+                                    <button type="button" id="add-herd-add-button" class="goat-button">Add Herd
                                     </button>
                                 </div>
                             </div>
