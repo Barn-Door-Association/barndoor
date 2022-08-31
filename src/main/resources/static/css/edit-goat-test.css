@@ -42,3 +42,15 @@
 #goat-profile-buttons {
     align-content: baseline;
 }
+.modal {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.modal-content {
+    background-color: #DADED4;
+    border-spacing: 25px;
+    font-size: 18px;
+
+}
